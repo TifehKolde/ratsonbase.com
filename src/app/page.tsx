@@ -56,24 +56,25 @@ export default async function HomePage() {
         <Reveal><IntroVideo /></Reveal>
 
         <section className="section-pad">
-          <div className="container-shell grid gap-12 lg:grid-cols-[.85fr_1.15fr] lg:gap-24">
+          <Reveal className="container-shell grid gap-12 lg:grid-cols-[.85fr_1.15fr] lg:gap-24">
             <div><p className="eyebrow">Who we are</p><h2 className="mt-6 max-w-[520px] text-5xl font-bold leading-[1.02] text-brand sm:text-6xl">A better standard, from the ground up.</h2></div>
             <div><p className="max-w-[700px] text-xl leading-9 text-slate-600">Ratsonbase Construction Limited is focused on delivering dependable construction and property solutions through careful planning, skilled execution and a commitment to doing things properly.</p><p className="mt-5 max-w-[680px] text-base leading-8 text-slate-500">We believe great projects are built on more than materials. They take collaboration, clear decisions and attention to the details that make a space work beautifully for the people who use it.</p><Link href="/about" className="mt-8 inline-flex items-center gap-3 text-sm font-extrabold text-brand">More about Ratsonbase <ArrowUpRight size={17} className="text-accent"/></Link></div>
-          </div>
+          </Reveal>
         </section>
 
         <section className="section-pad bg-[#f6f6fc]">
-          <div className="container-shell">
+          <Reveal className="container-shell">
             <div className="flex flex-col justify-between gap-7 md:flex-row md:items-end"><div><p className="eyebrow">What we do</p><h2 className="mt-6 max-w-[650px] text-5xl font-bold leading-[1.02] text-brand sm:text-6xl">From first plan to final finish.</h2></div><p className="max-w-[390px] text-base leading-7 text-slate-500">Practical expertise and a hands-on approach, shaped around the needs of each project.</p></div>
             {services.length ? <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{services.slice(0,6).map((service,index)=><article key={service.id} className="rounded-2xl border border-[#e5e5f0] bg-white p-7 transition hover:-translate-y-1 hover:shadow-xl sm:p-8"><span className="text-xs font-extrabold tracking-[.18em] text-accent">{String(index+1).padStart(2,"0")}</span><h3 className="mt-8 text-2xl font-bold text-brand">{service.title}</h3><p className="mt-3 text-sm leading-7 text-slate-500">{service.description}</p><Link href={"/services/"+service.slug} className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-brand">Explore service <ArrowUpRight size={15}/></Link></article>)}</div> : <p className="mt-12 rounded-2xl border border-slate-200 bg-white p-8 text-slate-600">Our service information is being updated. <Link href="/contact" className="font-semibold text-accent">Contact us</Link> to discuss your project.</p>}
             <Link href="/services" className="mt-9 inline-flex items-center gap-2 text-sm font-extrabold text-brand">View all services <ArrowRight size={16}/></Link>
-          </div>
+          </Reveal>
         </section>
 
         <ProjectCarousel projects={projects} heading="Made to make a difference." eyebrow="Selected work" />
 
         <section className="section-pad bg-[#f6f6fc]">
-          <div className="container-shell grid gap-12 lg:grid-cols-2 lg:gap-24"><div><p className="eyebrow">The Ratsonbase difference</p><h2 className="mt-6 max-w-[550px] text-5xl font-bold leading-[1.02] text-brand sm:text-6xl">The details matter. So does the experience.</h2></div><div className="grid gap-0">{values.map((value,index)=><div key={value} className="flex items-center gap-5 border-b border-[#dedeea] py-6 first:pt-0"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-light text-brand"><CheckCircle2 size={17}/></span><p className="text-base font-semibold text-slate-700">{value}</p><span className="ml-auto text-xs font-bold text-slate-400">0{index+1}</span></div>)}</div></div>
+          <Reveal className="container-shell grid gap-12 lg:grid-cols-2 lg:gap-24"><div><p className="eyebrow">The Ratsonbase difference</p><h2 className="mt-6 max-w-[550px] text-5xl font-bold leading-[1.02] text-brand sm:text-6xl">The details matter. So does the experience.</h2></div><div className="grid gap-0">{values.map((value,index)=><div key={value} className="flex items-center gap-5 border-b border-[#dedeea] py-6 first:pt-0"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-light text-brand"><CheckCircle2 size={17}/></span><p className="text-base font-semibold text-slate-700">{value}</p><span className="ml-auto text-xs font-bold text-slate-400">0{index+1}</span></div>)}</div></div>
+        </Reveal>
         </section>
 
         <TeamSection />
