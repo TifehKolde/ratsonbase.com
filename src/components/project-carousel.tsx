@@ -72,7 +72,7 @@ export function ProjectCarousel({ projects, heading = "A closer look at our work
                       <h3 className="mt-2 max-w-xl font-heading text-2xl font-bold leading-tight tracking-[-.04em] sm:text-3xl lg:text-4xl">{project.title}</h3>
                       <p className="mt-2 line-clamp-2 max-w-xl text-sm leading-6 text-white/70">{project.description}</p>
                     </div>
-                    <Link href={"/projects/" + project.slug} aria-label={"View " + project.title} className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white text-brand transition duration-300 hover:rotate-45 hover:bg-accent hover:text-white sm:h-14 sm:w-14"><ArrowUpRight size={21}/></Link>
+                    <span aria-hidden="true" className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white text-brand transition duration-300 group-hover:rotate-45 group-hover:bg-accent group-hover:text-white sm:h-14 sm:w-14"><ArrowUpRight size={21}/></span>
                   </div>
                 </div>
                 <Link href={"/projects/" + project.slug} aria-label={"Explore project: " + project.title} className="absolute inset-0 z-0"><span className="sr-only">View project</span></Link>
