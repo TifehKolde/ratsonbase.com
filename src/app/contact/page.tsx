@@ -13,13 +13,14 @@ export default function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); setSubmitting(true); setStatus("");
-    const form = new FormData(event.currentTarget);
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
     const payload = Object.fromEntries(form.entries());
     try {
       const response = await fetch(API_BASE + "/api/v1/quotes", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) });
       const result = await response.json();
       if (!response.ok || !result.success) throw new Error(result.error?.message || "We could not submit your request. Please try again.");
-      setStatus("Thank you. Your project enquiry has been submitted successfully."); event.currentTarget.reset();
+      setStatus("Thank you. Your project enquiry has been submitted successfully."); formElement.reset();
     } catch (error) { setStatus(error instanceof Error ? error.message : "Something went wrong. Please try again."); }
     finally { setSubmitting(false); }
   }
