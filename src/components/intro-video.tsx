@@ -13,7 +13,7 @@ export function IntroVideo() {
       <div className="absolute -bottom-44 left-[-8rem] h-[520px] w-[520px] rounded-full border border-white/[.07]"/>
       <div className="container-shell relative">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="eyebrow justify-center text-[#f2a5e8]">Inside Ratsonbase</p>
+          
           <h2 className="mt-6 text-4xl font-bold leading-[1.04] tracking-[-.055em] sm:text-5xl lg:text-6xl">A closer look at the people, process and purpose behind the build.</h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-white/60">See how we approach construction, coordinate our work and bring each project from an idea to a finished space.</p>
         </div>
