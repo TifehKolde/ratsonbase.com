@@ -16,7 +16,7 @@ export function SiteFooter() {
           <div><h2 className="text-sm font-bold">Explore</h2><div className="mt-4 grid gap-3 text-sm text-white/60"><Link href="/about" className="transition hover:text-white">About us</Link><Link href="/services" className="transition hover:text-white">Services</Link><Link href="/projects" className="transition hover:text-white">Projects</Link><Link href="/blog" className="transition hover:text-white">Blog</Link></div></div>
           <div><h2 className="text-sm font-bold">Get in touch</h2><div className="mt-4 grid gap-3 text-sm text-white/60"><Link href="/contact" className="transition hover:text-white">Contact us</Link><a href="mailto:info@ratsonbase.com" className="transition hover:text-white">info@ratsonbase.com</a><Link href="/contact" className="mt-2 inline-flex items-center gap-2 font-bold text-[#f2a5e8]">Start a conversation <ArrowUpRight size={15}/></Link></div></div>
         </div>
-        <div className="flex flex-col gap-3 border-t border-white/10 py-6 text-xs text-white/35 sm:flex-row sm:items-center sm:justify-between"><span>© {new Date().getFullYear()} Ratsonbase Construction Limited. All rights reserved.</span><span>Integrity · Safety · Teamwork · Excellence · Promptness</span></div>
+        <div className="flex flex-col gap-3 border-t border-white/10 py-6 text-xs text-white/35 sm:flex-row sm:items-center sm:justify-between"><span>© {new Date().getFullYear()} Ratsonbase Construction Limited. All rights reserved.</span><span>Integrity, Safety, Teamwork, Excellence and Promptness</span></div>
       </div>
     </footer>
   );
