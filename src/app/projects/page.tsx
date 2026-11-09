@@ -4,12 +4,12 @@ import { ArrowUpRight } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
-import { getPublicProjects } from "@/lib/public-api";
+import { getPublicProjects, type PublicProject } from "@/lib/public-api";
 
 export const metadata: Metadata = { title: "Our Projects | Ratsonbase Construction Limited", description: "Explore selected construction and renovation projects by Ratsonbase Construction Limited." };
 
 export default async function ProjectsPage() {
-  let projects = [];
+  let projects: PublicProject[] = [];
   let unavailable = false;
   try { projects = await getPublicProjects(); } catch { unavailable = true; }
   return <><SiteHeader/><main><PageHero eyebrow="Selected work" title="Made to make a difference." description="A closer look at the spaces, details and possibilities behind every project."/><section className="section-pad"><div className="container-shell">
