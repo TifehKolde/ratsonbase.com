@@ -35,7 +35,7 @@ export default async function HomePage() {
         <section className="hero-photo relative flex min-h-[690px] items-center overflow-hidden py-28 text-white sm:min-h-[790px]">
           <Reveal className="container-shell relative z-10">
             <p className="eyebrow text-[#f2a5e8]">Built on trust. Defined by quality.</p>
-            <h1 className="mt-7 max-w-[900px] font-heading text-[clamp(3.5rem,8vw,7.6rem)] font-bold leading-[.92] tracking-[-.075em]">
+            <h1 className="mt-7 max-w-[900px] font-heading text-[clamp(3.1rem,7vw,6.4rem)] font-bold leading-[.92] tracking-[-.075em]">
               We build spaces <span className="text-[#e9a0df]">that move</span> life forward.
             </h1>
             <p className="mt-8 max-w-[560px] text-base leading-8 text-white/75 sm:text-lg">
@@ -57,7 +57,7 @@ export default async function HomePage() {
 
         <section className="section-pad">
           <Reveal className="container-shell grid gap-12 lg:grid-cols-[.85fr_1.15fr] lg:gap-24">
-            <div><p className="eyebrow">Who we are</p><h2 className="mt-6 max-w-[520px] text-5xl font-bold leading-[1.02] text-brand sm:text-6xl">A better standard, from the ground up.</h2></div>
+            <div><p className="eyebrow">Who we are</p><h2 className="mt-6 max-w-[520px] text-4xl font-bold leading-[1.04] text-brand sm:text-5xl">A better standard, from the ground up.</h2></div>
             <div><p className="max-w-[700px] text-xl leading-9 text-slate-600">Ratsonbase Construction Limited is focused on delivering dependable construction and property solutions through careful planning, skilled execution and a commitment to doing things properly.</p><p className="mt-5 max-w-[680px] text-base leading-8 text-slate-500">We believe great projects are built on more than materials. They take collaboration, clear decisions and attention to the details that make a space work beautifully for the people who use it.</p><Link href="/about" className="mt-8 inline-flex items-center gap-3 text-sm font-extrabold text-brand">More about Ratsonbase <ArrowUpRight size={17} className="text-accent"/></Link></div>
           </Reveal>
         </section>
@@ -81,7 +81,7 @@ export default async function HomePage() {
 
         <ManagingPartnerMessage />
 
-        <section className="relative overflow-hidden bg-brand py-24 text-white sm:py-32"><div className="absolute -right-28 -top-36 h-[420px] w-[420px] rounded-full border border-white/10"/><div className="container-shell relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end"><div><p className="eyebrow text-[#f2a5e8]">Let's build something meaningful</p><h2 className="mt-7 max-w-[800px] text-5xl font-bold leading-[.98] tracking-[-.06em] sm:text-7xl">Have a project in mind? <span className="text-[#e9a0df]">Let's talk.</span></h2><p className="mt-7 max-w-[500px] text-base leading-8 text-white/65">Tell us what you're planning. We'll help you take the next step with clarity and confidence.</p></div><Link href="/contact" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-accent px-7 text-sm font-bold text-white transition hover:-translate-y-1 hover:bg-[#980281]">Contact Ratsonbase <ArrowUpRight size={17}/></Link></div></section>
+        <section className="relative overflow-hidden bg-brand py-24 text-white sm:py-32"><div className="absolute -right-28 -top-36 h-[420px] w-[420px] rounded-full border border-white/10"/><div className="container-shell relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end"><div><p className="eyebrow text-[#f2a5e8]">Let's build something meaningful</p><h2 className="mt-7 max-w-[800px] text-4xl font-bold leading-[1.02] tracking-[-.05em] sm:text-6xl">Have a project in mind? <span className="text-[#e9a0df]">Let's talk.</span></h2><p className="mt-7 max-w-[500px] text-base leading-8 text-white/65">Tell us what you're planning. We'll help you take the next step with clarity and confidence.</p></div><Link href="/contact" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-accent px-7 text-sm font-bold text-white transition hover:-translate-y-1 hover:bg-[#980281]">Contact Ratsonbase <ArrowUpRight size={17}/></Link></div></section>
       </main>
       <SiteFooter />
     </>
