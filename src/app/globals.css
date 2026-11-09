@@ -46,10 +46,6 @@ a,button { transition-property:color,background-color,border-color,box-shadow,tr
 :focus-visible { outline:3px solid #b4049a; outline-offset:3px; }
 @keyframes orb-drift { from { transform:translate3d(0,0,0) rotate(0deg); } to { transform:translate3d(-18px,14px,0) rotate(12deg); } }
 
-.rolling-band { position:relative; }
-.rolling-track { animation:ratsonbase-marquee 34s linear infinite; }
-.rolling-band:hover .rolling-track { animation-play-state:paused; }
-@keyframes ratsonbase-marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
 
 .project-slider-track { scrollbar-width:none; overscroll-behavior-x:contain; scroll-padding-inline:1rem; -webkit-overflow-scrolling:touch; }
 .project-slider-track::-webkit-scrollbar { display:none; }
@@ -58,7 +54,6 @@ a,button { transition-property:color,background-color,border-color,box-shadow,tr
 @media (hover:hover) and (pointer:fine) { .project-slider-track article:hover { box-shadow:0 24px 60px rgba(1,0,110,.12); } }
 @media (max-width:640px) {
   .hero-photo { background-image:linear-gradient(90deg,rgba(5,8,39,.88),rgba(5,8,39,.5)),url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1100&q=82"); background-position:58% center; }
-  .rolling-track { animation-duration:25s; }
 }
 @media (prefers-reduced-motion:reduce) {
   *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
