@@ -8,7 +8,7 @@ import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { ProjectCarousel } from "@/components/project-carousel";
 import { ProjectMedia } from "@/components/project-media";
-import { getPublicProjectBySlug, getPublicProjects, type PublicProject } from "@/lib/public-api";
+import { getPublicProjectBySlug, getPublicProjectImages, getPublicProjects, type PublicProject } from "@/lib/public-api";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -31,6 +31,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   const { slug } = await params;
   let project: PublicProject;
   try { project = await getPublicProjectBySlug(slug); } catch { notFound(); }
+  let projectImages: Awaited<ReturnType<typeof getPublicProjectImages>> = [];
+  try { projectImages = await getPublicProjectImages(project.id); } catch { /* Gallery is optional; keep the featured image visible. */ }
   let relatedProjects: PublicProject[] = [];
   try { relatedProjects = (await getPublicProjects()).filter((item) => item.slug !== slug).slice(0, 6); } catch { /* Related projects are optional. */ }
 
@@ -57,7 +59,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <div className="container-shell">
             <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-14">
               <div className="min-w-0">
-                <ProjectMedia title={project.title} featuredImage={project.featured_image} galleryImages={project.gallery_images || []} videoUrl={project.video_url} />
+                <ProjectMedia title={project.title} featuredImage={project.featured_image} galleryImages={projectImages.map((image) => image.image_url)} videoUrl={project.video_url} />
 
                 <Reveal delay={0.08}>
                   <div className="mt-10">
