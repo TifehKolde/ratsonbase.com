@@ -12,10 +12,9 @@ function formatProjectDate(value?: string | null) {
   return Number.isNaN(date.getTime()) ? "" : new Intl.DateTimeFormat("en", { month: "short", year: "numeric" }).format(date);
 }
 
-export function ProjectCarousel({ projects, heading = "A closer look at our work", eyebrow = "Selected projects" }: {
+export function ProjectCarousel({ projects, heading = "A closer look at our work" }: {
   projects: PublicProject[];
   heading?: string;
-  eyebrow?: string;
 }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
