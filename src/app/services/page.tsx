@@ -4,12 +4,12 @@ import { ArrowUpRight } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
-import { getPublicServices } from "@/lib/public-api";
+import { getPublicServices, type PublicService } from "@/lib/public-api";
 
 export const metadata: Metadata = { title: "Our Services | Ratsonbase Construction Limited", description: "Explore construction, renovation and property services from Ratsonbase Construction Limited." };
 
 export default async function ServicesPage() {
-  let services = [];
+  let services: PublicService[] = [];
   let unavailable = false;
   try { services = await getPublicServices(); } catch { unavailable = true; }
   return <><SiteHeader/><main><PageHero eyebrow="What we do" title="From first plan to final finish." description="Practical expertise and a hands-on approach, shaped around the needs of each project."/>
