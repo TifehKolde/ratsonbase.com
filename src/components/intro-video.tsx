@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Play, Volume2, VolumeX } from "lucide-react";
+import { Play } from "lucide-react";
 
 const VIDEO_ID = "YppH2GNQ-Z8";
 
 export function IntroVideo() {
-  const [muted, setMuted] = useState(true);
   const [started, setStarted] = useState(false);
   return (
     <section className="section-pad relative overflow-hidden bg-[#08082f] text-white">
@@ -21,7 +20,7 @@ export function IntroVideo() {
         <div className="video-frame group relative mx-auto mt-12 aspect-video w-full max-w-[1120px] overflow-hidden rounded-[1.6rem] border border-white/15 bg-black shadow-[0_35px_100px_rgba(0,0,0,.42)] sm:mt-16">
           <iframe
             className="absolute inset-0 h-full w-full"
-            src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=${muted ? "1" : "0"}&controls=1&rel=0&playsinline=1&modestbranding=1`}
+            src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&controls=1&rel=0&playsinline=1&modestbranding=1`}
             title="Ratsonbase Construction Limited introduction video"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
@@ -32,9 +31,7 @@ export function IntroVideo() {
           <div className="pointer-events-none absolute inset-0 grid place-items-center">
             <span className="video-play-pulse grid h-20 w-20 place-items-center rounded-full border border-white/50 bg-white/15 text-white shadow-[0_0_0_14px_rgba(255,255,255,.08)] backdrop-blur-md sm:h-24 sm:w-24"><Play size={30} fill="currentColor"/></span>
           </div>
-          <button type="button" onClick={() => setMuted(!muted)} className="absolute bottom-4 right-4 z-10 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/45 px-4 py-2.5 text-xs font-bold text-white backdrop-blur-xl transition hover:bg-black/70" aria-label={muted ? "Unmute video" : "Mute video"}>
-            {muted ? <VolumeX size={15}/> : <Volume2 size={15}/>} {muted ? "Sound off" : "Sound on"}
-          </button>
+
         </div>
         <p className="mt-5 text-center text-[.65rem] font-bold uppercase tracking-[.2em] text-white/35">Ratsonbase Construction Limited · Company film</p>
       </div>
