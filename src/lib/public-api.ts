@@ -11,7 +11,10 @@ export type PublicProject = {
   id: number; title: string; slug: string; description: string;
   project_type: string; location?: string | null; client?: string | null; status: string;
   start_date?: string | null; completion_date?: string | null;
-  featured_image?: string | null; is_published: boolean;
+  featured_image?: string | null;
+  gallery_images?: string[] | null;
+  video_url?: string | null;
+  is_published: boolean;
 };
 export type PublicPost = {
   id: number; title: string; slug: string; excerpt?: string | null;
