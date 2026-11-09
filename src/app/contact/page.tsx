@@ -1,0 +1,29 @@
+"use client";
+
+import { useState } from "react";
+import type { FormEvent } from "react";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { PageHero } from "@/components/page-hero";
+
+const API_BASE = (process.env.NEXT_PUBLIC_API_BASE_URL || "https://construction-api-qv4x.onrender.com").replace(/\/$/, "");
+
+export default function ContactPage() {
+  const [status, setStatus] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault(); setSubmitting(true); setStatus("");
+    const form = new FormData(event.currentTarget);
+    const payload = Object.fromEntries(form.entries());
+    try {
+      const response = await fetch(API_BASE + "/api/v1/quotes", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) });
+      const result = await response.json();
+      if (!response.ok || !result.success) throw new Error(result.error?.message || "We could not submit your request. Please try again.");
+      setStatus("Thank you. Your project enquiry has been submitted successfully."); event.currentTarget.reset();
+    } catch (error) { setStatus(error instanceof Error ? error.message : "Something went wrong. Please try again."); }
+    finally { setSubmitting(false); }
+  }
+  return <><SiteHeader/><main><PageHero eyebrow="Contact Ratsonbase" title="Let's talk about what you're building." description="Tell us a little about your project. Our team will review your enquiry and get back to you."/><section className="section-pad"><div className="container-shell grid gap-12 lg:grid-cols-[.8fr_1.2fr]"><div><p className="eyebrow">Start a conversation</p><h2 className="mt-5 text-4xl font-bold text-brand">A good project starts with a good conversation.</h2><p className="mt-5 leading-8 text-slate-600">Share your plans, questions or project requirements using the form. You can also email us at <a className="font-semibold text-accent" href="mailto:info@ratsonbase.com">info@ratsonbase.com</a>.</p></div>
+    <form onSubmit={submit} className="grid gap-5 rounded-2xl border border-slate-200 p-6 sm:p-9"><div className="grid gap-5 sm:grid-cols-2"><label className="grid gap-2 text-sm font-semibold text-slate-700">Full name<input name="name" required className="rounded-xl border border-slate-200 px-4 py-3 font-normal outline-none focus:border-accent"/></label><label className="grid gap-2 text-sm font-semibold text-slate-700">Email address<input name="email" type="email" required className="rounded-xl border border-slate-200 px-4 py-3 font-normal outline-none focus:border-accent"/></label><label className="grid gap-2 text-sm font-semibold text-slate-700">Phone number<input name="phone" required className="rounded-xl border border-slate-200 px-4 py-3 font-normal outline-none focus:border-accent"/></label><label className="grid gap-2 text-sm font-semibold text-slate-700">Project type<select name="project_type" required className="rounded-xl border border-slate-200 bg-white px-4 py-3 font-normal outline-none focus:border-accent"><option value="">Select a project type</option><option>Construction</option><option>Renovation</option><option>Engineering</option><option>Consultation</option><option>Other</option></select></label></div><label className="grid gap-2 text-sm font-semibold text-slate-700">Company (optional)<input name="company" className="rounded-xl border border-slate-200 px-4 py-3 font-normal outline-none focus:border-accent"/></label><label className="grid gap-2 text-sm font-semibold text-slate-700">Project location<input name="location" className="rounded-xl border border-slate-200 px-4 py-3 font-normal outline-none focus:border-accent"/></label><label className="grid gap-2 text-sm font-semibold text-slate-700">Tell us about your project<textarea name="project_description" required rows={5} className="rounded-xl border border-slate-200 px-4 py-3 font-normal outline-none focus:border-accent"/></label><label className="grid gap-2 text-sm font-semibold text-slate-700">Estimated budget (optional)<input name="budget" className="rounded-xl border border-slate-200 px-4 py-3 font-normal outline-none focus:border-accent"/></label><button disabled={submitting} className="rounded-full bg-accent px-7 py-4 text-sm font-bold text-white transition hover:bg-[#980281] disabled:opacity-60">{submitting ? "Submitting…" : "Submit project enquiry"}</button>{status && <p role="status" aria-live="polite" className="text-sm text-slate-600">{status}</p>}</form>
+  </div></section></main><SiteFooter/></>;
+}
