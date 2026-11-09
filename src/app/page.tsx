@@ -4,6 +4,7 @@ import { ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { IntroVideo } from "@/components/intro-video";
+import { Reveal } from "@/components/reveal";
 import { getPublicProjects, getPublicServices, type PublicProject, type PublicService } from "@/lib/public-api";
 
 export const metadata: Metadata = {
@@ -49,7 +50,7 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <IntroVideo />
+        <Reveal><IntroVideo /></Reveal>
 
         <section className="section-pad">
           <div className="container-shell grid gap-12 lg:grid-cols-[.85fr_1.15fr] lg:gap-24">
