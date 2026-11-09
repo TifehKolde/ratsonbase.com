@@ -8,7 +8,7 @@ export function SiteFooter() {
       <div className="pointer-events-none absolute -right-28 -top-32 h-[440px] w-[440px] rounded-full border border-white/[.07]"/>
       <div className="container-shell relative">
         <div id="newsletter" className="grid scroll-mt-28 gap-8 border-b border-white/10 pb-12 lg:grid-cols-[.8fr_1.2fr] lg:items-end lg:gap-16">
-          <div><p className="eyebrow text-[#f2a5e8]">Stay connected</p><h2 className="mt-5 max-w-lg font-heading text-3xl font-bold leading-tight sm:text-4xl">Ideas, updates and a closer look at what we are building.</h2><p className="mt-4 max-w-md text-sm leading-7 text-white/50">Join the Ratsonbase newsletter for company news, project updates and perspectives from the built environment.</p></div>
+          <div><h2 className="mt-5 max-w-lg font-heading text-3xl font-bold leading-tight sm:text-4xl">Ideas, updates and a closer look at what we are building.</h2><p className="mt-4 max-w-md text-sm leading-7 text-white/50">Join the Ratsonbase newsletter for company news, project updates and perspectives from the built environment.</p></div>
           <NewsletterForm/>
         </div>
         <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_.7fr_.9fr]">
