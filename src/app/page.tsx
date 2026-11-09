@@ -8,7 +8,6 @@ import { Reveal } from "@/components/reveal";
 import { ProjectCarousel } from "@/components/project-carousel";
 import { TeamSection } from "@/components/team-section";
 import { ManagingPartnerMessage } from "@/components/managing-partner-message";
-import { RollingText } from "@/components/rolling-text";
 import { getPublicProjects, getPublicServices, type PublicProject, type PublicService } from "@/lib/public-api";
 
 export const metadata: Metadata = {
@@ -55,7 +54,6 @@ export default async function HomePage() {
         </section>
 
         <Reveal><IntroVideo /></Reveal>
-        <RollingText />
 
         <section className="section-pad">
           <Reveal className="container-shell grid gap-12 lg:grid-cols-[.85fr_1.15fr] lg:gap-24">
