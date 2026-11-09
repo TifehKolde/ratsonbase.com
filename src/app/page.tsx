@@ -1,42 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getPublicProjects, getPublicServices, type PublicProject, type PublicService } from "@/lib/public-api";
 import {
   ArrowDownRight,
-  ArrowRight,
   ArrowUpRight,
   Check,
   ChevronDown,
   Menu,
   X,
 } from "lucide-react";
-
-const services = [
-  {
-    number: "01",
-    title: "General Construction",
-    description:
-      "From groundwork to final finishes, we deliver carefully managed builds shaped around your brief, budget and timeline.",
-  },
-  {
-    number: "02",
-    title: "Renovation & Remodeling",
-    description:
-      "We reimagine existing spaces with thoughtful planning, quality materials and detail-led execution.",
-  },
-  {
-    number: "03",
-    title: "Project Management",
-    description:
-      "Clear coordination, transparent communication and disciplined oversight at every stage of your project.",
-  },
-  {
-    number: "04",
-    title: "Civil & Structural Works",
-    description:
-      "Practical engineering solutions built around safety, durability and dependable workmanship.",
-  },
-];
 
 const values = [
   "Quality workmanship at every stage",
@@ -65,6 +38,24 @@ function Brand() {
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [services, setServices] = useState<PublicService[]>([]);
+  const [projects, setProjects] = useState<PublicProject[]>([]);
+  const [servicesLoading, setServicesLoading] = useState(true);
+  const [projectsLoading, setProjectsLoading] = useState(true);
+  const [servicesUnavailable, setServicesUnavailable] = useState(false);
+  const [projectsUnavailable, setProjectsUnavailable] = useState(false);
+
+  useEffect(() => {
+    getPublicServices()
+      .then(setServices)
+      .catch(() => setServicesUnavailable(true))
+      .finally(() => setServicesLoading(false));
+
+    getPublicProjects()
+      .then(setProjects)
+      .catch(() => setProjectsUnavailable(true))
+      .finally(() => setProjectsLoading(false));
+  }, []);
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -205,10 +196,19 @@ export default function Home() {
           </div>
 
           <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-[#e5e5f0] bg-[#e5e5f0] sm:grid-cols-2">
-            {services.map((service) => (
-              <article key={service.number} className="group flex min-h-[260px] flex-col bg-white p-7 transition hover:bg-brand sm:p-10">
+            {servicesLoading && (
+              <p className="col-span-full bg-white p-10 text-sm text-slate-500">Loading our services…</p>
+            )}
+            {!servicesLoading && servicesUnavailable && (
+              <p className="col-span-full bg-white p-10 text-sm text-slate-500">Our services are temporarily unavailable. Please check back shortly.</p>
+            )}
+            {!servicesLoading && !servicesUnavailable && services.length === 0 && (
+              <p className="col-span-full bg-white p-10 text-sm text-slate-500">Our service information is being updated. Please contact us to discuss your project.</p>
+            )}
+            {services.map((service, index) => (
+              <article key={service.id} className="group flex min-h-[260px] flex-col bg-white p-7 transition hover:bg-brand sm:p-10">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-extrabold tracking-[.18em] text-accent">{service.number}</span>
+                  <span className="text-xs font-extrabold tracking-[.18em] text-accent">{String(index + 1).padStart(2, "0")}</span>
                   <span className="grid h-10 w-10 place-items-center rounded-full border border-slate-200 text-brand transition group-hover:border-white/30 group-hover:text-white">
                     <ArrowUpRight size={18} />
                   </span>
@@ -233,12 +233,22 @@ export default function Home() {
 
           <div className="mt-14 grid gap-5 lg:grid-cols-[1.2fr_.8fr]">
             <article className="group relative min-h-[440px] overflow-hidden rounded-2xl bg-[#d9d9e8]">
-              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1500&q=85')] bg-cover bg-center transition duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#090927]/85 via-transparent to-transparent" />
+              {projects[0]?.featured_image ? (
+                <div className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-105" style={{ backgroundImage: `url("${projects[0].featured_image}")` }} />
+              ) : (
+                <div className="absolute inset-0 bg-gradient-to-br from-[#24245e] via-brand to-[#b4049a]" />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#090927]/90 via-[#090927]/15 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-7 text-white sm:p-10">
-                <span className="text-xs font-bold uppercase tracking-[.18em] text-[#f2a5e8]">Featured project</span>
-                <h3 className="mt-3 font-heading text-3xl font-bold sm:text-4xl">Purple Urban</h3>
-                <p className="mt-2 text-sm text-white/70">Residential development</p>
+                <span className="text-xs font-bold uppercase tracking-[.18em] text-[#f2a5e8]">
+                  {projectsLoading ? "Loading projects" : projectsUnavailable ? "Project portfolio" : projects.length ? "Featured project" : "Our project portfolio"}
+                </span>
+                <h3 className="mt-3 font-heading text-3xl font-bold sm:text-4xl">
+                  {projectsLoading ? "Discover our work" : projects[0]?.title || "Projects coming soon"}
+                </h3>
+                <p className="mt-2 text-sm text-white/75">
+                  {projectsLoading ? "Loading our latest work…" : projects[0] ? [projects[0].project_type, projects[0].location].filter(Boolean).join(" · ") : "Contact us to learn more about our work"}
+                </p>
               </div>
             </article>
             <div className="flex min-h-[440px] flex-col justify-between rounded-2xl bg-brand p-8 text-white sm:p-10">
