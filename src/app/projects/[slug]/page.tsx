@@ -50,7 +50,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       <SiteHeader />
       <main>
         <PageHero
-          eyebrow={project.project_type}
           title={project.title}
           description={project.location || "A closer look at a Ratsonbase project."}
           breadcrumbs={[{ label: "Projects", href: "/projects" }, { label: project.title }]} backgroundImage={project.featured_image || "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=2200&q=88"}
@@ -105,7 +104,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             </div>
           </div>
         </section>
-        <ProjectCarousel projects={relatedProjects} heading="Continue exploring our work." eyebrow="Related projects" />
+        <ProjectCarousel projects={relatedProjects} heading="Continue exploring our work." />
       </main>
       <SiteFooter />
     </>
