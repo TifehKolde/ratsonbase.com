@@ -73,7 +73,7 @@ export default async function HomePage() {
         <ProjectCarousel projects={projects} heading="Made to make a difference." eyebrow="Selected work" />
 
         <section className="section-pad bg-[#f6f6fc]">
-          <Reveal className="container-shell grid gap-12 lg:grid-cols-2 lg:gap-24"><div><p className="eyebrow">The Ratsonbase difference</p><h2 className="mt-6 max-w-[550px] text-5xl font-bold leading-[1.02] text-brand sm:text-6xl">The details matter. So does the experience.</h2></div><div className="grid gap-0">{values.map((value,index)=><div key={value} className="flex items-center gap-5 border-b border-[#dedeea] py-6 first:pt-0"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-light text-brand"><CheckCircle2 size={17}/></span><p className="text-base font-semibold text-slate-700">{value}</p><span className="ml-auto text-xs font-bold text-slate-400">0{index+1}</span></div>)}</div></div>
+          <Reveal className="container-shell grid gap-12 lg:grid-cols-2 lg:gap-24"><div><p className="eyebrow">The Ratsonbase difference</p><h2 className="mt-6 max-w-[550px] text-5xl font-bold leading-[1.02] text-brand sm:text-6xl">The details matter. So does the experience.</h2></div><div className="grid gap-0">{values.map((value,index)=><div key={value} className="flex items-center gap-5 border-b border-[#dedeea] py-6 first:pt-0"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-light text-brand"><CheckCircle2 size={17}/></span><p className="text-base font-semibold text-slate-700">{value}</p><span className="ml-auto text-xs font-bold text-slate-400">0{index+1}</span></div>)}</div>
         </Reveal>
         </section>
 
