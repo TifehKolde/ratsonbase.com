@@ -6,7 +6,8 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
-import { getPublicProjectBySlug, type PublicProject } from "@/lib/public-api";
+import { ProjectCarousel } from "@/components/project-carousel";
+import { getPublicProjectBySlug, getPublicProjects, type PublicProject } from "@/lib/public-api";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -29,6 +30,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   const { slug } = await params;
   let project: PublicProject;
   try { project = await getPublicProjectBySlug(slug); } catch { notFound(); }
+  let relatedProjects: PublicProject[] = [];
+  try { relatedProjects = (await getPublicProjects()).filter((item) => item.slug !== slug).slice(0, 6); } catch { /* Related projects are optional. */ }
 
   const details = [
     { label: "Project type", value: project.project_type, icon: Tag },
@@ -110,6 +113,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             </div>
           </div>
         </section>
+        <ProjectCarousel projects={relatedProjects} heading="Continue exploring our work." eyebrow="Related projects" />
       </main>
       <SiteFooter />
     </>
