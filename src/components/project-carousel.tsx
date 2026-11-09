@@ -93,7 +93,7 @@ export function ProjectCarousel({ projects, heading = "A closer look at our work
                 </article>
               </Reveal>
             );
-          })}}
+          })}
         </div>
         <div className="mt-2 flex items-center justify-between gap-4"><p className="text-xs font-semibold uppercase tracking-[.14em] text-slate-400">Auto-sliding · pause by hovering or focusing</p><div className="flex items-center gap-2" aria-label="Choose project slide">{projects.map((project,index)=><button key={project.id} type="button" aria-label={"Go to project "+(index+1)} aria-current={active===index?"true":undefined} onClick={()=>goTo(index)} className={"h-1.5 rounded-full transition-all "+(active===index?"w-8 bg-accent":"w-1.5 bg-slate-300 hover:bg-brand")}/>)}</div></div>
       </div>
