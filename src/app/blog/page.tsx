@@ -4,12 +4,12 @@ import { ArrowUpRight } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
-import { getPublicPosts } from "@/lib/public-api";
+import { getPublicPosts, type PublicPost } from "@/lib/public-api";
 
 export const metadata: Metadata = { title: "Insights & Updates | Ratsonbase Construction Limited", description: "Construction insights, project updates and ideas from Ratsonbase Construction Limited." };
 
 export default async function BlogPage() {
-  let posts = [];
+  let posts: PublicPost[] = [];
   let unavailable = false;
   try { const result = await getPublicPosts(); posts = result.posts; } catch { unavailable = true; }
   return <><SiteHeader/><main><PageHero eyebrow="Insights & updates" title="Ideas, knowledge and news from our team." description="Explore perspectives on construction, project delivery, materials and the spaces we create."/><section className="section-pad"><div className="container-shell">
