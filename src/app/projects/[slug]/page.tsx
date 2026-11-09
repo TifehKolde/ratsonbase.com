@@ -62,7 +62,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
                 <Reveal delay={0.08}>
                   <div className="mt-10">
-                    <p className="eyebrow">Project overview</p>
+                    
                     <h2 className="mt-5 text-3xl font-bold leading-tight text-brand sm:text-4xl">The story behind the work.</h2>
                     <p className="mt-5 whitespace-pre-line text-base leading-8 text-slate-600 sm:text-lg">{project.description}</p>
                   </div>
@@ -80,7 +80,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               <aside className="min-w-0 lg:sticky lg:top-28">
                 <Reveal delay={0.1}>
                   <div className="rounded-2xl border border-[#e7e7f0] bg-white p-6 shadow-[0_18px_60px_rgba(1,0,110,.07)] sm:p-7">
-                    <p className="eyebrow">At a glance</p>
+                    
                     <h2 className="mt-4 text-2xl font-bold text-brand">Project details</h2>
                     <dl className="mt-6 divide-y divide-slate-100">
                       {details.map(({ label, value, icon: Icon }) => (
