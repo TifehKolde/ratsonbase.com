@@ -72,7 +72,7 @@ export default async function HomePage() {
           </Reveal>
         </section>
 
-        <IntroVideo />
+        <Reveal><IntroVideo /></Reveal>
 
         <ProjectCarousel projects={projects} heading="A closer look at what we build." eyebrow="Recent projects" />
 
@@ -97,7 +97,7 @@ export default async function HomePage() {
 
         <ManagingPartnerMessage />
 
-        <section className="relative overflow-hidden bg-brand py-24 text-white sm:py-32"><div className="absolute -right-28 -top-36 h-[420px] w-[420px] rounded-full border border-white/10"/><div className="absolute -bottom-40 left-[28%] h-[500px] w-[500px] rounded-full border border-white/10"/><div className="container-shell relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end"><div><p className="eyebrow text-[#f2a5e8]">Let's build something meaningful</p><h2 className="mt-7 max-w-[800px] text-4xl font-bold leading-[1.02] tracking-[-.05em] sm:text-6xl">Have a project in mind? <span className="text-[#e9a0df]">Let's talk.</span></h2><p className="mt-7 max-w-[500px] text-base leading-8 text-white/65">Tell us what you're planning. We'll help you take the next step with clarity and confidence.</p></div><Link href="/contact" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-accent px-7 text-sm font-bold text-white transition hover:-translate-y-1 hover:bg-[#980281]">Contact Ratsonbase <ArrowUpRight size={17}/></Link></div></section>
+        <section className="relative overflow-hidden bg-brand py-24 text-white sm:py-32"><div className="absolute -right-28 -top-36 h-[420px] w-[420px] rounded-full border border-white/10"/><div className="absolute -bottom-40 left-[28%] h-[500px] w-[500px] rounded-full border border-white/10"/><Reveal className="container-shell relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end"><div><p className="eyebrow text-[#f2a5e8]">Let's build something meaningful</p><h2 className="mt-7 max-w-[800px] text-4xl font-bold leading-[1.02] tracking-[-.05em] sm:text-6xl">Have a project in mind? <span className="text-[#e9a0df]">Let's talk.</span></h2><p className="mt-7 max-w-[500px] text-base leading-8 text-white/65">Tell us what you're planning. We'll help you take the next step with clarity and confidence.</p></div><Link href="/contact" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-accent px-7 text-sm font-bold text-white transition hover:-translate-y-1 hover:bg-[#980281]">Contact Ratsonbase <ArrowUpRight size={17}/></Link></Reveal></section>
       </main>
       <SiteFooter />
     </>
