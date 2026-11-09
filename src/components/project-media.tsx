@@ -29,7 +29,7 @@ export function ProjectMedia({ title, featuredImage, galleryImages = [], videoUr
     <div className="space-y-12">
       {images.length > 0 && <section aria-label="Project photo gallery">
         <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
-          <div><p className="eyebrow">Project gallery</p><h2 className="mt-3 text-2xl font-bold text-brand sm:text-3xl">A closer look at the details.</h2></div>
+          <div><h2 className="mt-3 text-2xl font-bold text-brand sm:text-3xl">A closer look at the details.</h2></div>
           <span className="inline-flex items-center gap-2 text-xs font-semibold text-slate-400"><Images size={15}/>{images.length} {images.length === 1 ? "photo" : "photos"}</span>
         </div>
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
@@ -40,7 +40,7 @@ export function ProjectMedia({ title, featuredImage, galleryImages = [], videoUr
         </div>
       </section>}
       {video && <section>
-        <div className="mb-5"><p className="eyebrow">Project film</p><h2 className="mt-3 text-2xl font-bold text-brand sm:text-3xl">See the project in motion.</h2></div>
+        <div className="mb-5"><h2 className="mt-3 text-2xl font-bold text-brand sm:text-3xl">See the project in motion.</h2></div>
         <div className="relative aspect-video overflow-hidden rounded-2xl bg-[#08082f] shadow-xl">
           {video.direct ? <video className="h-full w-full" controls preload="metadata" playsInline src={video.embed}/> : <iframe className="absolute inset-0 h-full w-full" src={video.embed} title={title + " project video"} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen/>}
         </div>
