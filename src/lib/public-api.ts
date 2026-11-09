@@ -16,6 +16,15 @@ export type PublicProject = {
   video_url?: string | null;
   is_published: boolean;
 };
+export type PublicProjectImage = {
+  id: number;
+  project_id: number;
+  image_url: string;
+  alt_text?: string | null;
+  sort_order?: number;
+  media_id?: number | null;
+  created_at?: string;
+};
 export type PublicPost = {
   id: number; title: string; slug: string; excerpt?: string | null;
   content_html: string; featured_image?: string | null; meta_title?: string | null;
@@ -49,6 +58,12 @@ export async function getPublicServiceBySlug(slug: string): Promise<PublicServic
 export async function getPublicProjects(): Promise<PublicProject[]> {
   const data = await getPublicData<{ projects: PublicProject[] }>("/api/v1/projects");
   return data.projects ?? [];
+}
+export async function getPublicProjectImages(projectId: number): Promise<PublicProjectImage[]> {
+  const data = await getPublicData<{ images: PublicProjectImage[] }>(
+    "/api/v1/projects/" + encodeURIComponent(String(projectId)) + "/images"
+  );
+  return data.images ?? [];
 }
 export async function getPublicProjectBySlug(slug: string): Promise<PublicProject> {
   const data = await getPublicData<{ project: PublicProject }>("/api/v1/projects/" + encodeURIComponent(slug));
