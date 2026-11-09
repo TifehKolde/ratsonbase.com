@@ -77,3 +77,19 @@ button, a { -webkit-tap-highlight-color: transparent; }
     background-position: 58% center;
   }
 }
+
+
+.article-content { color: #475569; font-size: 1.0625rem; line-height: 1.9; overflow-wrap: anywhere; }
+.article-content > * + * { margin-top: 1.35em; }
+.article-content h2, .article-content h3, .article-content h4 { color: #01006e; font-weight: 750; line-height: 1.2; margin-top: 2em; }
+.article-content h2 { font-size: clamp(1.65rem, 4vw, 2.25rem); }
+.article-content h3 { font-size: clamp(1.35rem, 3vw, 1.75rem); }
+.article-content a { color: #b4049a; text-decoration: underline; text-underline-offset: .2em; }
+.article-content ul, .article-content ol { padding-left: 1.5rem; }
+.article-content ul { list-style: disc; }
+.article-content ol { list-style: decimal; }
+.article-content li + li { margin-top: .45rem; }
+.article-content blockquote { border-left: 3px solid #b4049a; padding-left: 1.25rem; color: #334155; }
+.article-content img { max-width: 100%; height: auto; border-radius: 1rem; }
+.article-content table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; }
+.article-content th, .article-content td { border: 1px solid #e2e8f0; padding: .65rem .85rem; text-align: left; }
