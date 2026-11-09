@@ -7,6 +7,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { ProjectCarousel } from "@/components/project-carousel";
+import { ProjectMedia } from "@/components/project-media";
 import { getPublicProjectBySlug, getPublicProjects, type PublicProject } from "@/lib/public-api";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -68,6 +69,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     <span className="absolute left-4 top-4 rounded-full border border-white/25 bg-black/25 px-4 py-2 text-xs font-bold uppercase tracking-[.12em] text-white backdrop-blur sm:left-6 sm:top-6">{project.project_type}</span>
                   </div>
                 </Reveal>
+
+                <ProjectMedia title={project.title} featuredImage={project.featured_image} galleryImages={project.gallery_images || []} videoUrl={project.video_url} />
 
                 <Reveal delay={0.08}>
                   <div className="mt-10">
