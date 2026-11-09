@@ -20,7 +20,7 @@ export function TeamSection() {
       <div className="container-shell">
         <Reveal>
           <div className="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-end">
-            <div><p className="eyebrow">People behind the work</p><h2 className="mt-6 max-w-xl text-4xl font-bold leading-[1.02] text-brand sm:text-5xl">The people bringing every project to life.</h2></div>
+            <div><h2 className="mt-6 max-w-xl text-4xl font-bold leading-[1.02] text-brand sm:text-5xl">The people bringing every project to life.</h2></div>
             <p className="max-w-xl text-base leading-8 text-slate-500 lg:justify-self-end">Our team brings together construction management, architecture, operations, site supervision and professional support. Each role contributes to the standards and coordination behind our work.</p>
           </div>
         </Reveal>
