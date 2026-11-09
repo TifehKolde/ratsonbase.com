@@ -1,7 +1,7 @@
 const API_BASE_URL = (
   process.env.NEXT_PUBLIC_API_BASE_URL ||
   "https://construction-api-qv4x.onrender.com"
-).replace(/\\/$/, "");
+).replace(/\/$/, "");
 
 export type PublicService = {
   id: number;
