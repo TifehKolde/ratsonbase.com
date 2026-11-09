@@ -17,7 +17,7 @@ export function ManagingPartnerMessage() {
                 </div>
                 <div className="p-5">
                   <p className="text-lg font-bold">Engr. Olaoluwa Ogunbode</p>
-                  <p className="mt-1 text-xs uppercase tracking-[.14em] text-white/45">Managing Partner · Ratsonbase Construction Limited</p>
+                  <p className="mt-1 text-xs uppercase tracking-[.14em] text-white/45">Managing Partner, Ratsonbase Construction Limited</p>
                 </div>
               </div>
             </div>
