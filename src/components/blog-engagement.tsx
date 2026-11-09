@@ -1,6 +1,7 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { useState } from "react";
+import type { FormEvent } from "react";
 import { Heart, MessageCircle, Share2, Send, LoaderCircle, CheckCircle2 } from "lucide-react";
 import { likePublicPost, submitPublicComment, type PublicComment } from "@/lib/public-api";
 
