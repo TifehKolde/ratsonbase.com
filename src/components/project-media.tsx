@@ -5,13 +5,13 @@ import { X, Images, Maximize2 } from "lucide-react";
 
 function videoSource(url: string) {
   try {
-    const parsed = new URL(url);
+    const host = parsed.hostname.replace(/^www\./, "");
     const host = parsed.hostname.replace(/^www\\./, "");
     if (host === "youtube.com" || host === "m.youtube.com") {
       const id = parsed.searchParams.get("v");
       return id ? { embed: "https://www.youtube-nocookie.com/embed/" + id, direct: false } : null;
     }
-    if (host === "youtu.be") return { embed: "https://www.youtube-nocookie.com/embed/" + parsed.pathname.slice(1), direct: false };
+    if (/\.mp4($|\?)/i.test(url)) return { embed: url, direct: true };
     if (host === "vimeo.com") return { embed: "https://player.vimeo.com/video/" + parsed.pathname.split("/").filter(Boolean).pop(), direct: false };
     if (/\\.mp4($|\\?)/i.test(url)) return { embed: url, direct: true };
   } catch { return null; }
