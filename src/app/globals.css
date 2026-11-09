@@ -137,3 +137,45 @@ input, select, textarea, button { font: inherit; }
 @media (prefers-reduced-motion:reduce) {
   .video-play-pulse,.experience-seal span,.hero-orbit { animation:none!important; }
 }
+
+
+/* Editorial blog reading experience and newsletter-gated appreciation modal. */
+.blog-article-hero {
+  background-position:center 42%;
+  background-size:cover;
+}
+.blog-article-hero::after {
+  content:"";
+  position:absolute;
+  inset:auto 0 0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.32),transparent);
+}
+.blog-action-bar {
+  position:relative;
+  isolation:isolate;
+}
+.blog-action-bar::before {
+  content:"";
+  position:absolute;
+  inset:-1px;
+  z-index:-1;
+  border-radius:inherit;
+  background:linear-gradient(115deg,rgba(180,4,154,.09),rgba(238,238,255,.4),rgba(255,255,255,0));
+  opacity:.8;
+}
+.blog-like-modal {
+  animation:blog-modal-fade .2s ease-out both;
+}
+.blog-like-modal [role="dialog"] {
+  animation:blog-modal-rise .28s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes blog-modal-fade { from { opacity:0; } to { opacity:1; } }
+@keyframes blog-modal-rise { from { opacity:0; transform:translateY(16px) scale(.98); } to { opacity:1; transform:translateY(0) scale(1); } }
+@media (max-width:767px) {
+  .blog-article-hero { background-position:60% center; }
+  .blog-action-bar { border-radius:1.1rem; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .blog-like-modal,.blog-like-modal [role="dialog"] { animation:none!important; }
+}
