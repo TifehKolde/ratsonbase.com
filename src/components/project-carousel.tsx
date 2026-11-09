@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
 import type { PublicProject } from "@/lib/public-api";
 import { Reveal } from "@/components/reveal";
 
-export function ProjectCarousel({ projects, heading = "A closer look at our work", eyebrow = "Selected projects" }: {
+function formatProjectDate(value?: string | null) {\n  if (!value) return "";\n  const date = new Date(value);\n  return Number.isNaN(date.getTime()) ? "" : new Intl.DateTimeFormat("en", { month: "short", year: "numeric" }).format(date);\n}\n\nexport function ProjectCarousel({ projects, heading = "A closer look at our work", eyebrow = "Selected projects" }: {
   projects: PublicProject[];
   heading?: string;
   eyebrow?: string;
@@ -77,7 +77,7 @@ export function ProjectCarousel({ projects, heading = "A closer look at our work
                     <div className="min-w-0"><p className="text-xs font-bold uppercase tracking-[.18em] text-accent">Project {String(index + 1).padStart(2,"0")}</p><h3 className="mt-2 font-heading text-2xl font-bold leading-tight tracking-[-.04em] text-brand sm:text-3xl">{project.title}</h3><p className="mt-3 line-clamp-3 max-w-xl text-sm leading-7 text-slate-500">{project.description}</p></div>
                     <Link href={"/projects/" + project.slug} aria-label={"Explore project: " + project.title} className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-brand text-white transition duration-300 hover:rotate-45 hover:bg-accent"><ArrowUpRight size={21}/></Link>
                   </div>
-                  <div className="mt-7 flex items-center justify-between border-t border-slate-100 pt-5"><span className="text-[.65rem] font-bold uppercase tracking-[.16em] text-slate-400">{String(index+1).padStart(2,"0")} / {String(projects.length).padStart(2,"0")}</span><Link href={"/projects/"+project.slug} className="text-xs font-extrabold text-brand transition hover:text-accent">View project <ArrowUpRight className="ml-1 inline" size={14}/></Link></div>
+                  {(project.client || timeline) && <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-xs text-slate-500">{project.client && <span><strong className="font-bold text-slate-700">Client:</strong> {project.client}</span>}{timeline && <span><strong className="font-bold text-slate-700">Timeline:</strong> {timeline}</span>}</div>}\n                  <div className="mt-7 flex items-center justify-between border-t border-slate-100 pt-5"><span className="text-[.65rem] font-bold uppercase tracking-[.16em] text-slate-400">{String(index+1).padStart(2,"0")} / {String(projects.length).padStart(2,"0")}</span><Link href={"/projects/"+project.slug} className="text-xs font-extrabold text-brand transition hover:text-accent">View project <ArrowUpRight className="ml-1 inline" size={14}/></Link></div>
                 </div>
               </article>
             </Reveal>
