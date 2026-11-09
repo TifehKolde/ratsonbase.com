@@ -44,7 +44,6 @@ export default async function HomePage() {
           </div>
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,8,39,.88)_0%,rgba(5,8,39,.62)_52%,rgba(5,8,39,.28)_100%)]"/>
           <Reveal className="container-shell relative z-10 pt-10">
-            <p className="eyebrow text-[#f2a5e8]">Built on trust. Defined by quality.</p>
             <h1 className="mt-7 max-w-[900px] font-heading text-[clamp(3.1rem,7vw,6.4rem)] font-bold leading-[.92] tracking-[-.075em]">
               We build spaces <span className="text-[#e9a0df]">that move</span> life forward.
             </h1>
@@ -74,7 +73,7 @@ export default async function HomePage() {
 
         <Reveal><IntroVideo /></Reveal>
 
-        <ProjectCarousel projects={projects} heading="A closer look at what we build." eyebrow="Recent projects" />
+        <ProjectCarousel projects={projects} heading="A closer look at what we build." />
 
         <section className="section-pad relative overflow-hidden bg-[#f7f7fb]">
           <div className="construction-blueprint pointer-events-none absolute inset-y-0 right-0 hidden w-[42%] opacity-60 lg:block"/>
