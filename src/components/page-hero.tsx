@@ -5,8 +5,8 @@ import { Reveal } from "@/components/reveal";
 
 const heroImage = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2200&q=88";
 
-export function PageHero({ eyebrow, title, description, breadcrumbs, backgroundImage = heroImage }: {
-  eyebrow: string; title: string; description: string;
+export function PageHero({ title, description, breadcrumbs, backgroundImage = heroImage }: {
+  title: string; description: string;
   breadcrumbs?: Array<{ label: string; href?: string }>;
   backgroundImage?: string;
 }) {
@@ -20,7 +20,6 @@ export function PageHero({ eyebrow, title, description, breadcrumbs, backgroundI
       <div className="container-shell relative z-10">
         <Reveal>
           <Breadcrumbs items={breadcrumbs || [{ label: title }]} />
-          <p className="mt-7 text-xs font-bold uppercase tracking-[.2em] text-[#f2a5e8]">{eyebrow}</p>
           <h1 className="mt-6 max-w-4xl font-heading text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[.98] tracking-[-.06em]">{title}</h1>
           <p className="mt-7 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">{description}</p>
           <Link href="/contact" className="mt-9 inline-flex min-h-12 items-center gap-3 rounded-full bg-accent px-6 py-3 text-sm font-bold text-white transition duration-300 hover:-translate-y-1 hover:bg-[#980281]">Talk to our team <ArrowUpRight size={17} /></Link>
