@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
 import type { PublicProject } from "@/lib/public-api";
+import { Reveal } from "@/components/reveal";
 
 export function ProjectCarousel({ projects, heading = "A closer look at our work", eyebrow = "Selected projects" }: {
   projects: PublicProject[];
@@ -45,7 +46,8 @@ export function ProjectCarousel({ projects, heading = "A closer look at our work
         </div>
         <div ref={trackRef} onScroll={handleScroll} className="project-slider-track mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-5" aria-label="Project carousel">
           {projects.map((project, index) => (
-            <article key={project.id} className="group w-[88%] max-w-[620px] shrink-0 snap-start overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_12px_45px_rgba(1,0,110,.05)] sm:w-[72%] lg:w-[calc(50%-12px)]">
+            <Reveal key={project.id} className="shrink-0 snap-start" delay={index * 0.05}>
+            <article className="group w-[88%] max-w-[620px] shrink-0 snap-start overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_12px_45px_rgba(1,0,110,.05)] sm:w-[72%] lg:w-[calc(50%-12px)]">
               <Link href={"/projects/" + project.slug} className="block">
                 <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-brand via-[#29296e] to-accent">
                   {project.featured_image ? <div role="img" aria-label={project.title} className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-105" style={{ backgroundImage: "url(" + JSON.stringify(project.featured_image) + ")" }}/> : <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_25%,rgba(255,255,255,.2),transparent_30%)]"/>}
@@ -60,6 +62,7 @@ export function ProjectCarousel({ projects, heading = "A closer look at our work
                 </div>
               </Link>
             </article>
+            </Reveal>
           ))}
         </div>
         <div className="mt-3 flex items-center justify-center gap-2" aria-label="Choose project slide">
