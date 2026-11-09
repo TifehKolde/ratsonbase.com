@@ -176,3 +176,26 @@ input, select, textarea, button { font: inherit; }
 @media (prefers-reduced-motion:reduce) {
   .blog-like-modal,.blog-like-modal [role="dialog"] { animation:none!important; }
 }
+
+
+/* Branded loading skeletons for API-driven routes. */
+.skeleton-block {
+  position: relative;
+  overflow: hidden;
+  border-radius: .55rem;
+  background: #e9eaf2;
+}
+.skeleton-block::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  transform: translateX(-100%);
+  background: linear-gradient(90deg,transparent,rgba(255,255,255,.72),transparent);
+  animation: skeleton-shimmer 1.55s ease-in-out infinite;
+}
+@keyframes skeleton-shimmer {
+  100% { transform: translateX(100%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-block::after { animation: none; }
+}
