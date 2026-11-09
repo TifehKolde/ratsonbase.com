@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Play, X, Images, Maximize2 } from "lucide-react";
+import { X, Images, Maximize2 } from "lucide-react";
 
 function videoSource(url: string) {
   try {
