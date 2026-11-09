@@ -57,7 +57,7 @@ export function ProjectCarousel({ projects, heading = "A closer look at our work
         <Reveal>
           <div className="grid gap-8 border-b border-[#e8e8ef] pb-9 md:grid-cols-[1fr_auto] md:items-end">
             <div>
-              <p className="eyebrow">{eyebrow}</p>
+              
               <h2 className="mt-5 max-w-3xl font-heading text-[clamp(2.65rem,6vw,5.25rem)] font-bold leading-[.98] tracking-[-.065em] text-brand">{heading}</h2>
               <p className="mt-5 max-w-xl text-base leading-8 text-slate-500">Explore selected residential, commercial and infrastructure projects shaped by careful planning and considered execution.</p>
             </div>
