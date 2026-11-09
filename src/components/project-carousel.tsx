@@ -14,8 +14,6 @@ export function ProjectCarousel({ projects, heading = "A closer look at our work
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
-  if (!projects.length) return null;
-
   const goTo = (index: number) => {
     const track = trackRef.current;
     const card = track?.children[index] as HTMLElement | undefined;
@@ -44,6 +42,8 @@ export function ProjectCarousel({ projects, heading = "A closer look at our work
     }, 5200);
     return () => window.clearInterval(timer);
   }, [paused, projects.length]);
+
+  if (!projects.length) return null;
 
   return (
     <section className="section-pad overflow-hidden bg-white">
