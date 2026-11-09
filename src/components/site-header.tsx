@@ -64,7 +64,7 @@ export function SiteHeader() {
               <button type="button" onClick={() => setOpen(false)} aria-label="Close menu" className="grid h-10 w-10 place-items-center rounded-full border border-slate-200 text-brand"><X size={20}/></button>
             </div>
             <div className="flex-1 overflow-y-auto px-6 py-8">
-              <p className="eyebrow mb-5">Explore Ratsonbase</p>
+              
               <nav className="grid" aria-label="Mobile navigation links">
                 {links.map((link,index) => <motion.div key={link.href} initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: .04 + index * .045 }}>
                   <Link href={link.href} onClick={() => setOpen(false)} aria-current={pathname === link.href ? "page" : undefined} className={"flex items-center justify-between border-b border-slate-100 py-4 text-xl font-semibold tracking-[-.035em] transition hover:text-accent " + (pathname === link.href ? "text-accent" : "text-slate-950")}><span>{link.label}</span><ArrowUpRight size={18} className="text-slate-300"/></Link>
