@@ -57,19 +57,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <div className="container-shell">
             <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-14">
               <div className="min-w-0">
-                <Reveal>
-                  <div className="project-cover relative aspect-[16/10] overflow-hidden rounded-2xl bg-gradient-to-br from-brand via-[#29296e] to-accent shadow-xl sm:aspect-[16/9]">
-                    {project.featured_image ? (
-                      <div role="img" aria-label={project.title} className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url(" + JSON.stringify(project.featured_image) + ")" }} />
-                    ) : (
-                      <div className="absolute inset-0 flex items-end bg-[radial-gradient(circle_at_75%_20%,rgba(255,255,255,.22),transparent_30%)] p-6 sm:p-10">
-                        <p className="max-w-lg text-2xl font-bold leading-tight text-white sm:text-4xl">{project.title}</p>
-                      </div>
-                    )}
-                    <span className="absolute left-4 top-4 rounded-full border border-white/25 bg-black/25 px-4 py-2 text-xs font-bold uppercase tracking-[.12em] text-white backdrop-blur sm:left-6 sm:top-6">{project.project_type}</span>
-                  </div>
-                </Reveal>
-
                 <ProjectMedia title={project.title} featuredImage={project.featured_image} galleryImages={project.gallery_images || []} videoUrl={project.video_url} />
 
                 <Reveal delay={0.08}>
