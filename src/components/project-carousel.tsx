@@ -72,7 +72,7 @@ export function ProjectCarousel({ projects, heading = "A closer look at our work
           {projects.map((project, index) => {
             const startDate = formatProjectDate(project.start_date);
             const endDate = formatProjectDate(project.completion_date);
-            const timeline = [startDate, endDate].filter(Boolean).join(" — ");
+            const timeline = [startDate, endDate].filter(Boolean).join(", ");
             return (
               <Reveal key={project.id} className="w-[88%] max-w-[760px] shrink-0 snap-start sm:w-[76%] lg:w-[calc(58%-12px)]" delay={index * 0.04}>
                 <article className="group relative overflow-hidden rounded-[1.35rem] border border-slate-200 bg-white transition duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_24px_65px_rgba(1,0,110,.12)]">
