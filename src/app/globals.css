@@ -58,3 +58,18 @@ a,button { transition-property:color,background-color,border-color,box-shadow,tr
 @media (prefers-reduced-motion:reduce) {
   *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
 }
+
+/* Responsive refinements for long-form content and touch layouts */
+:root { --page-gutter: clamp(1rem, 4.5vw, 5.5rem); }
+img, video, iframe { max-width: 100%; }
+input, select, textarea, button { font: inherit; }
+@media (max-width: 767px) {
+  .section-pad { padding-block: 4.25rem; }
+  .page-hero { padding-block: 4.25rem; }
+  .eyebrow { font-size: .66rem; letter-spacing: .13em; }
+  .project-slider-track { margin-inline: calc(var(--page-gutter) * -1); padding-inline: var(--page-gutter); }
+  .project-slider-track > div { width: min(88vw, 560px); }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .section-pad { padding-block: 5.5rem; }
+}
