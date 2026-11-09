@@ -6,7 +6,13 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
 import type { PublicProject } from "@/lib/public-api";
 import { Reveal } from "@/components/reveal";
 
-function formatProjectDate(value?: string | null) {\n  if (!value) return "";\n  const date = new Date(value);\n  return Number.isNaN(date.getTime()) ? "" : new Intl.DateTimeFormat("en", { month: "short", year: "numeric" }).format(date);\n}\n\nexport function ProjectCarousel({ projects, heading = "A closer look at our work", eyebrow = "Selected projects" }: {
+function formatProjectDate(value?: string | null) {
+  if (!value) return "";
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? "" : new Intl.DateTimeFormat("en", { month: "short", year: "numeric" }).format(date);
+}
+
+export function ProjectCarousel({ projects, heading = "A closer look at our work", eyebrow = "Selected projects" }: {
   projects: PublicProject[];
   heading?: string;
   eyebrow?: string;
