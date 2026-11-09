@@ -9,7 +9,8 @@ export type PublicService = {
 };
 export type PublicProject = {
   id: number; title: string; slug: string; description: string;
-  project_type: string; location?: string | null; status: string;
+  project_type: string; location?: string | null; client?: string | null; status: string;
+  start_date?: string | null; completion_date?: string | null;
   featured_image?: string | null; is_published: boolean;
 };
 export type PublicPost = {
