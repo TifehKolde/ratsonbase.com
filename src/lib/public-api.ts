@@ -100,3 +100,18 @@ export async function likePublicPost(slug: string, email: string): Promise<{ lik
   if (!response.ok || !payload.success) throw new Error(payload.error?.message || "You must be subscribed to the newsletter to like this article.");
   return payload.data;
 }
+
+export async function subscribeToNewsletter(input: { email: string; first_name?: string }): Promise<{ subscriber?: { status?: string } }> {
+  const response = await fetch(API_BASE_URL + "/api/v1/newsletter", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({ ...input, source: "blog_like_prompt" }),
+  });
+  const payload = await response.json();
+  if (!response.ok || !payload.success) {
+    const error = new Error(payload.error?.message || "Newsletter subscription could not be completed.") as Error & { code?: string };
+    error.code = payload.error?.code;
+    throw error;
+  }
+  return payload.data;
+}
