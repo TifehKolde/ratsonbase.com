@@ -25,6 +25,7 @@ export type PublicProjectImage = {
   media_id?: number | null;
   created_at?: string;
 };
+export type PublicComment = { id: number; name: string; body: string; created_at: string; status?: string };
 export type PublicPost = {
   id: number; title: string; slug: string; excerpt?: string | null;
   content_html: string; featured_image?: string | null; meta_title?: string | null;
@@ -78,4 +79,24 @@ export async function getPublicPosts(): Promise<{
 export async function getPublicPostBySlug(slug: string): Promise<PublicPost> {
   const data = await getPublicData<{ post: PublicPost }>("/api/v1/posts/" + encodeURIComponent(slug));
   return data.post;
+}
+
+export async function getPublicComments(slug: string): Promise<{ comments: PublicComment[]; pagination: { page: number; limit: number; total: number; total_pages: number } }> {
+  return getPublicData("/api/v1/comments/post/" + encodeURIComponent(slug) + "?page=1&limit=8");
+}
+export async function submitPublicComment(slug: string, input: { name: string; email: string; body: string }): Promise<{ message?: string }> {
+  const response = await fetch(API_BASE_URL + "/api/v1/comments/post/" + encodeURIComponent(slug), {
+    method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(input),
+  });
+  const payload = await response.json();
+  if (!response.ok || !payload.success) throw new Error(payload.error?.message || "Your comment could not be submitted.");
+  return payload.data;
+}
+export async function likePublicPost(slug: string, email: string): Promise<{ liked: boolean; already_liked: boolean; likes_count: number }> {
+  const response = await fetch(API_BASE_URL + "/api/v1/posts/" + encodeURIComponent(slug) + "/likes", {
+    method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ email }),
+  });
+  const payload = await response.json();
+  if (!response.ok || !payload.success) throw new Error(payload.error?.message || "You must be subscribed to the newsletter to like this article.");
+  return payload.data;
 }
