@@ -33,7 +33,7 @@ export function ProjectMedia({ title, featuredImage, galleryImages = [], videoUr
           <span className="inline-flex items-center gap-2 text-xs font-semibold text-slate-400"><Images size={15}/>{images.length} {images.length === 1 ? "photo" : "photos"}</span>
         </div>
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
-          {images.map((image, index) => <button key={image} type="button" onClick={() => setSelected(image)} aria-label={"View project photo " + (index + 1)} className={(index === 0 ? "col-span-2 aspect-[16/9] sm:col-span-2 lg:col-span-2 lg:row-span-2 lg:aspect-auto " : "aspect-[4/3] ") + "group relative overflow-hidden rounded-2xl bg-slate-100 text-left"}>
+          {images.map((image, index) => <button key={image} type="button" onClick={() => setSelected(image)} aria-label={"View project photo " + (index + 1)} className={(index === 0 ? "col-span-2 aspect-[16/9] sm:col-span-2 lg:col-span-2 " : "aspect-[4/3] ") + "group relative overflow-hidden rounded-2xl bg-slate-100 text-left"}>
             <img src={image} alt={title + " — project photo " + (index + 1)} loading={index === 0 ? "eager" : "lazy"} className="h-full w-full object-cover transition duration-700 group-hover:scale-105"/>
             <span className="absolute bottom-3 right-3 grid h-9 w-9 place-items-center rounded-full bg-white/90 text-brand opacity-0 shadow transition group-hover:opacity-100"><Maximize2 size={16}/></span>
           </button>)}
