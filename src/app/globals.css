@@ -122,3 +122,25 @@ a, button { transition-property: color, background-color, border-color, box-shad
     transition-duration: .01ms !important;
   }
 }
+
+
+/* Horizontal project sliders: native touch scrolling with hidden chrome */
+.project-slider-track {
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+  scroll-padding-inline: 1rem;
+  -webkit-overflow-scrolling: touch;
+}
+.project-slider-track::-webkit-scrollbar { display: none; }
+.project-slider-track > article { scroll-snap-align: start; }
+
+/* Soft lift and image zoom for interactive portfolio cards */
+.project-slider-track article,
+.team-card {
+  will-change: transform;
+}
+@media (hover: hover) and (pointer: fine) {
+  .project-slider-track article:hover {
+    box-shadow: 0 24px 60px rgba(1, 0, 110, .12);
+  }
+}
