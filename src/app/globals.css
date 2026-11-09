@@ -73,3 +73,67 @@ input, select, textarea, button { font: inherit; }
 @media (min-width: 768px) and (max-width: 1023px) {
   .section-pad { padding-block: 5.5rem; }
 }
+
+
+/* Homepage visual language: restrained architectural linework, glass surfaces and motion. */
+.hero-photo { background:#07071f; }
+.hero-video-layer { overflow:hidden; background:#07071f; }
+.hero-video-layer iframe { border:0; opacity:.88; }
+.hero-orbit { animation:orbit-drift 18s ease-in-out infinite alternate; }
+.construction-linework {
+  border:1px solid rgba(1,0,110,.09);
+  border-radius:50%;
+  background:
+    linear-gradient(90deg,transparent 49.8%,rgba(1,0,110,.09) 50%,transparent 50.2%),
+    linear-gradient(0deg,transparent 49.8%,rgba(1,0,110,.09) 50%,transparent 50.2%),
+    repeating-radial-gradient(circle at center,transparent 0 37px,rgba(1,0,110,.08) 38px 39px,transparent 40px 74px);
+}
+.construction-blueprint {
+  background-image:
+    linear-gradient(rgba(1,0,110,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(1,0,110,.07) 1px,transparent 1px),
+    radial-gradient(circle at 60% 45%,rgba(180,4,154,.08),transparent 48%);
+  background-size:42px 42px,42px 42px,100% 100%;
+  mask-image:linear-gradient(90deg,transparent,#000 35%,#000);
+}
+.glass-service-card { transform-style:preserve-3d; }
+.glass-service-card:hover { background:rgba(255,255,255,.92); }
+.video-play-pulse { animation:play-pulse 2.4s ease-in-out infinite; }
+.experience-seal {
+  display:grid;
+  width:138px;
+  height:138px;
+  place-items:center;
+  border:1px solid rgba(1,0,110,.18);
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(238,238,255,.8),rgba(255,255,255,.2) 68%);
+  box-shadow:inset 0 0 0 8px rgba(1,0,110,.025),0 15px 45px rgba(1,0,110,.06);
+}
+.experience-seal span {
+  display:block;
+  width:112px;
+  color:#01006e;
+  font-size:.55rem;
+  font-weight:900;
+  line-height:1.8;
+  letter-spacing:.17em;
+  text-align:center;
+  animation:seal-turn 22s linear infinite;
+}
+.experience-row { transition:padding .35s ease,background .35s ease; }
+.experience-row:hover { padding-left:1rem; padding-right:1rem; background:rgba(238,238,255,.45); }
+.newsletter-form input:focus { box-shadow:0 0 0 3px rgba(233,160,223,.13); }
+@keyframes play-pulse {
+  0%,100% { transform:scale(1); box-shadow:0 0 0 10px rgba(255,255,255,.06),0 0 0 0 rgba(255,255,255,.16); }
+  50% { transform:scale(1.06); box-shadow:0 0 0 16px rgba(255,255,255,.025),0 0 0 20px rgba(255,255,255,0); }
+}
+@keyframes seal-turn { to { transform:rotate(360deg); } }
+@keyframes orbit-drift { from { transform:translate3d(0,0,0) scale(1); } to { transform:translate3d(-24px,20px,0) scale(1.06); } }
+@media (max-width:767px) {
+  .hero-video-layer iframe { opacity:.76; }
+  .experience-seal { width:112px;height:112px; }
+  .experience-seal span { width:90px;font-size:.48rem; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .video-play-pulse,.experience-seal span,.hero-orbit { animation:none!important; }
+}
