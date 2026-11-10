@@ -267,7 +267,7 @@ input, select, textarea, button { font: inherit; }
   position:relative;
   isolation:isolate;
   overflow:hidden;
-  padding-block:clamp(3.5rem,7vw,6.75rem) 4.5rem;
+  padding-block:clamp(2rem,4vw,3.5rem) 2.75rem;
   background:
     radial-gradient(ellipse at 88% 15%,rgba(180,4,154,.09),transparent 30%),
     radial-gradient(ellipse at 8% 70%,rgba(1,0,110,.055),transparent 34%),
@@ -353,7 +353,7 @@ input, select, textarea, button { font: inherit; }
   .article-reading-column { max-width:800px;margin-inline:auto; }
 }
 @media (max-width:767px) {
-  .article-editorial-hero { padding-block:3rem 3.25rem; }
+  .article-editorial-hero { padding-block:2rem 2.25rem; }
   .article-reading-layout { width:100%; }
   .article-content { font-size:1.04rem;line-height:1.82; }
   .article-content h2 { margin-top:2em; }
