@@ -59,7 +59,8 @@ export function BlogEngagement({ slug, initialLikes, initialComments, comments }
   }
 
   async function shareArticle() {
-    const url = window.location.href;
+    const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.ratsonbase.com").replace(/\\/$/, "");
+    const url = new URL(window.location.pathname, siteUrl).toString();
     try {
       if (navigator.share) await navigator.share({ title: document.title, url });
       else { await navigator.clipboard.writeText(url); setShareMessage("Article link copied to clipboard."); }
@@ -71,7 +72,6 @@ export function BlogEngagement({ slug, initialLikes, initialComments, comments }
   return (
     <section className="blog-engagement mt-16">
       <div className="blog-action-bar flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-white/85 p-4 shadow-[0_14px_45px_rgba(1,0,110,.06)] backdrop-blur-xl sm:px-6">
-        <div><p className="text-[.62rem] font-extrabold uppercase tracking-[.18em] text-accent">Enjoyed this read?</p><p className="mt-1 text-sm font-semibold text-brand">Pass it on or show your appreciation.</p></div>
         <div className="flex items-center gap-2">
           <button type="button" onClick={()=>{setLikeMessage("");setLikeSuccess(false);setLikeOpen(true);}} aria-label="Like this article" className="group inline-flex min-h-11 items-center gap-2 rounded-full border border-[#f1d8ed] bg-[#fff8fd] px-4 text-sm font-bold text-accent transition hover:-translate-y-0.5 hover:border-accent hover:bg-[#fceafa]"><Heart size={17} className="transition group-hover:scale-110"/><span>{likes}</span><span className="hidden sm:inline">Like</span></button>
           <a href="#reader-comments" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-slate-200 px-4 text-sm font-bold text-brand transition hover:border-brand hover:bg-brand-light"><MessageCircle size={16}/><span>{initialComments}</span><span className="hidden sm:inline">Comments</span></a>
@@ -81,13 +81,13 @@ export function BlogEngagement({ slug, initialLikes, initialComments, comments }
       {shareMessage && <p role="status" className="mt-3 text-right text-xs text-slate-500">{shareMessage}</p>}
 
       <div id="reader-comments" className="mt-16 scroll-mt-28">
-        <div className="grid gap-10 lg:grid-cols-[.75fr_1.25fr] lg:gap-16">
-          <div><h2 className="mt-4 text-3xl font-bold leading-tight tracking-[-.05em] text-brand sm:text-4xl">Good ideas are better when shared.</h2><p className="mt-4 text-sm leading-7 text-slate-500">Have a perspective or question? Leave a comment and join the conversation with the Ratsonbase community.</p><div className="mt-7 flex items-center gap-3 text-xs font-semibold text-slate-400"><span className="grid h-9 w-9 place-items-center rounded-full bg-brand-light text-brand"><MessageCircle size={16}/></span>{initialComments} approved {initialComments===1?"comment":"comments"}</div></div>
+        <div className="grid gap-6">
+          <div className="flex flex-wrap items-center justify-between gap-3"><h2 className="text-2xl font-bold tracking-[-.04em] text-brand sm:text-3xl">Comments</h2><span className="text-xs font-semibold text-slate-400">{initialComments} {initialComments===1?"comment":"comments"}</span></div>
           <div className="rounded-3xl border border-slate-200 bg-[#fafaff] p-5 sm:p-8">
             <form onSubmit={handleComment} className="grid gap-4">
               <div className="grid gap-3 sm:grid-cols-2"><input required maxLength={100} value={name} onChange={e=>setName(e.target.value)} placeholder="Your name" aria-label="Your name" className="min-h-12 min-w-0 rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none transition focus:border-accent focus:ring-4 focus:ring-accent/5"/><input required type="email" value={commentEmail} onChange={e=>setCommentEmail(e.target.value)} placeholder="Email address" aria-label="Email address" className="min-h-12 min-w-0 rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none transition focus:border-accent focus:ring-4 focus:ring-accent/5"/></div>
               <textarea required maxLength={5000} rows={4} value={body} onChange={e=>setBody(e.target.value)} placeholder="Write your thoughts..." aria-label="Write your comment" className="min-h-32 resize-y rounded-xl border border-slate-200 bg-white p-4 text-sm outline-none transition focus:border-accent focus:ring-4 focus:ring-accent/5"/>
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><p className="text-[.68rem] leading-5 text-slate-400">Comments are reviewed before they appear publicly.</p><button disabled={commentLoading} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand px-6 text-sm font-bold text-white transition hover:bg-accent disabled:opacity-60">{commentLoading?<LoaderCircle className="animate-spin" size={16}/>:<>Post comment <Send size={15}/></>}</button></div>
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><p className="text-[.68rem] leading-5 text-slate-400">Your email address will not be displayed publicly. Comments are reviewed before publication.</p><button disabled={commentLoading} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand px-6 text-sm font-bold text-white transition hover:bg-accent disabled:opacity-60">{commentLoading?<LoaderCircle className="animate-spin" size={16}/>:<>Post comment <Send size={15}/></>}</button></div>
             </form>
             {commentMessage&&<p role="status" className="mt-4 flex items-start gap-2 text-xs leading-6 text-slate-600"><CheckCircle2 size={15} className="mt-1 shrink-0 text-accent"/>{commentMessage}</p>}
           </div>
