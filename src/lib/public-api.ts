@@ -84,7 +84,7 @@ export async function getPublicPostBySlug(slug: string): Promise<PublicPost> {
 export async function getPublicComments(slug: string): Promise<{ comments: PublicComment[]; pagination: { page: number; limit: number; total: number; total_pages: number } }> {
   return getPublicData("/api/v1/comments/post/" + encodeURIComponent(slug) + "?page=1&limit=8");
 }
-export async function submitPublicComment(slug: string, input: { name: string; email: string; body: string }): Promise<{ message?: string }> {
+export async function submitPublicComment(slug: string, input: { name: string; email: string; body: string; website?: string; form_elapsed_ms?: number }): Promise<{ message?: string }> {
   const response = await fetch(API_BASE_URL + "/api/v1/comments/post/" + encodeURIComponent(slug), {
     method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(input),
   });
