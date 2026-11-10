@@ -82,7 +82,8 @@ function BlogListingSkeleton() {
         <div className="container-shell">
           <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
             <Block className="mb-5 h-3 w-28" />
-            <Block className="h-10 w-[min(90%,720px)] sm:h-14" />\n            <Block className="mt-2 h-10 w-[min(68%,540px)] sm:h-14" />
+            <Block className="h-10 w-[min(90%,720px)] sm:h-14"  />
+            <Block className="mt-2 h-10 w-[min(68%,540px)] sm:h-14" />
             <Block className="mt-4 h-4 w-[min(78%,560px)]" />
             <Block className="mt-2 h-4 w-[min(60%,430px)]" />
             <Block className="mt-6 h-4 w-32" />
