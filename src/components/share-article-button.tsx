@@ -29,12 +29,12 @@ export function ShareArticleButton() {
       <button
         type="button"
         onClick={shareArticle}
-        className="inline-flex min-h-10 items-center gap-2 rounded-full border border-brand/15 bg-white/80 px-4 text-xs font-bold text-brand shadow-sm transition hover:-translate-y-0.5 hover:border-accent hover:bg-[#fceafa] hover:text-accent"
+        className="inline-flex min-h-10 items-center gap-2 rounded-full border border-brand/15 bg-white/80 px-4 text-xs font-bold text-brand shadow-sm dark:border-white/15 dark:bg-slate-900 dark:text-white transition hover:-translate-y-0.5 hover:border-accent hover:bg-[#fceafa] hover:text-accent"
       >
         <Share2 size={15} />
         Share article
       </button>
-      {message && <span role="status" className="inline-flex items-center gap-1.5 text-xs text-slate-500"><Check size={13} />{message}</span>}
+      {message && <span role="status" className="inline-flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400"><Check size={13} />{message}</span>}
     </div>
   );
 }
