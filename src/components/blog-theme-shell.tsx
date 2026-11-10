@@ -19,7 +19,7 @@ export function BlogThemeShell({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className={dark ? "dark" : ""}>
+    <div className={dark ? "dark" : ""} data-blog-theme={dark ? "dark" : "light"}>
       {children}
       <button
         type="button"
