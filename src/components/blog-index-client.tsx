@@ -78,7 +78,7 @@ export function BlogIndexClient({ posts }: { posts: PublicPost[] }) {
 
     <section id="latest-articles" className="blog-index-results scroll-mt-28 pb-20 pt-12">
       <div className="blog-index-section-heading mb-7 flex items-end justify-between gap-4">
-        <div><p className="mb-2 text-xs font-bold uppercase tracking-[.16em] text-accent">From the journal</p><h2 className="font-heading text-3xl font-bold tracking-[-.04em] text-brand dark:text-white">Latest articles</h2></div>
+        <div><h2 className="font-heading text-3xl font-bold tracking-[-.04em] text-brand dark:text-white">Latest articles</h2></div>
         <span className="rounded-full border border-brand/10 bg-white px-3.5 py-2 text-xs font-semibold text-slate-500 dark:border-white/10 dark:bg-slate-900 dark:text-slate-300">{filtered.length} {filtered.length === 1 ? "article" : "articles"}</span>
       </div>
       {filtered.length ? <div className="blog-index-grid grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{filtered.map(post => <PostCard key={post.id} post={post}/>)}</div> : <div className="rounded-3xl border border-dashed border-slate-300 bg-white px-6 py-16 text-center dark:border-white/15 dark:bg-slate-900"><SlidersHorizontal className="mx-auto text-accent" size={25}/><h3 className="mt-4 text-lg font-bold text-brand dark:text-white">No articles found</h3><p className="mt-2 text-sm text-slate-500 dark:text-slate-400">Try another search or choose a different category.</p><button onClick={() => {setSearch("");setCategory("All stories");}} className="mt-5 rounded-full bg-brand px-5 py-2.5 text-xs font-bold text-white hover:bg-accent">Clear filters</button></div>}
