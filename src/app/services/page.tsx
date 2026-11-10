@@ -7,7 +7,7 @@ import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { getPublicServices, type PublicService } from "@/lib/public-api";
 
-export const metadata: Metadata = { title: "Our Services | Ratsonbase Construction Limited", description: "Explore construction, engineering, renovation and project support services from Ratsonbase Construction Limited." };
+export const metadata: Metadata = { title: "Construction Services", alternates: { canonical: "/services" }, description: "Explore construction, engineering, renovation and project support services from Ratsonbase Construction Limited." };
 const steps=[{icon:ClipboardCheck,title:"Understand the brief",text:"We start by listening to your requirements, understanding the intended outcome and identifying the information needed to define the work."},{icon:Ruler,title:"Plan the work",text:"We consider scope, site context, priorities and practical delivery requirements so expectations and next steps are clear."},{icon:HardHat,title:"Coordinate delivery",text:"We focus on responsible execution, communication and attention to workmanship throughout the agreed project."},{icon:ShieldCheck,title:"Review the outcome",text:"We review the work against the brief and communicate relevant handover information and next steps."}];
 export default async function ServicesPage() {
  let services:PublicService[]=[]; let unavailable=false;
