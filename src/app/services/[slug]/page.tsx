@@ -8,7 +8,7 @@ import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { getPublicServiceBySlug, getPublicServices, type PublicService } from "@/lib/public-api";
 
-export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{const{slug}=await params;try{const s=await getPublicServiceBySlug(slug);return{title:s.title+" | Ratsonbase Construction Limited",description:s.description};}catch{return{title:"Service | Ratsonbase Construction Limited"};}}
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{const{slug}=await params;try{const s=await getPublicServiceBySlug(slug);return{title:s.title,alternates:{canonical:"/services/"+encodeURIComponent(slug)},description:s.description};}catch{return{title:"Service"};}}
 const benefits=["A conversation focused on your requirements and desired outcome","A clearer understanding of the project scope and practical considerations","Communication around priorities, responsibilities and next steps","An approach that considers quality, safety and the experience of the client"];
 export default async function ServiceDetailPage({params}:{params:Promise<{slug:string}>}) {
  const{slug}=await params;let service:PublicService;try{service=await getPublicServiceBySlug(slug);}catch{notFound();}
