@@ -265,7 +265,6 @@ input, select, textarea, button { font: inherit; }
   --color-miri-deep: #102f27;
   --color-miri-warm: #b77c43;
   --color-miri-paper: #fbfaf6;
-  --font-miri-serif: var(--font-miri-serif);
 }
 .miri-prose { color:#4f5d53; font-size:18px; line-height:1.8; }
 .miri-prose > * + * { margin-top:1.45em; }
