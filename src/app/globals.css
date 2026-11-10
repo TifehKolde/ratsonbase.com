@@ -259,3 +259,121 @@ input, select, textarea, button { font: inherit; }
   .blog-post-card,.blog-post-card * { scroll-behavior:auto; transition-duration:.01ms!important; }
 }
 
+
+
+/* Ratsonbase editorial article layout: keep the existing navy and magenta identity. */
+.ratsonbase-article-page { background:#fff; color:#151525; }
+.article-editorial-hero {
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  padding-block:clamp(3.5rem,7vw,6.75rem) 4.5rem;
+  background:
+    radial-gradient(ellipse at 88% 15%,rgba(180,4,154,.09),transparent 30%),
+    radial-gradient(ellipse at 8% 70%,rgba(1,0,110,.055),transparent 34%),
+    #fbfbfe;
+}
+.article-editorial-hero::after {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:auto 0 0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(1,0,110,.16),transparent);
+}
+.article-hero-orbit {
+  position:absolute;
+  z-index:-1;
+  pointer-events:none;
+  border:1px solid rgba(1,0,110,.075);
+  border-radius:50%;
+}
+.article-hero-orbit-one { width:440px;height:440px;right:-230px;top:-220px; }
+.article-hero-orbit-two { width:310px;height:310px;right:-165px;top:-155px;border-color:rgba(180,4,154,.09); }
+.article-reading-layout { display:grid;grid-template-columns:150px minmax(0,760px);gap:clamp(2rem,5vw,5.5rem);justify-content:center; }
+.article-reading-aside { min-width:0; }
+.article-aside-action {
+  display:flex;align-items:center;justify-content:center;gap:.6rem;
+  min-height:48px;border:1px solid rgba(1,0,110,.12);border-radius:14px;
+  background:#fff;color:#01006e;font-size:.78rem;font-weight:750;
+  box-shadow:0 10px 28px rgba(1,0,110,.045);transition:all .2s ease;
+}
+.article-aside-action:hover { border-color:#b4049a;color:#b4049a;transform:translateY(-2px); }
+.article-reading-column { width:100%;max-width:760px; }
+.article-lead {
+  margin:0 0 2.5rem;color:#34344a;font-size:clamp(1.18rem,2vw,1.38rem);
+  line-height:1.85;font-weight:450;letter-spacing:-.012em;
+}
+.article-feature-figure img { display:block; }
+.article-feature-figure figcaption { background:#fff; }
+.article-content {
+  max-width:100%;color:#444458;font-size:1.125rem;line-height:1.85;
+  letter-spacing:-.008em;overflow-wrap:anywhere;
+}
+.article-content>*+* { margin-top:1.45em; }
+.article-content h2,.article-content h3,.article-content h4 {
+  color:#01006e;font-family:var(--font-bricolage),Arial,sans-serif;
+  font-weight:750;letter-spacing:-.045em;line-height:1.2;
+}
+.article-content h2 { margin-top:2.35em;font-size:clamp(1.7rem,3.5vw,2.45rem); }
+.article-content h3 { margin-top:2em;font-size:clamp(1.35rem,2.8vw,1.8rem); }
+.article-content p { margin-top:1.35em; }
+.article-content strong { color:#20203a;font-weight:800; }
+.article-content a { color:#a00389;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px; }
+.article-content a:hover { color:#01006e; }
+.article-content ul,.article-content ol { padding-left:1.5rem; }
+.article-content ul { list-style:disc; }
+.article-content ol { list-style:decimal; }
+.article-content li+li { margin-top:.55rem; }
+.article-content blockquote {
+  margin-block:2.5rem;padding:1rem 0 1rem 1.5rem;border-left:4px solid #b4049a;
+  color:#25253b;font-family:var(--font-bricolage),Georgia,serif;
+  font-size:clamp(1.35rem,2.6vw,1.8rem);font-style:italic;line-height:1.5;
+}
+.article-content figure { margin-block:2.5rem; }
+.article-content figure img { width:100%;height:auto;border-radius:1.25rem; }
+.article-content figcaption { margin-top:.8rem;color:#77778a;font-size:.8rem;font-style:italic;line-height:1.6; }
+.article-content table { display:block;max-width:100%;overflow-x:auto;border-collapse:collapse; }
+.article-content th,.article-content td { border:1px solid #e4e4ef;padding:.7rem .85rem;text-align:left; }
+.article-inline-cta {
+  position:relative;isolation:isolate;overflow:hidden;
+  background:linear-gradient(120deg,#01006e 0%,#17166f 62%,#65045e 130%);
+  box-shadow:0 22px 55px rgba(1,0,110,.14);
+}
+.article-inline-cta::after {
+  content:"";position:absolute;z-index:-1;width:230px;height:230px;right:-85px;top:-115px;
+  border:1px solid rgba(255,255,255,.18);border-radius:50%;
+  box-shadow:0 0 0 28px rgba(255,255,255,.035),0 0 0 58px rgba(255,255,255,.025);
+}
+.article-author-card { background:linear-gradient(135deg,#fff 0%,#f8f7ff 100%); }
+.article-related-section { background:#f7f7fc; }
+.article-related-card { box-shadow:0 8px 25px rgba(1,0,110,.035); }
+@media (max-width:1279px) {
+  .article-reading-layout { display:block;max-width:800px; }
+  .article-reading-column { max-width:800px;margin-inline:auto; }
+}
+@media (max-width:767px) {
+  .article-editorial-hero { padding-block:3rem 3.25rem; }
+  .article-reading-layout { width:100%; }
+  .article-content { font-size:1.04rem;line-height:1.82; }
+  .article-content h2 { margin-top:2em; }
+  .article-feature-figure { border-radius:1rem; }
+  .article-lead { font-size:1.12rem;line-height:1.8; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .article-aside-action,.article-related-card { transition:none!important; }
+}
+.dark .ratsonbase-article-page { background:#080817;color:#e7e7f1; }
+.dark .article-editorial-hero { background:radial-gradient(ellipse at 88% 15%,rgba(180,4,154,.14),transparent 30%),radial-gradient(ellipse at 8% 70%,rgba(80,80,190,.12),transparent 34%),#0b0b20; }
+.dark .article-hero-orbit { border-color:rgba(255,255,255,.08); }
+.dark .article-lead { color:#d1d1e0; }
+.dark .article-content { color:#c5c5d4; }
+.dark .article-content h2,.dark .article-content h3,.dark .article-content h4 { color:#f0efff; }
+.dark .article-content strong { color:#fff; }
+.dark .article-content blockquote { color:#ededfa; }
+.dark .article-feature-figure,.dark .article-feature-figure figcaption,.dark .article-aside-action,.dark .article-author-card,.dark .article-related-card { background:#111127;color:#e7e7f1;border-color:rgba(255,255,255,.1); }
+.dark .article-aside-action { color:#f0efff; }
+.dark .article-related-section { background:#0d0d20; }
+.dark .article-reading-aside .rounded-2xl { background:#111127;border-color:rgba(255,255,255,.1); }
+.dark .article-reading-aside p { color:#c5c5d4; }
+.dark .article-reading-column .border-brand\/10 { border-color:rgba(255,255,255,.12); }
