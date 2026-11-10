@@ -59,7 +59,7 @@ export function BlogEngagement({ slug, initialLikes, initialComments, comments }
   }
 
   async function shareArticle() {
-    const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.ratsonbase.com").replace(/\\/$/, "");
+    const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.ratsonbase.com").replace(/\/$/, "");
     const url = new URL(window.location.pathname, siteUrl).toString();
     try {
       if (navigator.share) await navigator.share({ title: document.title, url });
