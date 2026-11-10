@@ -9,6 +9,7 @@ import { Reveal } from "@/components/reveal";
 import { BlogEngagement } from "@/components/blog-engagement";
 import { ShareArticleButton } from "@/components/share-article-button";
 import { ArticleReadingProgress } from "@/components/article-reading-progress";
+import { BlogThemeShell } from "@/components/blog-theme-shell";
 import { getPublicPostBySlug, getPublicPosts, getPublicComments, type PublicPost, type PublicComment } from "@/lib/public-api";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -54,6 +55,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     <>
       <SiteHeader />
       <ArticleReadingProgress />
+      <BlogThemeShell>
       <main className="ratsonbase-article-page">
         <section className="article-editorial-hero">
           <div className="container-shell relative z-10">
@@ -154,6 +156,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </section>
         )}
       </main>
+      </BlogThemeShell>
       <SiteFooter />
     </>
   );
