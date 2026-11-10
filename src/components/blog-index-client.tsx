@@ -62,11 +62,11 @@ export function BlogIndexClient({ posts }: { posts: PublicPost[] }) {
     </section>
 
     <div className="container-shell">
-      <div className="blog-index-toolbar flex flex-col gap-5 rounded-2xl border border-slate-200/80 bg-white/90 px-4 py-5 shadow-[0_12px_35px_rgba(1,0,110,.045)] backdrop-blur dark:border-white/10 dark:bg-slate-900/80 sm:px-5 lg:flex-row lg:items-center lg:justify-between">
-        <div className="blog-category-list flex gap-2 overflow-x-auto pb-1" aria-label="Filter articles by category">
-          {categories.map(item => <button key={item} type="button" onClick={() => setCategory(item)} aria-pressed={category === item} className={`rounded-full px-4 py-2.5 text-xs font-bold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${category === item ? "bg-brand text-white shadow-md shadow-brand/15" : "border border-slate-200 bg-white text-slate-600 hover:border-accent/40 hover:text-accent dark:border-white/10 dark:bg-slate-900 dark:text-slate-300"}`}>{item}</button>)}
+      <div className="blog-index-toolbar flex flex-col gap-4 rounded-2xl border px-4 py-4 sm:px-5 lg:flex-row lg:items-center lg:justify-between">
+        <div className="blog-category-list flex min-w-0 flex-wrap items-center gap-2" role="group" aria-label="Filter articles by category">
+          {categories.map(item => <button key={item} type="button" onClick={() => setCategory(item)} aria-pressed={category === item} className={`blog-category-chip ${category === item ? "is-active" : ""}`}>{item}</button>)}
         </div>
-        <label className="relative block w-full lg:max-w-xs"><Search size={17} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"/><input value={search} onChange={event => setSearch(event.target.value)} type="search" placeholder="Search the journal..." className="min-h-12 w-full rounded-full border border-slate-200 bg-white pl-11 pr-4 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-accent focus:ring-4 focus:ring-accent/10 dark:border-white/10 dark:bg-slate-900 dark:text-white"/></label>
+        <label className="blog-search-field relative block w-full lg:max-w-xs"><Search size={17} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"/><input value={search} onChange={event => setSearch(event.target.value)} type="search" placeholder="Search the journal..." className="min-h-12 w-full rounded-full border bg-white pl-11 pr-4 text-sm outline-none transition placeholder:text-slate-400 focus:border-accent focus:ring-4 focus:ring-accent/10 dark:bg-slate-900 dark:text-white"/></label>
       </div>
 
       <section id="latest-articles" className="blog-index-results scroll-mt-28 pb-20 pt-12">
