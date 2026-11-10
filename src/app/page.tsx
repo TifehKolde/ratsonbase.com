@@ -10,8 +10,10 @@ import { ManagingPartnerMessage } from "@/components/managing-partner-message";
 import { getPublicProjects, getPublicServices, type PublicProject, type PublicService } from "@/lib/public-api";
 
 export const metadata: Metadata = {
-  title: "Ratsonbase Construction Limited | Building with Purpose",
-  description: "Thoughtful construction, engineering and renovation solutions. Discover Ratsonbase Construction Limited and discuss your next project.",
+  title: "Construction & Civil Engineering Company in Nigeria",
+  description:
+    "Ratsonbase Construction Limited delivers residential, commercial and industrial construction, civil engineering and renovation solutions in Nigeria. Discuss your project with our team.",
+  alternates: { canonical: "/" },
 };
 
 const values = [
@@ -72,7 +74,6 @@ export default async function HomePage() {
         </section>
 
         <Reveal><IntroVideo /></Reveal>
-
         <ProjectCarousel projects={projects} heading="A closer look at what we build." />
 
         <section className="section-pad relative overflow-hidden bg-[#f7f7fb]">
@@ -88,7 +89,7 @@ export default async function HomePage() {
           <div className="construction-linework pointer-events-none absolute -left-24 top-1/2 h-[500px] w-[500px] -translate-y-1/2 opacity-35"/>
           <Reveal className="container-shell relative">
             <div className="grid gap-14 lg:grid-cols-[.9fr_1.1fr] lg:gap-24">
-              <div className="relative"><h2 className="mt-6 max-w-[620px] text-[clamp(2.8rem,5.5vw,5.1rem)] font-bold leading-[.98] tracking-[-.07em] text-brand">The details matter. <span className="text-accent">So does the experience.</span></h2><p className="mt-7 max-w-lg text-base leading-8 text-slate-500">A well-delivered project is felt in every decision: how clearly we communicate, how carefully we plan and how thoughtfully the work comes together.</p><div className="experience-seal mt-10"><span>RATSONBASE, BUILT ON TRUST, DEFINED BY QUALITY </span></div></div>
+              <div className="relative"><h2 className="mt-6 text-[clamp(2.8rem,5.5vw,5.1rem)] font-bold leading-[.98] tracking-[-.07em] text-brand">The details matter. <span className="text-accent">So does the experience.</span></h2><p className="mt-7 max-w-lg text-base leading-8 text-slate-500">A well-delivered project is felt in every decision: how clearly we communicate, how carefully we plan and how thoughtfully the work comes together.</p><div className="experience-seal mt-10"><span>RATSONBASE, BUILT ON TRUST, DEFINED BY QUALITY </span></div></div>
               <div className="relative grid gap-0 border-y border-slate-200">{values.map((value,index)=><div key={value} className="experience-row group flex items-center gap-5 border-b border-slate-200 py-7 last:border-0"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand-light text-brand transition duration-300 group-hover:rotate-12 group-hover:bg-brand group-hover:text-white"><CheckCircle2 size={18}/></span><div><p className="text-[.62rem] font-extrabold uppercase tracking-[.18em] text-accent">Standard {String(index+1).padStart(2,"0")}</p><p className="mt-2 text-base font-semibold text-slate-800 sm:text-lg">{value}</p></div><span className="ml-auto text-xs font-bold text-slate-300">0{index+1}</span></div>)}</div>
             </div>
           </Reveal>
