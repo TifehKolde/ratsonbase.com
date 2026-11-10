@@ -82,42 +82,87 @@ function BlogDetailSkeleton() {
   return (
     <div className="ratsonbase-article-page min-h-screen">
       <section className="article-editorial-hero">
-        <div className="container-shell flex flex-col items-center text-center">
-          <Block className="mb-5 h-3 w-48" />
+        <div className="container-shell relative z-10 flex flex-col items-center text-center">
+          <Block className="mb-4 h-3 w-48" />
           <div className="flex flex-wrap justify-center gap-3">
-            <Block className="h-8 w-32 rounded-full" />
             <Block className="h-8 w-28 rounded-full" />
-            <Block className="h-8 w-24 rounded-full" />
+            <Block className="h-4 w-24 self-center" />
+            <Block className="h-4 w-20 self-center" />
           </div>
-          <Block className="mt-6 h-12 w-[min(92%,820px)] sm:h-16" />
-          <Block className="mt-3 h-12 w-[min(72%,620px)] sm:h-16" />
-          <div className="mt-7 flex items-center gap-3 border-t border-slate-200 pt-5 dark:border-white/10">
+          <Block className="mt-5 h-12 w-[min(92%,820px)] sm:h-16" />
+          <Block className="mt-3 h-12 w-[min(76%,650px)] sm:h-16" />
+          <div className="mt-5 inline-flex items-center gap-3 border-t border-brand/10 pt-4">
             <Block className="h-12 w-12 rounded-full" />
-            <div className="space-y-2"><Block className="h-3 w-32" /><Block className="h-3 w-44" /></div>
+            <div className="space-y-2 text-left">
+              <Block className="h-3 w-32" />
+              <Block className="h-3 w-44" />
+            </div>
           </div>
-          <Block className="mt-6 h-10 w-32 rounded-full" />
+          <Block className="mt-6 h-10 w-36 rounded-full" />
         </div>
       </section>
       <article className="section-pad !pt-10 sm:!pt-14">
         <div className="container-shell">
-          <Block className="mx-auto mb-12 aspect-[16/8.5] w-full max-w-5xl rounded-2xl" />
-          <div className="mx-auto max-w-[760px] space-y-7">
-            <div className="space-y-3"><Block className="h-5 w-full" /><Block className="h-5 w-4/5" /></div>
-            {Array.from({ length: 5 }, (_, index) => (
-              <div key={index} className="space-y-3 pt-3">
-                <Block className="h-8 w-3/5" />
-                <Block className="h-4 w-full" />
-                <Block className="h-4 w-full" />
-                <Block className="h-4 w-11/12" />
-                <Block className="h-4 w-4/5" />
+          <Block className="mx-auto mb-12 aspect-[16/8.5] w-full max-w-5xl rounded-[1.5rem]" />
+          <div className="article-reading-layout mx-auto max-w-6xl">
+            <div className="article-reading-column min-w-0">
+              <div className="mb-10 space-y-3">
+                <Block className="h-5 w-full" />
+                <Block className="h-5 w-4/5" />
               </div>
-            ))}
-            <div className="rounded-3xl bg-[#08082f] p-8"><Block className="skeleton-block-dark h-4 w-40" /><Block className="skeleton-block-dark mt-5 h-8 w-3/4" /><Block className="skeleton-block-dark mt-4 h-4 w-full" /><Block className="skeleton-block-dark mt-2 h-4 w-4/5" /><Block className="skeleton-block-dark mt-6 h-11 w-36 rounded-full" /></div>
-            <div className="mt-12 rounded-3xl border border-slate-200 bg-white p-7 dark:border-white/10 dark:bg-[#111127]"><Block className="h-6 w-40" /><Block className="mt-4 h-4 w-full" /><Block className="mt-2 h-4 w-5/6" /></div>
-            <div className="mt-14 space-y-5"><Block className="h-8 w-40" /><Block className="h-40 w-full rounded-2xl" /><Block className="h-40 w-full rounded-2xl" /></div>
+              {Array.from({ length: 4 }, (_, index) => (
+                <div key={index} className="space-y-4 pt-5">
+                  <Block className="h-8 w-3/5" />
+                  <Block className="h-4 w-full" />
+                  <Block className="h-4 w-full" />
+                  <Block className="h-4 w-11/12" />
+                  <Block className="h-4 w-4/5" />
+                </div>
+              ))}
+              <div className="article-inline-cta mt-14 rounded-3xl p-7 sm:p-9">
+                <Block className="skeleton-block-dark h-3 w-36" />
+                <Block className="skeleton-block-dark mt-4 h-8 w-3/4" />
+                <Block className="skeleton-block-dark mt-4 h-4 w-full" />
+                <Block className="skeleton-block-dark mt-2 h-4 w-5/6" />
+                <Block className="skeleton-block-dark mt-6 h-11 w-40 rounded-full" />
+              </div>
+              <div className="article-author-card mt-14 flex gap-5 rounded-3xl border border-brand/10 p-7">
+                <Block className="h-20 w-20 shrink-0 rounded-full" />
+                <div className="flex-1 space-y-3 pt-1">
+                  <Block className="h-3 w-28" />
+                  <Block className="h-6 w-44" />
+                  <Block className="h-4 w-full" />
+                  <Block className="h-4 w-5/6" />
+                </div>
+              </div>
+              <div className="mt-16 space-y-6">
+                <Block className="h-8 w-36" />
+                <div className="rounded-3xl border border-slate-200 bg-[#fafaff] p-6 sm:p-8">
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <Block className="h-12 rounded-xl" />
+                    <Block className="h-12 rounded-xl" />
+                  </div>
+                  <Block className="mt-4 h-32 rounded-xl" />
+                  <Block className="mt-4 h-11 w-40 rounded-full" />
+                </div>
+                <Block className="h-7 w-44" />
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <Block className="h-36 rounded-2xl" />
+                  <Block className="h-36 rounded-2xl" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </article>
+      <section className="article-related-section section-pad">
+        <div className="container-shell">
+          <Block className="h-9 w-64" />
+          <div className="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 3 }, (_, index) => <CardSkeleton key={index} />)}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
