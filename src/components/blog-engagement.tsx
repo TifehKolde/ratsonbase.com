@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
 import { Send, LoaderCircle, CheckCircle2 } from "lucide-react";
 import { submitPublicComment, type PublicComment } from "@/lib/public-api";
@@ -18,13 +18,17 @@ export function BlogEngagement({ slug, initialComments, comments }: {
   const [body, setBody] = useState("");
   const [commentMessage, setCommentMessage] = useState("");
   const [commentLoading, setCommentLoading] = useState(false);
+  const [website, setWebsite] = useState("");
+  const formStartedAt = useRef(0);
+
+  useEffect(() => { formStartedAt.current = Date.now(); }, []);
 
   async function handleComment(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setCommentLoading(true);
     setCommentMessage("");
     try {
-      const result = await submitPublicComment(slug, { name, email: commentEmail, body });
+      const result = await submitPublicComment(slug, { name, email: commentEmail, body, website, form_elapsed_ms: Date.now() - formStartedAt.current });
       setCommentMessage(result.message || "Your comment has been submitted and is awaiting moderation.");
       setName("");
       setCommentEmail("");
@@ -45,10 +49,14 @@ export function BlogEngagement({ slug, initialComments, comments }: {
             <span className="text-xs font-semibold text-slate-400">{initialComments} {initialComments === 1 ? "comment" : "comments"}</span>
           </div>
           <div className="rounded-3xl border border-slate-200 bg-[#fafaff] p-5 sm:p-8 dark:border-white/10 dark:bg-slate-900">
-            <form onSubmit={handleComment} className="grid gap-4">
+            <form onSubmit={handleComment} className="relative grid gap-4">
+              <div aria-hidden="true" className="pointer-events-none absolute -left-[10000px] top-auto h-px w-px overflow-hidden">
+                <label htmlFor="comment-website">Leave this field empty</label>
+                <input id="comment-website" name="website" type="text" tabIndex={-1} autoComplete="off" value={website} onChange={event => setWebsite(event.target.value)} />
+              </div>
               <div className="grid gap-3 sm:grid-cols-2">
                 <input required maxLength={100} value={name} onChange={event => setName(event.target.value)} placeholder="Your name" aria-label="Your name" className="min-h-12 min-w-0 rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none dark:border-white/10 dark:bg-[#15152b] dark:text-white transition focus:border-accent focus:ring-4 focus:ring-accent/5" />
-                <input required type="email" value={commentEmail} onChange={event => setCommentEmail(event.target.value)} placeholder="Email address" aria-label="Email address" className="min-h-12 min-w-0 rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none transition focus:border-accent focus:ring-4 focus:ring-accent/5" />
+                <input required type="email" maxLength={255} value={commentEmail} onChange={event => setCommentEmail(event.target.value)} placeholder="Email address" aria-label="Email address" className="min-h-12 min-w-0 rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none transition focus:border-accent focus:ring-4 focus:ring-accent/5" />
               </div>
               <textarea required maxLength={5000} rows={4} value={body} onChange={event => setBody(event.target.value)} placeholder="Write your thoughts..." aria-label="Write your comment" className="min-h-32 resize-y rounded-xl border border-slate-200 bg-white p-4 text-sm outline-none dark:border-white/10 dark:bg-[#15152b] dark:text-white transition focus:border-accent focus:ring-4 focus:ring-accent/5" />
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
