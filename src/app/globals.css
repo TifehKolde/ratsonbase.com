@@ -258,3 +258,26 @@ input, select, textarea, button { font: inherit; }
 @media (prefers-reduced-motion:reduce) {
   .blog-post-card,.blog-post-card * { scroll-behavior:auto; transition-duration:.01ms!important; }
 }
+
+/* Miri Africa climate-tech editorial theme (Tailwind CSS v4 tokens). */
+@theme {
+  --color-miri-green: #164f43;
+  --color-miri-deep: #102f27;
+  --color-miri-warm: #b77c43;
+  --color-miri-paper: #fbfaf6;
+  --font-miri-serif: var(--font-miri-serif);
+}
+.miri-prose { color:#4f5d53; font-size:18px; line-height:1.8; }
+.miri-prose > * + * { margin-top:1.45em; }
+.miri-prose p { margin-top:1.35em; }
+.miri-prose .lead { color:#34483b; font-size:1.22rem; line-height:1.85; }
+.miri-prose h2 { margin-top:2.55em; margin-bottom:.65em; color:#203a2d; font-family:var(--font-miri-serif),Georgia,serif; font-size:clamp(1.8rem,4vw,2.55rem); font-weight:700; line-height:1.16; letter-spacing:-.035em; }
+.miri-prose strong { color:#1c4938; font-weight:800; }
+.miri-prose a { color:#17604e; text-decoration:underline; text-decoration-color:#b77c43; text-underline-offset:4px; font-weight:650; }
+.miri-prose .source-note { border-top:1px solid #dfe6dd; padding-top:1.25rem; color:#77837a; font-size:.9rem; }
+.dark .miri-prose { color:#c1ccc4; }
+.dark .miri-prose .lead,.dark .miri-prose h2,.dark .miri-prose strong { color:#e4eee6; }
+.dark .miri-prose a { color:#a9d4ba; }
+.dark .miri-prose .source-note { border-color:rgba(255,255,255,.13); color:#a5b2a8; }
+@media(max-width:640px){.miri-prose{font-size:16px;line-height:1.8}.miri-prose .lead{font-size:1.08rem}.miri-prose h2{margin-top:2.1em}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
