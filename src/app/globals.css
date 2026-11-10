@@ -724,3 +724,25 @@ input, select, textarea, button { font: inherit; }
   .blog-index-toolbar { margin-top:1rem; }
   .blog-index-results { padding-top:2.25rem; }
 }
+
+
+/* Explicit light-mode contrast for the blog hero. */
+.blog-index-page:not(.dark) .blog-index-hero .blog-index-copy h1,
+.blog-index-hero .blog-index-copy h1 {
+  color:#01006e !important;
+  opacity:1;
+  -webkit-text-fill-color:#01006e;
+}
+.blog-index-hero .blog-index-copy > p {
+  color:#4b5563 !important;
+  opacity:1;
+}
+.blog-index-hero .blog-index-copy > a {
+  color:#01006e !important;
+}
+.dark .blog-index-hero .blog-index-copy h1 {
+  color:#f0efff !important;
+  -webkit-text-fill-color:#f0efff;
+}
+.dark .blog-index-hero .blog-index-copy > p { color:#c4c4d5 !important; }
+.dark .blog-index-hero .blog-index-copy > a { color:#fff !important; }
