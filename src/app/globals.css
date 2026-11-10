@@ -940,3 +940,27 @@ input, select, textarea, button { font: inherit; }
 @media (prefers-reduced-motion:reduce) {
   .skeleton-block::after { animation:none !important; }
 }
+
+
+/* Keep non-blog skeletons unchanged and give editorial placeholders their own palette. */
+.skeleton-block { background:#e9eaf2; background-size:auto; }
+.skeleton-block::after { background:linear-gradient(90deg,transparent,rgba(255,255,255,.72),transparent); }
+.blog-index-page .skeleton-block,
+.ratsonbase-article-page .skeleton-block {
+  border-radius:.45rem;
+  background:linear-gradient(100deg,#ececf4 20%,#e4e5ef 38%,#ececf4 56%);
+  background-size:220% 100%;
+}
+.blog-index-page .skeleton-block::after,
+.ratsonbase-article-page .skeleton-block::after {
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.68),transparent);
+}
+[data-blog-theme="dark"] .blog-index-page .skeleton-block,
+[data-blog-theme="dark"] .ratsonbase-article-page .skeleton-block {
+  background:linear-gradient(100deg,#20203a 20%,#292943 38%,#20203a 56%);
+  background-size:220% 100%;
+}
+[data-blog-theme="dark"] .blog-index-page .skeleton-block::after,
+[data-blog-theme="dark"] .ratsonbase-article-page .skeleton-block::after {
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);
+}
