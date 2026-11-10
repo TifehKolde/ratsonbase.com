@@ -1,13 +1,17 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { useLayoutEffect, useState, type ReactNode } from "react";
 import { Moon, Sun } from "lucide-react";
 
 export function BlogThemeShell({ children }: { children: ReactNode }) {
   const [dark, setDark] = useState(false);
 
-  useEffect(() => {
-    setDark(window.localStorage.getItem("ratsonbase-blog-theme") === "dark");
+  useLayoutEffect(() => {
+    try {
+      setDark(window.localStorage.getItem("ratsonbase-blog-theme") === "dark");
+    } catch {
+      setDark(false);
+    }
   }, []);
 
   function toggleTheme() {
