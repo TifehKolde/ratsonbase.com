@@ -34,10 +34,9 @@ export function NewsletterForm() {
       setStatus(payload.data?.message || "You are subscribed. Thank you for joining us.");
       setEmail("");
       setFirstName("");
-      setTurnstileResetKey(value => value + 1);
     } catch (error) {
       setStatus(error instanceof Error ? error.message : "Something went wrong. Please try again.");
-    } finally { setLoading(false); }
+    } finally { setTurnstileResetKey(value => value + 1); setLoading(false); }
   }
 
   return (
