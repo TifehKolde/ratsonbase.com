@@ -7,6 +7,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Reveal } from "@/components/reveal";
 import { BlogEngagement } from "@/components/blog-engagement";
+import { ShareArticleButton } from "@/components/share-article-button";
 import { ArticleReadingProgress } from "@/components/article-reading-progress";
 import { getPublicPostBySlug, getPublicPosts, getPublicComments, type PublicPost, type PublicComment } from "@/lib/public-api";
 
@@ -72,6 +73,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     : <span className="grid h-12 w-12 place-items-center rounded-full bg-brand text-sm font-extrabold text-white ring-4 ring-white shadow-md">{initials(author)}</span>}
                   <div><p className="text-sm font-bold text-brand">By {author}</p><p className="mt-1 text-xs text-slate-500">Ratsonbase Construction Limited</p></div>
                 </div>
+                <ShareArticleButton />
               </div>
             </Reveal>
           </div>
@@ -118,7 +120,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   </Reveal>
                 )}
 
-                <BlogEngagement slug={slug} initialLikes={post.likes_count || 0} initialComments={post.comments_count || 0} comments={comments} />
+                <BlogEngagement slug={slug} initialComments={post.comments_count || 0} comments={comments} />
 
                 <div className="mt-10 flex flex-col gap-4 border-t border-brand/10 pt-7 sm:flex-row sm:items-center sm:justify-between">
                   <Link href="/blogs" className="inline-flex items-center gap-2 text-sm font-bold text-brand transition hover:text-accent"><ArrowLeft size={16} /> Back to all articles</Link>
