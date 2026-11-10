@@ -30,7 +30,7 @@ function PostCard({ post }: { post: PublicPost }) {
     </Link>
     <div className="flex flex-1 flex-col p-5 sm:p-6">
       <div className="flex items-center gap-2 text-[.7rem] font-medium text-slate-400"><CalendarDays size={13}/>{formatDate(post.published_at || post.created_at)}<span className="text-slate-300">•</span><Clock3 size={13}/>{readTime(post.content_html)} min read</div>
-      <Link href={"/blogs/" + post.slug}><h2 className="mt-4 line-clamp-2 min-h-[3.6rem] text-xl font-bold leading-[1.35] tracking-[-.025em] text-brand transition group-hover:text-accent dark:text-white">{post.title}</h2></Link>
+      <Link href={"/blogs/" + post.slug}><h2 className="mt-4 line-clamp-2 min-h-[3.6rem] text-xl font-bold leading-[1.35] tracking-[-.025em] text-[#171735] transition group-hover:text-accent dark:text-white">{post.title}</h2></Link>
       <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-500 dark:text-slate-400">{post.excerpt || "Explore ideas and perspectives from Ratsonbase Construction Limited."}</p>
       <div className="mt-auto flex items-center justify-between gap-3 border-t border-slate-100 pt-5 dark:border-white/10">
         <div className="flex min-w-0 items-center gap-2.5"><Avatar post={post}/><span className="truncate text-xs font-semibold text-slate-600 dark:text-slate-300">{post.author?.name || "Ratsonbase Team"}</span></div>
@@ -47,21 +47,21 @@ export function BlogIndexClient({ posts }: { posts: PublicPost[] }) {
   const filtered = useMemo(() => posts.filter(post => (category === "All stories" || post.category?.name === category) && (post.title + " " + (post.excerpt || "") + " " + (post.category?.name || "")).toLowerCase().includes(search.toLowerCase().trim())), [posts, category, search]);
 
   return <div className="container-shell">
-    <section className="blog-index-hero">
+    <section className="blog-index-hero rounded-b-[2rem]">
       <div className="mx-auto max-w-3xl text-center">
         <h1 className="font-heading text-[clamp(2.35rem,5.4vw,4.4rem)] font-bold leading-[1.04] tracking-[-.065em] text-brand dark:text-white">Insights, Stories, and Intelligence from the Ground Up</h1>
         <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-500 dark:text-slate-400">Ideas, expertise and perspectives shaping the spaces where we live, work and build.</p>
       </div>
     </section>
 
-    <div className="flex flex-col gap-5 border-y border-slate-200/80 py-5 dark:border-white/10 lg:flex-row lg:items-center lg:justify-between">
+    <div className="blog-index-toolbar flex flex-col gap-5 rounded-2xl border border-slate-200/80 bg-white/90 px-4 py-5 shadow-[0_12px_35px_rgba(1,0,110,.045)] backdrop-blur dark:border-white/10 dark:bg-slate-900/80 sm:px-5 lg:flex-row lg:items-center lg:justify-between">
       <div className="flex flex-wrap gap-2" aria-label="Filter articles by category">
         {categories.map(item => <button key={item} type="button" onClick={() => setCategory(item)} aria-pressed={category === item} className={`rounded-full px-4 py-2.5 text-xs font-bold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${category === item ? "bg-brand text-white shadow-md shadow-brand/15" : "border border-slate-200 bg-white text-slate-600 hover:border-accent/40 hover:text-accent dark:border-white/10 dark:bg-slate-900 dark:text-slate-300"}`}>{item}</button>)}
       </div>
       <label className="relative block w-full lg:max-w-xs"><Search size={17} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"/><input value={search} onChange={event => setSearch(event.target.value)} type="search" placeholder="Search the journal..." className="min-h-12 w-full rounded-full border border-slate-200 bg-white pl-11 pr-4 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-accent focus:ring-4 focus:ring-accent/10 dark:border-white/10 dark:bg-slate-900 dark:text-white"/></label>
     </div>
 
-    <section className="pb-16 pt-10">
+    <section className="blog-index-results pb-16 pt-10">
       <div className="mb-7 flex items-end justify-between gap-4">
         <h2 className="font-heading text-3xl font-bold tracking-[-.04em] text-brand dark:text-white">Latest articles</h2>
         <span className="text-xs text-slate-400">{filtered.length} {filtered.length === 1 ? "article" : "articles"}</span>
