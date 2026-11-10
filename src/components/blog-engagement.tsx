@@ -36,10 +36,10 @@ export function BlogEngagement({ slug, initialComments, comments }: {
       setName("");
       setCommentEmail("");
       setBody("");
-      setTurnstileResetKey(value => value + 1);
     } catch (error) {
       setCommentMessage(error instanceof Error ? error.message : "Unable to submit your comment.");
     } finally {
+      setTurnstileResetKey(value => value + 1);
       setCommentLoading(false);
     }
   }
