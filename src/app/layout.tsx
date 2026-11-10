@@ -5,12 +5,63 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const bricolage = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-bricolage", display: "swap" });
 
+const siteUrl = "https://www.ratsonbase.com";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.ratsonbase.com"),
-  title: { default: "Ratsonbase Construction Limited | Building with Purpose", template: "%s | Ratsonbase Construction Limited" },
-  description: "Ratsonbase Construction Limited delivers considered construction, engineering and property development solutions with quality at every stage.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Ratsonbase Construction Limited",
+    template: "%s | Ratsonbase Construction Limited",
+  },
+  description:
+    "Ratsonbase Construction Limited is a Nigerian construction and civil engineering company delivering residential, commercial and industrial building solutions.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "en_NG",
+    url: siteUrl,
+    siteName: "Ratsonbase Construction Limited",
+    title: "Ratsonbase Construction Limited",
+    description:
+      "Construction, civil engineering, renovation and property solutions across Nigeria.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ratsonbase Construction Limited",
+    description:
+      "Construction, civil engineering, renovation and property solutions across Nigeria.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Ratsonbase Construction Limited",
+  url: siteUrl,
+  email: "info@ratsonbase.com",
+  description:
+    "A Nigerian construction and civil engineering company delivering residential, commercial and industrial building solutions.",
+  areaServed: {
+    "@type": "Country",
+    name: "Nigeria",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body className={`${inter.variable} ${bricolage.variable} antialiased`}>{children}</body></html>;
+  return (
+    <html lang="en-NG">
+      <body className={`${inter.variable} ${bricolage.variable} antialiased`}>
+        {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+      </body>
+    </html>
+  );
 }
