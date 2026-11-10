@@ -6,6 +6,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 const bricolage = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-bricolage", display: "swap" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.ratsonbase.com"),
   title: { default: "Ratsonbase Construction Limited | Building with Purpose", template: "%s | Ratsonbase Construction Limited" },
   description: "Ratsonbase Construction Limited delivers considered construction, engineering and property development solutions with quality at every stage.",
 };
