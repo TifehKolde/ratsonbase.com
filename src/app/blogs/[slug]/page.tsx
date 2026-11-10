@@ -18,9 +18,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const post = await getPublicPostBySlug(slug);
     return {
       title: post.meta_title || post.title,
-      description: post.meta_description || post.excerpt,
+      description: post.meta_description || post.excerpt || undefined,
       alternates: { canonical: `https://www.ratsonbase.com/blogs/${encodeURIComponent(slug)}` },
-      openGraph: { title: post.meta_title || post.title, description: post.meta_description || post.excerpt, url: `https://www.ratsonbase.com/blogs/${encodeURIComponent(slug)}`, images: post.featured_image ? [post.featured_image] : [], type: "article" },
+      openGraph: { title: post.meta_title || post.title, description: post.meta_description || post.excerpt || undefined, url: `https://www.ratsonbase.com/blogs/${encodeURIComponent(slug)}`, images: post.featured_image ? [post.featured_image] : [], type: "article" },
     };
   } catch { return { title: "Article | Ratsonbase Construction Limited" }; }
 }
