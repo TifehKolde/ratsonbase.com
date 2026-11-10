@@ -426,3 +426,29 @@ input, select, textarea, button { font: inherit; }
   .blog-engagement > .blog-action-bar > div:first-child { display:flex; }
   .blog-engagement > .blog-action-bar > div:last-child { width:100%;justify-content:space-around;gap:.35rem; }
 }
+
+
+/* Blog index hero and page-scoped theme treatment. */
+.blog-index-hero {
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 1.5rem;
+  background: #fff;
+}
+.dark .blog-index-hero { background: #080817; }
+.dark .blog-index-hero h1 { color: #f0efff; }
+.dark .blog-index-hero p { color: #a1a1b8; }
+.dark .article-editorial-hero h1,
+.dark .article-editorial-hero .text-brand,
+.dark .article-author-card .text-brand,
+.dark .article-related-card .text-brand { color: #f0efff; }
+.dark .article-editorial-hero .text-slate-500,
+.dark .article-author-card .text-slate-600,
+.dark .article-related-card .text-slate-500 { color: #a1a1b8; }
+.dark .article-editorial-hero .bg-brand-light { background: rgba(180,4,154,.16); color: #fceafa; }
+.dark .article-editorial-hero .border-brand\/10 { border-color: rgba(255,255,255,.14); }
+@media (max-width:767px) {
+  .blog-index-hero { min-height: 235px; padding-block: 1.25rem; }
+}
