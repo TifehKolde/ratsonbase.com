@@ -15,7 +15,6 @@ export const metadata: Metadata = {
   },
   description:
     "Ratsonbase Construction Limited is a Nigerian construction and civil engineering company delivering residential, commercial and industrial building solutions.",
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_NG",
