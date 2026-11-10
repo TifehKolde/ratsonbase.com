@@ -41,16 +41,16 @@ export function BlogEngagement({ slug, initialComments, comments }: {
       <div id="reader-comments" className="scroll-mt-28">
         <div className="grid gap-6">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <h2 className="text-2xl font-bold tracking-[-.04em] text-brand sm:text-3xl">Comments</h2>
+            <h2 className="text-2xl font-bold tracking-[-.04em] text-brand dark:text-white sm:text-3xl">Comments</h2>
             <span className="text-xs font-semibold text-slate-400">{initialComments} {initialComments === 1 ? "comment" : "comments"}</span>
           </div>
-          <div className="rounded-3xl border border-slate-200 bg-[#fafaff] p-5 sm:p-8">
+          <div className="rounded-3xl border border-slate-200 bg-[#fafaff] p-5 sm:p-8 dark:border-white/10 dark:bg-slate-900">
             <form onSubmit={handleComment} className="grid gap-4">
               <div className="grid gap-3 sm:grid-cols-2">
-                <input required maxLength={100} value={name} onChange={event => setName(event.target.value)} placeholder="Your name" aria-label="Your name" className="min-h-12 min-w-0 rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none transition focus:border-accent focus:ring-4 focus:ring-accent/5" />
+                <input required maxLength={100} value={name} onChange={event => setName(event.target.value)} placeholder="Your name" aria-label="Your name" className="min-h-12 min-w-0 rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none dark:border-white/10 dark:bg-[#15152b] dark:text-white transition focus:border-accent focus:ring-4 focus:ring-accent/5" />
                 <input required type="email" value={commentEmail} onChange={event => setCommentEmail(event.target.value)} placeholder="Email address" aria-label="Email address" className="min-h-12 min-w-0 rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none transition focus:border-accent focus:ring-4 focus:ring-accent/5" />
               </div>
-              <textarea required maxLength={5000} rows={4} value={body} onChange={event => setBody(event.target.value)} placeholder="Write your thoughts..." aria-label="Write your comment" className="min-h-32 resize-y rounded-xl border border-slate-200 bg-white p-4 text-sm outline-none transition focus:border-accent focus:ring-4 focus:ring-accent/5" />
+              <textarea required maxLength={5000} rows={4} value={body} onChange={event => setBody(event.target.value)} placeholder="Write your thoughts..." aria-label="Write your comment" className="min-h-32 resize-y rounded-xl border border-slate-200 bg-white p-4 text-sm outline-none dark:border-white/10 dark:bg-[#15152b] dark:text-white transition focus:border-accent focus:ring-4 focus:ring-accent/5" />
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-[.68rem] leading-5 text-slate-400">Your email address will not be displayed publicly. Comments are reviewed before publication.</p>
                 <button disabled={commentLoading} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand px-6 text-sm font-bold text-white transition hover:bg-accent disabled:opacity-60">
@@ -58,29 +58,29 @@ export function BlogEngagement({ slug, initialComments, comments }: {
                 </button>
               </div>
             </form>
-            {commentMessage && <p role="status" className="mt-4 flex items-start gap-2 text-xs leading-6 text-slate-600"><CheckCircle2 size={15} className="mt-1 shrink-0 text-accent" />{commentMessage}</p>}
+            {commentMessage && <p role="status" className="mt-4 flex items-start gap-2 text-xs leading-6 text-slate-600 dark:text-slate-300"><CheckCircle2 size={15} className="mt-1 shrink-0 text-accent" />{commentMessage}</p>}
           </div>
         </div>
 
         <div className="mt-14">
           <div className="flex items-end justify-between gap-4">
-            <h3 className="text-2xl font-bold text-brand">Recent comments</h3>
+            <h3 className="text-2xl font-bold text-brand dark:text-white">Recent comments</h3>
             <span className="text-xs font-semibold text-slate-400">{comments.length} shown</span>
           </div>
           {comments.length ? (
             <div className="mt-6 grid gap-4 md:grid-cols-2">
               {comments.map(comment => (
-                <article key={comment.id} className="rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-brand/20 hover:shadow-md">
+                <article key={comment.id} className="rounded-2xl border border-slate-200 bg-white p-5 transition dark:border-white/10 dark:bg-slate-900 hover:border-brand/20 hover:shadow-md">
                   <div className="flex items-center justify-between gap-3">
-                    <p className="text-sm font-bold text-brand">{comment.name}</p>
+                    <p className="text-sm font-bold text-brand dark:text-white">{comment.name}</p>
                     <time className="text-[.68rem] text-slate-400">{dateLabel(comment.created_at)}</time>
                   </div>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">{comment.body}</p>
+                  <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">{comment.body}</p>
                 </article>
               ))}
             </div>
           ) : (
-            <p className="mt-5 rounded-2xl border border-dashed border-slate-300 bg-white p-7 text-sm text-slate-500">No approved comments yet. Be the first to join the conversation.</p>
+            <p className="mt-5 rounded-2xl border border-dashed border-slate-300 bg-white p-7 text-sm text-slate-500 dark:border-white/15 dark:bg-slate-900 dark:text-slate-400">No approved comments yet. Be the first to join the conversation.</p>
           )}
         </div>
       </div>
