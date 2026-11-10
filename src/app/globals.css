@@ -964,3 +964,10 @@ input, select, textarea, button { font: inherit; }
 [data-blog-theme="dark"] .ratsonbase-article-page .skeleton-block::after {
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);
 }
+
+.ratsonbase-article-page .skeleton-block-dark {
+  background:rgba(255,255,255,.13);
+}
+.ratsonbase-article-page .skeleton-block-dark::after {
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent);
+}
