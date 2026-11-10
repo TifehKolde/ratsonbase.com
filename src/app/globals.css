@@ -417,3 +417,12 @@ input, select, textarea, button { font: inherit; }
   .blog-engagement { padding-bottom:4.5rem; }
 }
 .dark .blog-engagement > .blog-action-bar { background:rgba(17,17,39,.96);border-color:rgba(255,255,255,.14); }
+
+
+/* The article now uses a single reading column and a clean action-only toolbar. */
+.article-reading-layout { grid-template-columns:minmax(0,760px); }
+@media (max-width:1279px) { .article-reading-layout { display:block;max-width:800px; } }
+@media (max-width:640px) {
+  .blog-engagement > .blog-action-bar > div:first-child { display:flex; }
+  .blog-engagement > .blog-action-bar > div:last-child { width:100%;justify-content:space-around;gap:.35rem; }
+}
