@@ -199,3 +199,62 @@ input, select, textarea, button { font: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .skeleton-block::after { animation: none; }
 }
+
+
+/* Ratsonbase Journal: refined editorial layout, accessible controls and dark surfaces. */
+.blog-post-card { box-shadow: 0 8px 30px rgba(1,0,110,.035); }
+.article-content {
+  max-width: 48rem;
+  color: #475569;
+  font-size: 1.0625rem;
+  line-height: 1.95;
+  overflow-wrap: anywhere;
+}
+.article-content > * + * { margin-top: 1.55em; }
+.article-content h2 {
+  margin-top: 2.7em;
+  margin-bottom: .75em;
+  color: #01006e;
+  font-family: var(--font-heading, inherit);
+  font-size: clamp(1.55rem, 3vw, 2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -.035em;
+}
+.article-content h3 { margin-top: 2em; color:#01006e; font-size:1.3rem; font-weight:750; line-height:1.3; }
+.article-content p { margin-top:1.35em; }
+.article-content strong { color:#172554; font-weight:800; }
+.article-content a { color:#b4049a; font-weight:650; text-decoration:underline; text-decoration-color:rgba(180,4,154,.3); text-underline-offset:3px; }
+.article-content ul,.article-content ol { padding-left:1.5rem; }
+.article-content li { margin-top:.55rem; padding-left:.25rem; }
+.article-content ul { list-style:disc; }
+.article-content ol { list-style:decimal; }
+.article-content blockquote {
+  margin:2.5rem 0;
+  border-left:4px solid #b4049a;
+  border-radius:0 1rem 1rem 0;
+  background:linear-gradient(100deg,rgba(252,234,250,.75),rgba(238,238,255,.45));
+  padding:1.5rem 1.6rem;
+  color:#01006e;
+  font-size:1.2rem;
+  font-weight:650;
+  line-height:1.65;
+}
+.article-content figure { margin:2.5rem 0; }
+.article-content figure img { width:100%; border-radius:1rem; }
+.article-content figcaption { margin-top:.75rem; color:#64748b; font-size:.82rem; font-style:italic; line-height:1.6; }
+.article-content hr { margin:2.5rem 0; border:0; border-top:1px solid #e2e8f0; }
+.article-content table { display:block; max-width:100%; overflow-x:auto; border-collapse:collapse; }
+.article-content th,.article-content td { border:1px solid #e2e8f0; padding:.65rem .85rem; text-align:left; }
+.dark .article-content { color:#cbd5e1; }
+.dark .article-content h2,.dark .article-content h3,.dark .article-content strong { color:#f8fafc; }
+.dark .article-content blockquote { background:linear-gradient(100deg,rgba(180,4,154,.15),rgba(1,0,110,.22)); color:#fceafa; }
+.dark .article-content figcaption { color:#94a3b8; }
+.dark .article-content hr,.dark .article-content th,.dark .article-content td { border-color:rgba(255,255,255,.13); }
+@media (max-width:640px) {
+  .article-content { font-size:1rem; line-height:1.85; }
+  .article-content blockquote { margin-inline:-.25rem; padding:1.2rem; font-size:1.08rem; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .blog-post-card,.blog-post-card * { scroll-behavior:auto; transition-duration:.01ms!important; }
+}
