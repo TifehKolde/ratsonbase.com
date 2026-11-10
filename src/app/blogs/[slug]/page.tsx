@@ -58,16 +58,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <section className="article-editorial-hero">
           <div className="container-shell relative z-10">
             <Reveal>
-              <Breadcrumbs items={[{ label: "Blogs", href: "/blogs" }, { label: post.title }]} />
-              <div className="mx-auto mt-12 max-w-4xl text-center lg:mt-16">
+              <Breadcrumbs variant="dark" items={[{ label: "Blogs", href: "/blogs" }, { label: post.title }]} />
+              <div className="mx-auto mt-6 max-w-4xl text-center sm:mt-8">
                 <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-[.7rem] font-bold uppercase tracking-[.13em] text-slate-500">
                   <span className="rounded-full border border-brand/15 bg-brand-light px-4 py-2 text-brand">{post.category?.name || "Ratsonbase Journal"}</span>
                   <span className="inline-flex items-center gap-2"><CalendarDays size={14} className="text-accent" />{published}</span>
                   <span className="inline-flex items-center gap-2"><Clock3 size={14} className="text-accent" />{readTime(post.content_html)} min read</span>
                 </div>
-                <h1 className="mt-8 font-heading text-[clamp(2.5rem,6.4vw,5.35rem)] font-bold leading-[1.04] tracking-[-.065em] text-brand">{post.title}</h1>
+                <h1 className="mt-6 font-heading text-[clamp(2.35rem,5.8vw,4.8rem)] font-bold leading-[1.04] tracking-[-.065em] text-brand">{post.title}</h1>
 
-                <div className="mt-9 inline-flex items-center gap-3 border-t border-brand/10 pt-6 text-left">
+                <div className="mt-6 inline-flex items-center gap-3 border-t border-brand/10 pt-6 text-left">
                   {post.author?.profile_picture
                     ? <img src={post.author.profile_picture} alt={author} className="h-12 w-12 rounded-full object-cover ring-4 ring-white shadow-md" />
                     : <span className="grid h-12 w-12 place-items-center rounded-full bg-brand text-sm font-extrabold text-white ring-4 ring-white shadow-md">{initials(author)}</span>}
