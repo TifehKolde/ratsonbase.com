@@ -6,7 +6,7 @@ import { BlogIndexClient } from "@/components/blog-index-client";
 import { BlogThemeShell } from "@/components/blog-theme-shell";
 
 export const metadata: Metadata = {
-  title: "Insights, Stories & Intelligence | Ratsonbase",
+  title: "Construction Insights & Articles", alternates: { canonical: "/blogs" },
   description: "Ideas, expertise and perspectives shaping the spaces where we live, work and build.",
 };
 
