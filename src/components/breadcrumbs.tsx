@@ -3,8 +3,8 @@ import { ChevronRight, Home } from "lucide-react";
 
 export function Breadcrumbs({ items, variant = "light" }: { items: Array<{ label: string; href?: string }>; variant?: "light" | "dark" }) {
   return (
-    <nav aria-label="Breadcrumb" className="mb-3">
-      <ol className={`flex flex-wrap items-center gap-2 text-xs font-semibold sm:text-sm ${variant === "dark" ? "text-slate-500" : "text-white/60"}`}>
+    <nav aria-label="Breadcrumb" className="mb-3 flex justify-center text-center">
+      <ol className={`flex flex-wrap items-center justify-center gap-2 text-xs font-semibold sm:text-sm ${variant === "dark" ? "text-slate-500" : "text-white/60"}`}>
         <li><Link href="/" className={`inline-flex items-center gap-1.5 transition ${variant === "dark" ? "hover:text-brand" : "hover:text-white"}`}><Home size={14}/> Home</Link></li>
         {items.map((item, index) => (
           <li key={item.label} className="inline-flex items-center gap-2">
