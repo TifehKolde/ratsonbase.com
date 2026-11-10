@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-brand: #01006e;
   --color-accent: #b4049a;
@@ -970,4 +972,31 @@ input, select, textarea, button { font: inherit; }
 }
 .ratsonbase-article-page .skeleton-block-dark::after {
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent);
+}
+
+
+/* Explicit theme contract for blog heroes. This avoids relying on the OS theme. */
+[data-blog-theme="dark"] .blog-index-hero h1,
+[data-blog-theme="dark"] .article-editorial-hero h1 {
+  color: #f5f3ff !important;
+  -webkit-text-fill-color: #f5f3ff !important;
+  opacity: 1 !important;
+}
+[data-blog-theme="dark"] .blog-index-hero p,
+[data-blog-theme="dark"] .article-editorial-hero p,
+[data-blog-theme="dark"] .article-editorial-hero .text-slate-500,
+[data-blog-theme="dark"] .article-editorial-hero .text-brand {
+  color: #c9c9dc !important;
+  opacity: 1 !important;
+}
+[data-blog-theme="dark"] .blog-index-hero a,
+[data-blog-theme="dark"] .article-editorial-hero a {
+  color: #f5f3ff !important;
+}
+[data-blog-theme="dark"] .article-editorial-hero .bg-brand-light {
+  background: rgba(180,4,154,.2) !important;
+  color: #fceafa !important;
+}
+[data-blog-theme="dark"] .article-editorial-hero .border-brand\/10 {
+  border-color: rgba(255,255,255,.16) !important;
 }
