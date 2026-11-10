@@ -856,3 +856,87 @@ input, select, textarea, button { font: inherit; }
 @media (prefers-reduced-motion:reduce) {
   .blog-category-chip { transition:none; }
 }
+
+
+/* Final blog theme contrast fixes. Keep breadcrumbs readable in both themes. */
+[data-blog-theme="dark"] .blog-index-hero .blog-index-copy nav ol,
+[data-blog-theme="dark"] .article-editorial-hero nav ol {
+  color:#c5c5d8 !important;
+}
+[data-blog-theme="dark"] .blog-index-hero .blog-index-copy nav a,
+[data-blog-theme="dark"] .article-editorial-hero nav a {
+  color:#c5c5d8 !important;
+}
+[data-blog-theme="dark"] .blog-index-hero .blog-index-copy nav li:last-child span,
+[data-blog-theme="dark"] .article-editorial-hero nav li:last-child span {
+  color:#f0efff !important;
+}
+[data-blog-theme="dark"] .blog-index-hero .blog-index-copy h1,
+[data-blog-theme="dark"] .article-editorial-hero h1 {
+  color:#f5f3ff !important;
+  -webkit-text-fill-color:#f5f3ff !important;
+}
+[data-blog-theme="dark"] .blog-index-hero .blog-index-copy > p {
+  color:#c5c5d8 !important;
+}
+[data-blog-theme="dark"] .blog-index-hero .blog-index-copy > a {
+  color:#f5f3ff !important;
+}
+[data-blog-theme="dark"] .article-editorial-hero .text-slate-500,
+[data-blog-theme="dark"] .article-editorial-hero .text-brand {
+  color:#c5c5d8 !important;
+}
+[data-blog-theme="dark"] .article-editorial-hero .text-brand.bg-brand-light {
+  color:#fceafa !important;
+}
+[data-blog-theme="dark"] .article-editorial-hero .border-brand\/10 {
+  border-color:rgba(255,255,255,.14) !important;
+}
+
+/* Loading placeholders follow the real editorial surfaces rather than a generic dark hero. */
+.skeleton-block {
+  border-radius:.55rem;
+  background:linear-gradient(100deg,#ececf4 20%,#e4e5ef 38%,#ececf4 56%);
+  background-size:220% 100%;
+}
+.skeleton-block::after {
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.68),transparent);
+}
+.blog-index-page .skeleton-block,
+.ratsonbase-article-page .skeleton-block {
+  border-radius:.45rem;
+}
+.blog-index-page .blog-index-hero {
+  background:
+    radial-gradient(ellipse at 88% 15%,rgba(180,4,154,.07),transparent 30%),
+    radial-gradient(ellipse at 8% 70%,rgba(1,0,110,.045),transparent 34%),
+    #fbfbfe;
+}
+.blog-index-page .blog-index-toolbar {
+  box-shadow:0 12px 35px rgba(1,0,110,.045);
+}
+[data-blog-theme="dark"] .skeleton-block {
+  background:linear-gradient(100deg,#20203a 20%,#292943 38%,#20203a 56%);
+  background-size:220% 100%;
+}
+[data-blog-theme="dark"] .skeleton-block::after {
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);
+}
+[data-blog-theme="dark"] .blog-index-page {
+  background:#080817;
+}
+[data-blog-theme="dark"] .blog-index-page .blog-index-hero {
+  background:
+    radial-gradient(ellipse at 88% 15%,rgba(180,4,154,.13),transparent 30%),
+    radial-gradient(ellipse at 8% 70%,rgba(80,80,190,.1),transparent 34%),
+    #0b0b20;
+}
+[data-blog-theme="dark"] .ratsonbase-article-page .article-editorial-hero {
+  background:
+    radial-gradient(ellipse at 88% 15%,rgba(180,4,154,.13),transparent 30%),
+    radial-gradient(ellipse at 8% 70%,rgba(80,80,190,.1),transparent 34%),
+    #0b0b20;
+}
+@media (prefers-reduced-motion:reduce) {
+  .skeleton-block::after { animation:none !important; }
+}
