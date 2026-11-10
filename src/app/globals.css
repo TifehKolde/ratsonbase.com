@@ -466,3 +466,64 @@ input, select, textarea, button { font: inherit; }
 .dark .blog-engagement input::placeholder,
 .dark .blog-engagement textarea::placeholder { color: #85859f; }
 .dark .blog-engagement .border-slate-200 { border-color: rgba(255,255,255,.12); }
+
+
+/* Light mode polish for the journal listing. */
+.blog-index-page {
+  background:
+    radial-gradient(ellipse at 8% 2%, rgba(1,0,110,.045), transparent 34rem),
+    #f7f7fc;
+}
+.blog-index-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 280px;
+  overflow: hidden;
+  border: 1px solid rgba(1,0,110,.055);
+  background:
+    radial-gradient(ellipse at 88% 12%, rgba(180,4,154,.085), transparent 28rem),
+    radial-gradient(ellipse at 12% 90%, rgba(1,0,110,.055), transparent 30rem),
+    #fbfbfe;
+}
+.blog-index-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 340px;
+  height: 340px;
+  right: -170px;
+  top: -205px;
+  border: 1px solid rgba(1,0,110,.08);
+  border-radius: 50%;
+  box-shadow: 0 0 0 34px rgba(1,0,110,.018), 0 0 0 72px rgba(180,4,154,.018);
+}
+.blog-index-toolbar {
+  margin-top: 1.5rem;
+}
+.blog-index-results h2 {
+  color: #01006e;
+}
+.blog-post-card {
+  border-color: #e8e8f1;
+  box-shadow: 0 10px 34px rgba(1,0,110,.055);
+}
+.blog-post-card > div:last-child {
+  background: #fff;
+}
+.blog-post-card .text-slate-500 { color: #68687d; }
+.dark .blog-index-page { background: #080817; }
+.dark .blog-index-hero {
+  border-color: rgba(255,255,255,.08);
+  background:
+    radial-gradient(ellipse at 88% 12%, rgba(180,4,154,.14), transparent 28rem),
+    radial-gradient(ellipse at 12% 90%, rgba(80,80,190,.12), transparent 30rem),
+    #0b0b20;
+}
+.dark .blog-index-toolbar { background: rgba(17,17,39,.82); }
+.dark .blog-index-results h2 { color: #f0efff; }
+.dark .blog-post-card { border-color: rgba(255,255,255,.1); box-shadow: 0 14px 40px rgba(0,0,0,.18); }
+.dark .blog-post-card > div:last-child { background: #111127; }
+@media (max-width:767px) {
+  .blog-index-hero { min-height: 235px; border-radius: 0 0 1.5rem 1.5rem; }
+  .blog-index-toolbar { margin-top: 1rem; }
+}
