@@ -1000,3 +1000,12 @@ input, select, textarea, button { font: inherit; }
 [data-blog-theme="dark"] .article-editorial-hero .border-brand\/10 {
   border-color: rgba(255,255,255,.16) !important;
 }
+
+
+/* Project and service loading heroes retain the real photographic hero contrast. */
+.page-hero .skeleton-block {
+  background:rgba(255,255,255,.14);
+}
+.page-hero .skeleton-block::after {
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
+}
