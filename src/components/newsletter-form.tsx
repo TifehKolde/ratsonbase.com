@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
 import { ArrowRight, CheckCircle2, LoaderCircle } from "lucide-react";
 
@@ -11,6 +11,10 @@ export function NewsletterForm() {
   const [firstName, setFirstName] = useState("");
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
+  const [website, setWebsite] = useState("");
+  const formStartedAt = useRef(0);
+
+  useEffect(() => { formStartedAt.current = Date.now(); }, []);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -20,7 +24,7 @@ export function NewsletterForm() {
       const response = await fetch(API_BASE_URL + "/api/v1/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ email, first_name: firstName || undefined }),
+        body: JSON.stringify({ email, first_name: firstName || undefined, website, form_elapsed_ms: Date.now() - formStartedAt.current }),
       });
       const payload = await response.json();
       if (!response.ok || !payload.success) throw new Error(payload.error?.message || "We could not complete your subscription. Please try again.");
@@ -33,9 +37,13 @@ export function NewsletterForm() {
   }
 
   return (
-    <form onSubmit={submit} className="newsletter-form">
+    <form onSubmit={submit} className="newsletter-form relative">
+      <div aria-hidden="true" className="pointer-events-none absolute -left-[10000px] top-auto h-px w-px overflow-hidden">
+        <label htmlFor="newsletter-website">Leave this field empty</label>
+        <input id="newsletter-website" name="website" type="text" tabIndex={-1} autoComplete="off" value={website} onChange={event => setWebsite(event.target.value)} />
+      </div>
       <div className="grid gap-3 sm:grid-cols-[.7fr_1.3fr_auto]">
-        <input value={firstName} onChange={e=>setFirstName(e.target.value)} aria-label="First name (optional)" placeholder="First name" className="min-h-12 min-w-0 rounded-full border border-white/15 bg-white/[.07] px-5 text-sm text-white outline-none placeholder:text-white/35 focus:border-[#e9a0df]"/>
+        <input maxLength={80} value={firstName} onChange={e=>setFirstName(e.target.value)} aria-label="First name (optional)" placeholder="First name" className="min-h-12 min-w-0 rounded-full border border-white/15 bg-white/[.07] px-5 text-sm text-white outline-none placeholder:text-white/35 focus:border-[#e9a0df]"/>
         <input type="email" required value={email} onChange={e=>setEmail(e.target.value)} aria-label="Email address" placeholder="Your email address" className="min-h-12 min-w-0 rounded-full border border-white/15 bg-white/[.07] px-5 text-sm text-white outline-none placeholder:text-white/35 focus:border-[#e9a0df]"/>
         <button type="submit" disabled={loading} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-accent px-6 text-sm font-bold text-white transition hover:bg-[#980281] disabled:opacity-60">{loading?<LoaderCircle className="animate-spin" size={17}/>:<>Subscribe <ArrowRight size={16}/></>}</button>
       </div>
