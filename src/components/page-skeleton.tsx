@@ -43,6 +43,38 @@ function HeroSkeleton({ detail = false }: { detail?: boolean }) {
   );
 }
 
+function BlogPostCardSkeleton() {
+  return (
+    <article className="blog-post-card flex h-full flex-col overflow-hidden rounded-[1.15rem] border border-slate-200 bg-white dark:border-white/10 dark:bg-[#111127]">
+      <Block className="aspect-[16/10] w-full rounded-none" />
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <div className="flex items-center gap-2">
+          <Block className="h-3 w-24" />
+          <Block className="h-3 w-20" />
+        </div>
+        <Block className="mt-4 h-6 w-11/12" />
+        <Block className="mt-2 h-6 w-3/4" />
+        <div className="mt-4 space-y-2">
+          <Block className="h-3 w-full" />
+          <Block className="h-3 w-full" />
+          <Block className="h-3 w-4/5" />
+        </div>
+        <div className="mt-auto flex items-center justify-between gap-3 border-t border-slate-100 pt-5 dark:border-white/10">
+          <div className="flex items-center gap-2.5">
+            <Block className="h-9 w-9 rounded-full" />
+            <Block className="h-3 w-24" />
+          </div>
+          <div className="flex items-center gap-2">
+            <Block className="h-3 w-8" />
+            <Block className="h-3 w-8" />
+            <Block className="h-8 w-8 rounded-full" />
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 function BlogListingSkeleton() {
   return (
     <div className="blog-index-page min-h-screen">
@@ -50,7 +82,7 @@ function BlogListingSkeleton() {
         <div className="container-shell">
           <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
             <Block className="mb-5 h-3 w-28" />
-            <Block className="h-10 w-[min(90%,720px)] sm:h-14" />
+            <Block className="h-10 w-[min(90%,720px)] sm:h-14" />\n            <Block className="mt-2 h-10 w-[min(68%,540px)] sm:h-14" />
             <Block className="mt-4 h-4 w-[min(78%,560px)]" />
             <Block className="mt-2 h-4 w-[min(60%,430px)]" />
             <Block className="mt-6 h-4 w-32" />
@@ -70,7 +102,7 @@ function BlogListingSkeleton() {
             <Block className="h-8 w-24 rounded-full" />
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {Array.from({ length: 6 }, (_, index) => <CardSkeleton key={index} />)}
+            {Array.from({ length: 6 }, (_, index) => <BlogPostCardSkeleton key={index} />)}
           </div>
         </section>
       </div>
