@@ -14,5 +14,5 @@ export default async function BlogsPage() {
   let posts: PublicPost[] = [];
   let unavailable = false;
   try { posts = (await getPublicPosts()).posts; } catch { unavailable = true; }
-  return <><SiteHeader/><BlogThemeShell><main className="min-h-screen bg-white text-slate-900 transition-colors dark:bg-[#080817] dark:text-slate-100"><BlogIndexClient posts={posts}/>{unavailable && <p className="container-shell pb-10 text-center text-sm text-slate-500 dark:text-slate-400">Articles are temporarily unavailable. Please check back soon.</p>}</main></BlogThemeShell><SiteFooter/></>;
+  return <><SiteHeader/><BlogThemeShell><main className="blog-index-page min-h-screen bg-[#f7f7fc] text-slate-900 transition-colors dark:bg-[#080817] dark:text-slate-100"><BlogIndexClient posts={posts}/>{unavailable && <p className="container-shell pb-10 text-center text-sm text-slate-500 dark:text-slate-400">Articles are temporarily unavailable. Please check back soon.</p>}</main></BlogThemeShell><SiteFooter/></>;
 }
