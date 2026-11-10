@@ -17,7 +17,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {
       title: post.meta_title || post.title,
       description: post.meta_description || post.excerpt,
-      openGraph: { title: post.meta_title || post.title, description: post.meta_description || post.excerpt, images: post.featured_image ? [post.featured_image] : [], type: "article" },
+      alternates: { canonical: `https://www.ratsonbase.com/blogs/${encodeURIComponent(slug)}` },
+      openGraph: { title: post.meta_title || post.title, description: post.meta_description || post.excerpt, url: `https://www.ratsonbase.com/blogs/${encodeURIComponent(slug)}`, images: post.featured_image ? [post.featured_image] : [], type: "article" },
     };
   } catch { return { title: "Article | Ratsonbase Construction Limited" }; }
 }
@@ -84,24 +85,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <Reveal delay={0.04}>
                 <figure className="article-feature-figure mx-auto mb-14 max-w-5xl overflow-hidden rounded-[1.5rem] border border-brand/[.07] bg-white shadow-[0_24px_70px_rgba(1,0,110,.10)]">
                   <img src={post.featured_image} alt={post.title} className="aspect-[16/8.5] w-full object-cover" />
-                  <figcaption className="px-5 py-3 text-xs text-slate-500 sm:px-7">A Ratsonbase perspective on construction, engineering and the built environment.</figcaption>
                 </figure>
               </Reveal>
             )}
 
             <div className="article-reading-layout mx-auto max-w-6xl">
-              <aside className="article-reading-aside hidden xl:block" aria-label="Article actions and related information">
-                <div className="sticky top-32 space-y-4">
-                  <a href="#reader-comments" className="article-aside-action" aria-label="Jump to comments"><MessageCircle size={18} /><span>Discuss</span></a>
-                  <div className="rounded-2xl border border-brand/10 bg-white p-4 shadow-[0_12px_35px_rgba(1,0,110,.05)]">
-                    <span className="block h-1 w-8 rounded-full bg-accent" />
-                    <p className="mt-4 text-xs font-extrabold uppercase tracking-[.12em] text-brand">The Ratsonbase Journal</p>
-                    <p className="mt-2 text-xs leading-6 text-slate-500">Ideas, project updates and perspectives from our work across the built environment.</p>
-                    <Link href="/blogs" className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-accent">More articles <ArrowUpRight size={14} /></Link>
-                  </div>
-                </div>
-              </aside>
-
               <div className="article-reading-column min-w-0">
                 {post.excerpt && <p className="article-lead">{post.excerpt}</p>}
                 <Reveal delay={0.06}>
