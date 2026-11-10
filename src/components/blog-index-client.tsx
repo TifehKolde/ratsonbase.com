@@ -11,7 +11,7 @@ function formatDate(value?: string | null) {
   return Number.isNaN(date.getTime()) ? "Recently published" : new Intl.DateTimeFormat("en", { day: "numeric", month: "short", year: "numeric" }).format(date);
 }
 function readTime(content: string) {
-  const words = content.replace(/<[^>]*>/g, " ").trim().split(/\\s+/).filter(Boolean).length;
+  const words = content.replace(/<[^>]*>/g, " ").trim().split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.ceil(words / 220));
 }
 function Avatar({ post }: { post: PublicPost }) {
