@@ -56,7 +56,7 @@ export function BlogEngagement({ slug, initialComments, comments }: {
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
                 <input required maxLength={100} value={name} onChange={event => setName(event.target.value)} placeholder="Your name" aria-label="Your name" className="min-h-12 min-w-0 rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none dark:border-white/10 dark:bg-[#15152b] dark:text-white transition focus:border-accent focus:ring-4 focus:ring-accent/5" />
-                <input required type="email" maxLength={255} value={commentEmail} onChange={event => setCommentEmail(event.target.value)} placeholder="Email address" aria-label="Email address" className="min-h-12 min-w-0 rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none transition focus:border-accent focus:ring-4 focus:ring-accent/5" />
+                <input required type="email" maxLength={254} value={commentEmail} onChange={event => setCommentEmail(event.target.value)} placeholder="Email address" aria-label="Email address" className="min-h-12 min-w-0 rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none transition focus:border-accent focus:ring-4 focus:ring-accent/5" />
               </div>
               <textarea required maxLength={5000} rows={4} value={body} onChange={event => setBody(event.target.value)} placeholder="Write your thoughts..." aria-label="Write your comment" className="min-h-32 resize-y rounded-xl border border-slate-200 bg-white p-4 text-sm outline-none dark:border-white/10 dark:bg-[#15152b] dark:text-white transition focus:border-accent focus:ring-4 focus:ring-accent/5" />
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
