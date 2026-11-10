@@ -131,7 +131,7 @@ function BlogListingSkeleton() {
       </section>
       <div className="container-shell">
         <div className="blog-index-toolbar mt-7 flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 dark:border-white/10 dark:bg-[#111127] lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex flex-wrap gap-2">
+          <div className="blog-category-list">
             {Array.from({ length: 4 }, (_, index) => <Block key={index} className={`h-10 rounded-full ${index === 0 ? "w-24" : "w-36"}`} />)}
           </div>
           <Block className="h-12 w-full rounded-full lg:max-w-xs" />
