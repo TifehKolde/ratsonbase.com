@@ -377,3 +377,43 @@ input, select, textarea, button { font: inherit; }
 .dark .article-reading-aside .rounded-2xl { background:#111127;border-color:rgba(255,255,255,.1); }
 .dark .article-reading-aside p { color:#c5c5d4; }
 .dark .article-reading-column .border-brand\/10 { border-color:rgba(255,255,255,.12); }
+
+
+/* Floating article actions: desktop rail and compact mobile dock. */
+.blog-engagement { position:relative; }
+.blog-engagement > .blog-action-bar {
+  position:fixed;z-index:45;left:1.25rem;top:50%;transform:translateY(-50%);
+  width:164px;flex-direction:column;align-items:stretch;gap:.85rem;
+  padding:1rem;border-color:rgba(1,0,110,.12);border-radius:1.15rem;
+  box-shadow:0 16px 48px rgba(1,0,110,.13);
+}
+.blog-engagement > .blog-action-bar > div:first-child { text-align:center; }
+.blog-engagement > .blog-action-bar > div:first-child p:last-child { font-size:.72rem;line-height:1.5; }
+.blog-engagement > .blog-action-bar > div:last-child { display:grid;grid-template-columns:1fr;gap:.5rem; }
+.blog-engagement > .blog-action-bar > div:last-child button,
+.blog-engagement > .blog-action-bar > div:last-child a { width:100%;justify-content:center; }
+@media (max-width:1279px) {
+  .blog-engagement > .blog-action-bar {
+    position:relative;left:auto;top:auto;transform:none;width:100%;
+    flex-direction:row;align-items:center;
+  }
+  .blog-engagement > .blog-action-bar > div:last-child { display:flex; }
+  .blog-engagement > .blog-action-bar > div:last-child button,
+  .blog-engagement > .blog-action-bar > div:last-child a { width:auto; }
+}
+@media (max-width:640px) {
+  .blog-engagement > .blog-action-bar {
+    position:fixed;left:50%;right:auto;bottom:max(.75rem,env(safe-area-inset-bottom));
+    top:auto;z-index:80;width:calc(100% - 1.5rem);max-width:480px;
+    transform:translateX(-50%);padding:.65rem .75rem;border-radius:1.25rem;
+    gap:.5rem;background:rgba(255,255,255,.96);
+    box-shadow:0 12px 38px rgba(1,0,110,.2);backdrop-filter:blur(16px);
+  }
+  .blog-engagement > .blog-action-bar > div:first-child { display:none; }
+  .blog-engagement > .blog-action-bar > div:last-child { width:100%;justify-content:space-around;gap:.35rem; }
+  .blog-engagement > .blog-action-bar > div:last-child button,
+  .blog-engagement > .blog-action-bar > div:last-child a { min-height:42px;padding-inline:.75rem; }
+  .blog-engagement > .blog-action-bar > div:last-child button:last-child { width:42px;padding:0; }
+  .blog-engagement { padding-bottom:4.5rem; }
+}
+.dark .blog-engagement > .blog-action-bar { background:rgba(17,17,39,.96);border-color:rgba(255,255,255,.14); }
