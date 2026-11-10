@@ -64,7 +64,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   <span className="inline-flex items-center gap-2"><Clock3 size={14} className="text-accent" />{readTime(post.content_html)} min read</span>
                 </div>
                 <h1 className="mt-8 font-heading text-[clamp(2.5rem,6.4vw,5.35rem)] font-bold leading-[1.04] tracking-[-.065em] text-brand">{post.title}</h1>
-                {post.excerpt && <p className="mx-auto mt-7 max-w-3xl text-lg leading-8 text-slate-600 sm:text-xl sm:leading-9">{post.excerpt}</p>}
+
                 <div className="mt-9 inline-flex items-center gap-3 border-t border-brand/10 pt-6 text-left">
                   {post.author?.profile_picture
                     ? <img src={post.author.profile_picture} alt={author} className="h-12 w-12 rounded-full object-cover ring-4 ring-white shadow-md" />
