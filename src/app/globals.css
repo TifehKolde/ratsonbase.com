@@ -664,3 +664,63 @@ input, select, textarea, button { font: inherit; }
   .blog-index-grid > article { animation:none!important; }
   .blog-index-hero-link svg { transition:none; }
 }
+
+
+/* Keep the journal index visually consistent with the article detail page. */
+.blog-index-page { background:#fff; }
+.blog-index-hero {
+  position:relative;
+  isolation:isolate;
+  display:flex;
+  min-height:unset;
+  align-items:center;
+  overflow:hidden;
+  padding-block:clamp(2.5rem,5vw,4.25rem);
+  border:0;
+  border-radius:0;
+  background:
+    radial-gradient(ellipse at 88% 15%,rgba(180,4,154,.09),transparent 30%),
+    radial-gradient(ellipse at 8% 70%,rgba(1,0,110,.055),transparent 34%),
+    #fbfbfe;
+}
+.blog-index-hero::after {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:auto 0 0;
+  width:auto;
+  height:1px;
+  border:0;
+  border-radius:0;
+  background:linear-gradient(90deg,transparent,rgba(1,0,110,.16),transparent);
+  box-shadow:none;
+}
+.blog-index-hero .blog-index-copy nav { justify-content:center;text-align:center;margin-bottom:.75rem; }
+.blog-index-hero .blog-index-copy nav ol { justify-content:center; }
+.blog-index-hero .blog-index-copy nav li:last-child span { color:#01006e; }
+.blog-index-hero-link svg { transition:transform .2s ease; }
+.blog-index-hero-link:hover svg { transform:translateX(4px); }
+.blog-index-toolbar {
+  width:min(100%,1120px);
+  margin:1.75rem auto 0;
+  border-color:rgba(1,0,110,.09);
+  box-shadow:0 12px 35px rgba(1,0,110,.055);
+}
+.blog-index-results { width:min(100%,1120px);margin-inline:auto; }
+.blog-index-section-heading { border-color:#e8e8f0; }
+.blog-post-card { border-radius:1.15rem; }
+.dark .blog-index-page { background:#080817; }
+.dark .blog-index-hero {
+  background:
+    radial-gradient(ellipse at 88% 15%,rgba(180,4,154,.14),transparent 30%),
+    radial-gradient(ellipse at 8% 70%,rgba(80,80,190,.12),transparent 34%),
+    #0b0b20;
+}
+.dark .blog-index-hero::after { background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent); }
+.dark .blog-index-hero .blog-index-copy nav li:last-child span { color:#f0efff; }
+@media (max-width:767px) {
+  .blog-index-hero { min-height:unset;padding-block:2.5rem 2.75rem; }
+  .blog-index-hero .blog-index-copy nav { margin-bottom:.65rem; }
+  .blog-index-toolbar { margin-top:1rem; }
+  .blog-index-results { padding-top:2.25rem; }
+}
