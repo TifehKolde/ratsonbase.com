@@ -14,9 +14,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   try {
     const project = await getPublicProjectBySlug(slug);
-    return { title: project.title + " | Ratsonbase Projects", description: project.description };
+    return { title: project.title, description: project.description, alternates: { canonical: `/projects/${encodeURIComponent(slug)}` } };
   } catch {
-    return { title: "Project | Ratsonbase Construction Limited" };
+    return { title: "Project" };
   }
 }
 
