@@ -452,3 +452,17 @@ input, select, textarea, button { font: inherit; }
 @media (max-width:767px) {
   .blog-index-hero { min-height: 235px; padding-block: 1.25rem; }
 }
+
+.dark .blog-index-hero { border-color: rgba(255,255,255,.08); }
+.dark .article-editorial-hero .text-slate-500 { color: #a1a1b8; }
+.dark .article-editorial-hero .bg-brand-light { background: rgba(180,4,154,.16); color: #fceafa; }
+.dark .article-author-card .text-slate-600,
+.dark .article-related-card .text-slate-500 { color: #a1a1b8; }
+.dark .blog-engagement h2,
+.dark .blog-engagement h3 { color: #f0efff; }
+.dark .blog-engagement .text-slate-600 { color: #c5c5d4; }
+.dark .blog-engagement input,
+.dark .blog-engagement textarea { color: #f8fafc; }
+.dark .blog-engagement input::placeholder,
+.dark .blog-engagement textarea::placeholder { color: #85859f; }
+.dark .blog-engagement .border-slate-200 { border-color: rgba(255,255,255,.12); }
