@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
 import { Send, LoaderCircle, CheckCircle2 } from "lucide-react";
 import { submitPublicComment, type PublicComment } from "@/lib/public-api";
+import { TurnstileField } from "@/components/turnstile-field";
 
 function dateLabel(value: string) {
   const date = new Date(value);
@@ -19,6 +20,8 @@ export function BlogEngagement({ slug, initialComments, comments }: {
   const [commentMessage, setCommentMessage] = useState("");
   const [commentLoading, setCommentLoading] = useState(false);
   const [website, setWebsite] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileResetKey, setTurnstileResetKey] = useState(0);
   const formStartedAt = useRef(0);
 
   useEffect(() => { formStartedAt.current = Date.now(); }, []);
@@ -28,11 +31,12 @@ export function BlogEngagement({ slug, initialComments, comments }: {
     setCommentLoading(true);
     setCommentMessage("");
     try {
-      const result = await submitPublicComment(slug, { name, email: commentEmail, body, website, form_elapsed_ms: Date.now() - formStartedAt.current });
+      const result = await submitPublicComment(slug, { name, email: commentEmail, body, website, form_elapsed_ms: Date.now() - formStartedAt.current, turnstile_token: turnstileToken });
       setCommentMessage(result.message || "Your comment has been submitted and is awaiting moderation.");
       setName("");
       setCommentEmail("");
       setBody("");
+      setTurnstileResetKey(value => value + 1);
     } catch (error) {
       setCommentMessage(error instanceof Error ? error.message : "Unable to submit your comment.");
     } finally {
@@ -59,9 +63,10 @@ export function BlogEngagement({ slug, initialComments, comments }: {
                 <input required type="email" maxLength={254} value={commentEmail} onChange={event => setCommentEmail(event.target.value)} placeholder="Email address" aria-label="Email address" autoComplete="email" className="min-h-12 min-w-0 rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none transition focus:border-accent focus:ring-4 focus:ring-accent/5 dark:border-white/10 dark:bg-[#15152b] dark:text-white" />
               </div>
               <textarea required maxLength={5000} rows={4} value={body} onChange={event => setBody(event.target.value)} placeholder="Write your thoughts..." aria-label="Write your comment" className="min-h-32 resize-y rounded-xl border border-slate-200 bg-white p-4 text-sm outline-none dark:border-white/10 dark:bg-[#15152b] dark:text-white transition focus:border-accent focus:ring-4 focus:ring-accent/5" />
+              <TurnstileField onTokenChange={setTurnstileToken} resetKey={turnstileResetKey} theme="auto" />
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-[.68rem] leading-5 text-slate-400">Your email address will not be displayed publicly. Comments are reviewed before publication.</p>
-                <button disabled={commentLoading} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand px-6 text-sm font-bold text-white transition hover:bg-accent disabled:opacity-60">
+                <button disabled={commentLoading || !turnstileToken} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand px-6 text-sm font-bold text-white transition hover:bg-accent disabled:opacity-60">
                   {commentLoading ? <LoaderCircle className="animate-spin" size={16} /> : <>Post comment <Send size={15} /></>}
                 </button>
               </div>
