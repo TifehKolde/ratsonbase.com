@@ -112,7 +112,7 @@ function BlogDetailSkeleton() {
                 <Block className="h-4 w-4/5" />
               </div>
             ))}
-            <div className="rounded-3xl bg-[#08082f] p-8"><Block className="h-4 w-40 bg-white/15" /><Block className="mt-5 h-8 w-3/4 bg-white/15" /><Block className="mt-4 h-4 w-full bg-white/10" /><Block className="mt-2 h-4 w-4/5 bg-white/10" /><Block className="mt-6 h-11 w-36 rounded-full bg-white/15" /></div>
+            <div className="rounded-3xl bg-[#08082f] p-8"><Block className="skeleton-block-dark h-4 w-40" /><Block className="skeleton-block-dark mt-5 h-8 w-3/4" /><Block className="skeleton-block-dark mt-4 h-4 w-full" /><Block className="skeleton-block-dark mt-2 h-4 w-4/5" /><Block className="skeleton-block-dark mt-6 h-11 w-36 rounded-full" /></div>
             <div className="mt-12 rounded-3xl border border-slate-200 bg-white p-7 dark:border-white/10 dark:bg-[#111127]"><Block className="h-6 w-40" /><Block className="mt-4 h-4 w-full" /><Block className="mt-2 h-4 w-5/6" /></div>
             <div className="mt-14 space-y-5"><Block className="h-8 w-40" /><Block className="h-40 w-full rounded-2xl" /><Block className="h-40 w-full rounded-2xl" /></div>
           </div>
