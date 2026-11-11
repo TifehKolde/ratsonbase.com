@@ -243,7 +243,6 @@ function ListingSkeleton({ type }: { type: "projects" | "services" }) {
   const count = type === "projects" ? 4 : 6;
   return (
     <>
-      <HeroSkeleton />
       <section className="section-pad">
         <div className="container-shell">
           <div className="mb-12 grid gap-6 md:grid-cols-[1fr_.75fr] md:items-end">
@@ -281,8 +280,7 @@ function DetailSkeleton({ type }: { type: "project-detail" | "service-detail" })
   if (type === "project-detail") {
     return (
       <>
-        <HeroSkeleton />
-        <section className="section-pad">
+          <section className="section-pad">
           <div className="container-shell grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-14">
             <div className="space-y-8">
               <Block className="aspect-[16/9] w-full rounded-2xl" />
@@ -303,7 +301,6 @@ function DetailSkeleton({ type }: { type: "project-detail" | "service-detail" })
 
   return (
     <>
-      <HeroSkeleton />
       <section className="section-pad">
         <div className="container-shell grid gap-12 lg:grid-cols-[1.05fr_.95fr] lg:gap-20">
           <div className="space-y-5"><Block className="h-10 w-5/6 sm:h-12" /><Block className="h-4 w-full" /><Block className="h-4 w-full" /><Block className="h-4 w-5/6" /><Block className="mt-4 h-12 w-48 rounded-full" /></div>
