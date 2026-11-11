@@ -51,7 +51,7 @@ export function BlogIndexClient({ posts }: { posts: PublicPost[] }) {
     <section className="blog-index-hero">
       <div className="container-shell relative z-10">
         <div className="blog-index-copy mx-auto max-w-4xl text-center">
-          <Breadcrumbs variant="dark" items={[{ label: "Blogs" }]} />
+          <Breadcrumbs variant="dark" align="center" items={[{ label: "Blogs" }]} />
           <h1 className="mx-auto mt-3 max-w-4xl font-heading text-[clamp(2.2rem,5.2vw,4.2rem)] font-bold leading-[1.04] tracking-[-.065em] text-brand dark:text-white">Insights for the spaces we build and the lives we shape.</h1>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-400">Ideas, expertise and perspectives on construction, engineering, property and the built environment.</p>
           <a href="#latest-articles" className="blog-index-hero-link mt-6 inline-flex items-center gap-2 text-sm font-bold text-brand transition hover:text-accent dark:text-white">Explore the journal <ArrowRight size={16}/></a>
