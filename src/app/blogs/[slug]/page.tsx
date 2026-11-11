@@ -94,9 +94,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <div className="article-reading-layout mx-auto max-w-6xl">
               <div className="article-reading-column min-w-0">
                 {post.excerpt && <p className="article-lead">{post.excerpt}</p>}
-                <Reveal delay={0.06}>
-                  <div className="article-content" dangerouslySetInnerHTML={{ __html: post.content_html }} />
-                </Reveal>
+                <div className="article-content" dangerouslySetInnerHTML={{ __html: post.content_html }} />
 
                 <Reveal delay={0.08}>
                   <aside className="article-inline-cta mt-14 rounded-3xl p-7 text-white sm:p-9">
