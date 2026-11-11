@@ -12,7 +12,7 @@ export function PageHero({ title, description, breadcrumbs, backgroundImage = he
 }) {
   return (
     <section
-      className="page-hero relative isolate overflow-hidden bg-brand py-16 text-white sm:py-24 lg:py-28"
+      className="page-hero relative isolate overflow-hidden bg-brand py-16 pt-[calc(4rem+72px)] text-white sm:py-24 sm:pt-[calc(6rem+78px)] lg:py-28 lg:pt-[calc(7rem+78px)]"
       style={{ backgroundImage: `linear-gradient(90deg, rgba(4,5,34,.91) 0%, rgba(4,5,34,.76) 52%, rgba(4,5,34,.38) 100%), url("${backgroundImage}")`, backgroundSize: "cover", backgroundPosition: "center" }}
     >
       <div className="page-hero-orb page-hero-orb-one absolute -right-24 -top-32 h-96 w-96 rounded-full border border-white/15" />
