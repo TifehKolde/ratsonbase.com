@@ -1460,3 +1460,15 @@ input, select, textarea, button { font: inherit; }
   .ratsonbase-article-page .article-content h5,
   .ratsonbase-article-page .article-content h6 { font-size: 1.02rem !important; }
 }
+
+
+/* Ensure the transparent navigation has no visible divider or shadow. */
+header[data-header-state="transparent"] {
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+header[data-header-state="transparent"]::before,
+header[data-header-state="transparent"]::after {
+  content: none !important;
+  display: none !important;
+}
