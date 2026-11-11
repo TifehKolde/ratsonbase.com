@@ -100,6 +100,7 @@ export default async function HomePage() {
               />
             </div>
             <div className="lg:pt-2">
+              <h2 className="mb-6 max-w-[560px] font-heading text-3xl font-bold leading-tight tracking-[-.045em] text-brand sm:text-4xl">Building with purpose. Delivering with care.</h2>
               <p className="max-w-[760px] text-left text-xl leading-[1.75] text-slate-700 sm:text-[1.4rem]">Ratsonbase Construction Limited is a proudly Nigerian construction and civil engineering company delivering building and infrastructure solutions across residential, commercial and industrial sectors.</p>
               <p className="mt-6 max-w-[760px] text-left text-base leading-8 text-slate-500">From early planning and procurement to construction, finishing and property solutions, we bring together practical expertise, careful coordination and a commitment to quality. Our work is guided by integrity, safety, teamwork, excellence and promptness.</p>
               <Link href="/about" className="mt-8 inline-flex items-center gap-3 text-sm font-extrabold text-brand transition hover:text-accent">Discover our story <ArrowUpRight size={17} className="text-accent"/></Link>
