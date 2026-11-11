@@ -1429,3 +1429,34 @@ input, select, textarea, button { font: inherit; }
     margin-inline: 0;
   }
 }
+
+
+/* Blog article reading typography: crisp black text in light mode and calmer CMS headings. */
+[data-blog-theme="light"] .ratsonbase-article-page .article-content,
+[data-blog-theme="light"] .ratsonbase-article-page .article-content :is(p, li, blockquote, strong, em, span, small, figcaption, td, th),
+[data-blog-theme="light"] .ratsonbase-article-page .article-lead {
+  color: #111111 !important;
+}
+[data-blog-theme="light"] .ratsonbase-article-page .article-content a {
+  color: #111111 !important;
+  text-decoration-color: #111111;
+}
+[data-blog-theme="light"] .ratsonbase-article-page .article-content :is(h1, h2, h3, h4, h5, h6) {
+  color: #111111 !important;
+  letter-spacing: -.035em;
+  line-height: 1.3;
+}
+.ratsonbase-article-page .article-content h1 { font-size: clamp(1.55rem, 3.2vw, 1.9rem) !important; }
+.ratsonbase-article-page .article-content h2 { font-size: clamp(1.4rem, 2.8vw, 1.7rem) !important; }
+.ratsonbase-article-page .article-content h3 { font-size: clamp(1.2rem, 2.3vw, 1.4rem) !important; }
+.ratsonbase-article-page .article-content h4,
+.ratsonbase-article-page .article-content h5,
+.ratsonbase-article-page .article-content h6 { font-size: 1.08rem !important; }
+@media (max-width: 767px) {
+  .ratsonbase-article-page .article-content h1 { font-size: 1.45rem !important; }
+  .ratsonbase-article-page .article-content h2 { font-size: 1.3rem !important; }
+  .ratsonbase-article-page .article-content h3 { font-size: 1.15rem !important; }
+  .ratsonbase-article-page .article-content h4,
+  .ratsonbase-article-page .article-content h5,
+  .ratsonbase-article-page .article-content h6 { font-size: 1.02rem !important; }
+}
