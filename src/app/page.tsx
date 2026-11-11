@@ -7,6 +7,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { IntroVideo } from "@/components/intro-video";
 import { Reveal } from "@/components/reveal";
 import { ProjectCarousel } from "@/components/project-carousel";
+import { ClientLogoCarousel } from "@/components/client-logo-carousel";
 import { ManagingPartnerMessage } from "@/components/managing-partner-message";
 import { getPublicProjects, getPublicServices, type PublicProject, type PublicService } from "@/lib/public-api";
 
@@ -114,11 +115,13 @@ export default async function HomePage() {
         <section className="section-pad relative overflow-hidden bg-[#f7f7fb]">
           <div className="construction-blueprint pointer-events-none absolute inset-y-0 right-0 hidden w-[42%] opacity-60 lg:block"/>
           <Reveal className="container-shell relative">
-            <div className="flex flex-col justify-between gap-7 md:flex-row md:items-end"><div><h2 className="mt-6 max-w-[650px] text-5xl font-bold leading-[1.02] text-brand sm:text-6xl">From first plan to final finish.</h2></div><p className="max-w-[390px] text-base leading-7 text-slate-500">Practical expertise and a hands-on approach, shaped around the needs of each project.</p></div>
+            <div className="flex flex-col justify-between gap-7 md:flex-row md:items-end"><div><h2 className="mt-6 max-w-[650px] text-5xl font-bold leading-[1.02] text-brand sm:text-6xl">What we do</h2></div><p className="max-w-[390px] text-base leading-7 text-slate-500">Practical expertise and a hands-on approach, shaped around the needs of each project.</p></div>
             {services.length ? <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{services.slice(0,6).map((service,index)=><article key={service.id} className="glass-service-card group rounded-[1.35rem] border border-white/80 bg-white/75 p-7 shadow-[0_12px_40px_rgba(1,0,110,.045)] backdrop-blur-xl transition duration-500 hover:-translate-y-2 hover:border-accent/20 hover:shadow-[0_24px_60px_rgba(1,0,110,.11)] sm:p-8"><span className="flex items-center justify-between text-xs font-extrabold tracking-[.18em] text-accent"><span>{String(index+1).padStart(2,"0")}</span><span className="grid h-9 w-9 place-items-center rounded-full border border-brand/10 text-brand transition group-hover:rotate-45 group-hover:bg-accent group-hover:text-white"><ArrowUpRight size={16}/></span></span><h3 className="mt-8 text-2xl font-bold text-brand">{service.title}</h3><p className="mt-3 text-sm leading-7 text-slate-500">{service.description}</p><Link href={"/services/"+service.slug} className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-brand transition group-hover:text-accent">Explore service <ArrowUpRight size={15}/></Link></article>)}</div> : <p className="mt-12 rounded-2xl border border-slate-200 bg-white p-8 text-slate-600">Our service information is being updated. <Link href="/contact" className="font-semibold text-accent">Contact us</Link> to discuss your project.</p>}
             <Link href="/services" className="mt-9 inline-flex items-center gap-2 text-sm font-extrabold text-brand">View all services <ArrowRight size={16}/></Link>
           </Reveal>
         </section>
+
+        <ClientLogoCarousel />
 
         <section className="section-pad relative overflow-hidden bg-white">
           <div className="construction-linework pointer-events-none absolute -left-24 top-1/2 h-[500px] w-[500px] -translate-y-1/2 opacity-35"/>
