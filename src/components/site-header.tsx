@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { usePathname } from "next/navigation";
@@ -46,9 +47,16 @@ export function SiteHeader() {
   return (
     <header className={headerClass}>
       <div className="container-shell flex h-[72px] items-center justify-between sm:h-[78px]">
-        <Link href="/" className="flex items-center gap-3" aria-label="Ratsonbase home">
-          <span className={"grid h-10 w-10 place-items-center rounded-xl sm:h-11 sm:w-11 " + (transparent ? "border border-white/30 bg-white/10 text-white backdrop-blur-md" : "bg-brand text-white")}><span className="font-heading text-2xl font-extrabold">R</span></span>
-          <span className="leading-none"><span className="block font-heading text-base font-extrabold tracking-[-.055em] sm:text-[1.08rem]">RATSONBASE</span><span className={"mt-1 block text-[.55rem] font-bold tracking-[.17em] sm:text-[.57rem] " + (transparent ? "text-white/70" : "text-slate-500")}>CONSTRUCTION LIMITED</span></span>
+        <Link href="/" className="flex min-w-0 items-center" aria-label="Ratsonbase Construction Limited home">
+          <Image
+            src={transparent ? "/logos/ratson%20logo%20white.png" : "/logos/ratsonbase-logo.png"}
+            alt="Ratsonbase Construction Limited"
+            width={220}
+            height={64}
+            priority
+            sizes="(max-width: 640px) 170px, 210px"
+            className="h-10 w-auto max-w-[170px] object-contain sm:h-12 sm:max-w-[210px]"
+          />
         </Link>
         <nav className="hidden items-center gap-6 xl:gap-7 lg:flex" aria-label="Main navigation">
           {links.map((link) => <Link key={link.href} href={link.href} aria-current={pathname === link.href || pathname.startsWith(link.href + "/") ? "page" : undefined} className={"text-sm font-semibold transition hover:text-accent " + (pathname === link.href ? "text-accent" : transparent ? "text-white/90" : "text-slate-950")}>{link.label}</Link>)}
@@ -62,7 +70,9 @@ export function SiteHeader() {
             <motion.button type="button" aria-label="Close navigation backdrop" className="fixed inset-0 z-[9998] cursor-default bg-[#05051f]/60 backdrop-blur-[3px] lg:hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: .22 }} onClick={() => setOpen(false)}/>
             <motion.aside id="mobile-navigation" role="dialog" aria-modal="true" aria-label="Mobile navigation" className="fixed inset-y-0 right-0 z-[9999] flex w-[min(88vw,420px)] max-w-full flex-col bg-white text-slate-950 shadow-2xl lg:hidden" initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ type: "spring", stiffness: 320, damping: 34 }}>
               <div className="flex h-[72px] shrink-0 items-center justify-between border-b border-slate-100 px-5 sm:px-6">
-                <Link href="/" onClick={() => setOpen(false)} className="font-heading text-lg font-extrabold tracking-[-.05em] text-brand">RATSONBASE<span className="ml-2 text-[.55rem] font-bold tracking-[.16em] text-slate-400">LIMITED</span></Link>
+                <Link href="/" onClick={() => setOpen(false)} aria-label="Ratsonbase home" className="flex items-center">
+                  <Image src="/logos/ratsonbase-logo.png" alt="Ratsonbase Construction Limited" width={200} height={58} sizes="170px" className="h-10 w-auto max-w-[175px] object-contain" />
+                </Link>
                 <button type="button" onClick={() => setOpen(false)} aria-label="Close menu" className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-200 text-brand"><X size={20}/></button>
               </div>
               <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-6 sm:px-6 sm:py-8">
