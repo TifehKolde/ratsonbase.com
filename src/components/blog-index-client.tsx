@@ -31,7 +31,7 @@ function PostCard({ post }: { post: PublicPost }) {
     </Link>
     <div className="flex flex-1 flex-col p-5 sm:p-6">
       <div className="flex flex-wrap items-center gap-2 text-[.7rem] font-medium text-slate-500 dark:text-slate-400"><CalendarDays size={13}/>{formatDate(post.published_at || post.created_at)}<span className="text-slate-300">•</span><Clock3 size={13}/>{readTime(post.content_html)} min read</div>
-      <Link href={"/blogs/" + post.slug}><h2 className="mt-4 line-clamp-2 min-h-[3.6rem] text-xl font-bold leading-[1.35] tracking-[-.025em] text-[#171735] transition group-hover:text-accent dark:text-white">{post.title}</h2></Link>
+      <Link href={"/blogs/" + post.slug}><h2 className="blog-card-title mt-4 line-clamp-2 min-h-[3.6rem] overflow-hidden text-ellipsis text-xl font-bold leading-[1.35] tracking-[-.025em] text-[#171735] transition group-hover:text-accent dark:text-white">{post.title}</h2></Link>
       <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-500 dark:text-slate-400">{post.excerpt || "Explore ideas and perspectives from Ratsonbase Construction Limited."}</p>
       <div className="mt-auto flex items-center justify-between gap-3 border-t border-slate-100 pt-5 dark:border-white/10">
         <div className="flex min-w-0 items-center gap-2.5"><Avatar post={post}/><span className="truncate text-xs font-semibold text-slate-700 dark:text-slate-300">{post.author?.name || "Ratsonbase Team"}</span></div>
