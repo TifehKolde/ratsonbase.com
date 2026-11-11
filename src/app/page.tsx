@@ -88,14 +88,14 @@ export default async function HomePage() {
 
         <section className="section-pad relative overflow-hidden">
           <div className="construction-linework pointer-events-none absolute -right-16 top-10 hidden h-[430px] w-[430px] opacity-60 lg:block"/>
-          <Reveal className="container-shell relative grid gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-16">
+          <Reveal className="container-shell relative grid gap-10 lg:grid-cols-[1.25fr_.75fr] lg:gap-14">
             <div className="relative mt-2 aspect-[4/3] w-full overflow-hidden rounded-[1.5rem] bg-brand-light shadow-[0_24px_60px_rgba(1,0,110,.12)] sm:aspect-[5/4] lg:mt-0">
               <Image
                 src="/images/banners/DSC03322b.jpg"
                 alt="Ratsonbase construction project"
                 fill
                 priority={false}
-                sizes="(max-width: 1024px) 100vw, 52vw"
+                sizes="(max-width: 1024px) 100vw, 60vw"
                 className="object-cover"
               />
             </div>
