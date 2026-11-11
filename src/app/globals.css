@@ -1244,3 +1244,18 @@ input, select, textarea, button { font: inherit; }
   .client-logo-marquee { overflow-x: auto; mask-image: none; -webkit-mask-image: none; }
   .client-logo-item { transition: none; }
 }
+
+
+/* Shared transparent-to-glass navigation across the site. */
+@media (max-width: 767px) {
+  .page-hero { padding-top: calc(4.25rem + 72px) !important; }
+}
+/* Custom editorial heroes also sit beneath the fixed transparent header. */
+.blog-index-page .blog-index-hero {
+  padding-top: calc(clamp(2.5rem, 5vw, 4.25rem) + 78px);
+}
+@media (max-width: 767px) {
+  .blog-index-page .blog-index-hero {
+    padding-top: calc(2.1rem + 72px);
+  }
+}
