@@ -3,36 +3,13 @@ import { ImageResponse } from "next/og";
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 
+const mark = "data:image/png;base64,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";
+
 export default function AppleIcon() {
   return new ImageResponse(
     (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          borderRadius: 42,
-          background: "#01006e",
-          color: "#ffffff",
-          fontSize: 112,
-          fontWeight: 800,
-          fontFamily: "Arial, sans-serif",
-          position: "relative",
-        }}
-      >
-        R
-        <div
-          style={{
-            position: "absolute",
-            bottom: 28,
-            width: 78,
-            height: 7,
-            borderRadius: 8,
-            background: "#b4049a",
-          }}
-        />
+      <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 42, background: "#01006e" }}>
+        <img src={mark} width="142" height="142" />
       </div>
     ),
     size,
