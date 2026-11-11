@@ -310,7 +310,7 @@ input, select, textarea, button { font: inherit; }
 .article-feature-figure figcaption { background:#fff; }
 .article-content {
   max-width:100%;color:#444458;font-size:1.125rem;line-height:1.85;
-  letter-spacing:-.008em;overflow-wrap:anywhere;
+  letter-spacing:-.008em;overflow-wrap:break-word;word-break:normal;min-width:0;
 }
 .article-content>*+* { margin-top:1.45em; }
 .article-content h2,.article-content h3,.article-content h4 {
@@ -1281,3 +1281,48 @@ input, select, textarea, button { font: inherit; }
   text-overflow: ellipsis;
   overflow-wrap: anywhere;
 }
+
+/* Normalize rich article HTML from the CMS so media and formatted blocks stay within the reading column. */
+.article-content,
+.article-content * { box-sizing: border-box; }
+.article-content img,
+.article-content picture,
+.article-content video,
+.article-content iframe,
+.article-content embed,
+.article-content object {
+  max-width: 100% !important;
+}
+.article-content img,
+.article-content picture img {
+  height: auto !important;
+}
+.article-content figure,
+.article-content .wp-block-image,
+.article-content .wp-block-embed,
+.article-content .wp-block-table {
+  max-width: 100%;
+  margin-inline: 0;
+}
+.article-content table,
+.article-content .wp-block-table {
+  width: 100%;
+  overflow-x: auto;
+}
+.article-content table { display: block; }
+.article-content pre {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre;
+  -webkit-overflow-scrolling: touch;
+}
+.article-content iframe,
+.article-content video { display: block; }
+.article-content h1,
+.article-content h2,
+.article-content h3,
+.article-content h4,
+.article-content p,
+.article-content li { overflow-wrap: break-word; word-break: normal; }
+.article-content hr { border: 0; border-top: 1px solid #e4e4ef; }
+.dark .article-content hr { border-top-color: rgba(255,255,255,.14); }
