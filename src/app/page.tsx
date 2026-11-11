@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -88,8 +89,15 @@ export default async function HomePage() {
         <section className="section-pad relative overflow-hidden">
           <div className="construction-linework pointer-events-none absolute -right-16 top-10 hidden h-[430px] w-[430px] opacity-60 lg:block"/>
           <Reveal className="container-shell relative grid gap-10 lg:grid-cols-[.82fr_1.18fr] lg:gap-24">
-            <div>
-              <h2 className="mt-6 max-w-[520px] text-4xl font-bold leading-[1.04] text-brand sm:text-5xl lg:text-[3.6rem]">Building with purpose. Delivering with care.</h2>
+            <div className="relative mt-2 aspect-[4/3] w-full overflow-hidden rounded-[1.5rem] bg-brand-light shadow-[0_24px_60px_rgba(1,0,110,.12)] sm:aspect-[5/4] lg:mt-0">
+              <Image
+                src="/images/banners/DSC03322b.jpg"
+                alt="Ratsonbase construction project"
+                fill
+                priority={false}
+                sizes="(max-width: 1024px) 100vw, 42vw"
+                className="object-cover"
+              />
             </div>
             <div className="lg:pt-2">
               <p className="max-w-[760px] text-left text-xl leading-[1.75] text-slate-700 sm:text-[1.4rem]">Ratsonbase Construction Limited is a proudly Nigerian construction and civil engineering company delivering building and infrastructure solutions across residential, commercial and industrial sectors.</p>
