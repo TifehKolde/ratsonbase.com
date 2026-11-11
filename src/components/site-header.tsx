@@ -51,7 +51,7 @@ export function SiteHeader({ forceSolid = false }: { forceSolid?: boolean }) {
   const headerClass =
     "fixed inset-x-0 top-0 z-50 transition-all duration-300 " +
     (transparent
-      ? "border-b border-white/15 bg-transparent text-white"
+      ? "border-b-0 bg-transparent text-white"
       : "border-b border-white/50 bg-white/85 text-slate-950 shadow-[0_8px_30px_rgba(10,10,40,.08)] backdrop-blur-2xl supports-[backdrop-filter]:bg-white/75");
 
   return (
