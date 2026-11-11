@@ -102,7 +102,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                       <p className="text-[.65rem] font-extrabold uppercase tracking-[.18em] text-white/65">Build with confidence</p>
                       <h2 className="mt-3 font-heading text-2xl font-bold leading-tight sm:text-3xl">Planning a project of your own?</h2>
                       <p className="mt-3 max-w-xl text-sm leading-7 text-white/75">Speak with the Ratsonbase team about construction, engineering and property solutions shaped around your project goals.</p>
-                      <Link href="/contact" className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-brand transition hover:bg-[#fceafa]">Talk to our team <ArrowUpRight size={16} /></Link>
+                      <Link href="/contact" className="relative z-10 mt-6 inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold !text-[#01006e] transition hover:bg-[#fceafa]">Talk to our team <ArrowUpRight size={16} /></Link>
                     </div>
                   </aside>
                 </Reveal>
