@@ -35,8 +35,18 @@ export default async function HomePage() {
       <main>
         <section className="hero-photo relative flex min-h-[690px] items-center overflow-hidden py-32 text-white sm:min-h-[790px]">
           <div className="hero-video-layer absolute inset-0">
+            <video
+              className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[center_35%] md:hidden"
+              src="/videos/wumego.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-hidden="true"
+            />
             <iframe
-              className="pointer-events-none absolute left-1/2 top-1/2 h-[56.25vw] min-h-full w-[177.78vh] min-w-full -translate-x-1/2 -translate-y-1/2"
+              className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[56.25vw] min-h-full w-[177.78vh] min-w-full -translate-x-1/2 -translate-y-1/2 md:block"
               src="https://www.youtube-nocookie.com/embed/YppH2GNQ-Z8?autoplay=1&mute=1&controls=0&loop=1&playlist=YppH2GNQ-Z8&playsinline=1&rel=0&modestbranding=1"
               title="Ratsonbase Construction Limited company film"
               allow="autoplay; encrypted-media; picture-in-picture"
