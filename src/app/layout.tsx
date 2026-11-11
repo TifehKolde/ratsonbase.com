@@ -42,7 +42,7 @@ const organizationSchema = {
   "@type": "Organization",
   name: "Ratsonbase Construction Limited",
   url: siteUrl,
-  email: "info@ratsonbase.com",
+  email: "hello@ratsonbase.com",
   description:
     "A Nigerian construction and civil engineering company delivering residential, commercial and industrial building solutions.",
   areaServed: {
