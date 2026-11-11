@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Quote, X } from "lucide-react";
 import { Reveal } from "@/components/reveal";
@@ -35,8 +36,14 @@ export function ManagingPartnerMessage({ storyAction = "link" }: ManagingPartner
               <div>
                 <h2 className="mt-6 max-w-sm text-4xl font-bold leading-[1.04] tracking-[-.05em] sm:text-5xl">A word from our Managing Partner.</h2>
                 <div className="mt-8 overflow-hidden rounded-3xl border border-white/15 bg-white/5">
-                  <div className="grid aspect-[4/3] place-items-center bg-gradient-to-br from-[#17175e] to-[#08082f]">
-                    <span className="grid h-28 w-28 place-items-center rounded-full border border-white/25 bg-white/10 font-heading text-4xl font-bold text-white">OO</span>
+                  <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-[#17175e] to-[#08082f]">
+                    <Image
+                      src="/images/managing-partner.jpg"
+                      alt="Engr. Olaoluwa Ogunbode, Managing Partner of Ratsonbase Construction Limited"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 38vw"
+                      className="object-cover object-center"
+                    />
                   </div>
                   <div className="p-5">
                     <p className="text-lg font-bold">Engr. Olaoluwa Ogunbode</p>
