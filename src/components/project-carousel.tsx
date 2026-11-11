@@ -12,9 +12,10 @@ function formatProjectDate(value?: string | null) {
   return Number.isNaN(date.getTime()) ? "" : new Intl.DateTimeFormat("en", { month: "short", year: "numeric" }).format(date);
 }
 
-export function ProjectCarousel({ projects, heading = "A closer look at our work" }: {
+export function ProjectCarousel({ projects, heading = "A closer look at our work", compactTop = false }: {
   projects: PublicProject[];
   heading?: string;
+  compactTop?: boolean;
 }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
@@ -51,7 +52,7 @@ export function ProjectCarousel({ projects, heading = "A closer look at our work
   if (!projects.length) return null;
 
   return (
-    <section className="section-pad overflow-hidden bg-white">
+    <section className={`section-pad overflow-hidden bg-white ${compactTop ? "!pt-8 sm:!pt-12" : ""}`}>
       <div className="container-shell">
         <Reveal>
           <div className="grid gap-7 border-b border-[#e8e8ef] pb-9 md:grid-cols-[1.1fr_.9fr] md:items-end md:gap-12">
