@@ -60,8 +60,8 @@ export function ProjectCarousel({ projects, heading = "A closer look at our work
             </div>
             <div className="flex flex-col gap-6 md:pb-1">
               <p className="max-w-xl text-base leading-8 text-slate-500 md:ml-auto">Explore selected residential, commercial and infrastructure projects shaped by careful planning and considered execution.</p>
+              <Link href="/projects" className="self-start text-sm font-extrabold text-brand transition hover:text-accent md:self-end">Explore all work <ArrowUpRight className="ml-1 inline" size={15}/></Link>
               <div className="flex items-center justify-start gap-3 md:justify-end">
-                <Link href="/projects" className="mr-3 text-sm font-extrabold text-brand transition hover:text-accent">Explore all work <ArrowUpRight className="ml-1 inline" size={15}/></Link>
                 <button type="button" aria-label="Previous projects" onClick={() => goTo(Math.max(0, active - 1))} disabled={active === 0} className="grid h-12 w-12 place-items-center rounded-full border border-brand/15 bg-white text-brand transition hover:border-brand hover:bg-brand hover:text-white disabled:cursor-not-allowed disabled:opacity-30"><ArrowLeft size={18}/></button>
                 <button type="button" aria-label="Next projects" onClick={() => goTo(Math.min(projects.length - 1, active + 1))} disabled={active >= projects.length - 1} className="grid h-12 w-12 place-items-center rounded-full border border-brand/15 bg-white text-brand transition hover:border-brand hover:bg-brand hover:text-white disabled:cursor-not-allowed disabled:opacity-30"><ArrowRight size={18}/></button>
               </div>
