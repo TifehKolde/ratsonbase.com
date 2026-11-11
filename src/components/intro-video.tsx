@@ -33,7 +33,6 @@ export function IntroVideo() {
           </div>
 
         </div>
-        <p className="mt-5 text-center text-[.65rem] font-bold uppercase tracking-[.2em] text-white/35">Ratsonbase Construction Limited, Company film</p>
       </div>
     </section>
   );
