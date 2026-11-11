@@ -109,7 +109,7 @@ export default async function HomePage() {
         </section>
 
         <Reveal><IntroVideo /></Reveal>
-        <ProjectCarousel projects={projects} heading="A closer look at what we build." />
+        <ProjectCarousel projects={projects} heading="Our featured projects" />
 
         <section className="section-pad relative overflow-hidden bg-[#f7f7fb]">
           <div className="construction-blueprint pointer-events-none absolute inset-y-0 right-0 hidden w-[42%] opacity-60 lg:block"/>
