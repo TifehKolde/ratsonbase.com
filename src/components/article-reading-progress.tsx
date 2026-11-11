@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export function ArticleReadingProgress() {
+export function ScrollProgressIndicator() {
   const [progress, setProgress] = useState(0);
   useEffect(() => {
     const update = () => {
@@ -14,5 +14,5 @@ export function ArticleReadingProgress() {
     window.addEventListener("resize", update);
     return () => { window.removeEventListener("scroll", update); window.removeEventListener("resize", update); };
   }, []);
-  return <div className="fixed inset-x-0 top-0 z-[120] h-[3px] bg-white/20" aria-label="Article reading progress"><div className="h-full bg-accent shadow-[0_0_12px_rgba(180,4,154,.55)] transition-[width] duration-100" style={{ width: progress + "%" }}/></div>;
+  return <div className="pointer-events-none fixed inset-x-0 top-[72px] z-[60] h-[2px] bg-slate-200/70 sm:top-[78px]" aria-label="Article reading progress"><div className="h-full bg-accent shadow-[0_0_10px_rgba(180,4,154,.45)] transition-[width] duration-100" style={{ width: progress + "%" }}/></div>;
 }
