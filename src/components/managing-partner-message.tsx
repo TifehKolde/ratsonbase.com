@@ -34,8 +34,7 @@ export function ManagingPartnerMessage({ storyAction = "link" }: ManagingPartner
           <Reveal>
             <div className="grid items-center gap-10 lg:grid-cols-[.78fr_1.22fr] lg:gap-16">
               <div>
-                <h2 className="mt-6 max-w-sm text-4xl font-bold leading-[1.04] tracking-[-.05em] sm:text-5xl">A word from our Managing Partner.</h2>
-                <div className="mt-8 overflow-hidden rounded-3xl border border-white/15 bg-white/5">
+                <div className="overflow-hidden rounded-3xl border border-white/15 bg-white/5">
                   <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-[#17175e] to-[#08082f]">
                     <Image
                       src="/images/managing-partner.jpg"
