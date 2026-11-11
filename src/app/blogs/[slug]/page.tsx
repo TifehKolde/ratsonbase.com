@@ -53,7 +53,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <>
-      <SiteHeader />
+      <SiteHeader forceSolid />
       <ArticleReadingProgress />
       <BlogThemeShell>
       <main className="ratsonbase-article-page">
