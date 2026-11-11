@@ -20,7 +20,7 @@ function LogoGroup({ duplicate = false }: { duplicate?: boolean }) {
             src={client.src}
             alt={duplicate ? "" : client.name}
             fill
-            sizes="(max-width: 640px) 120px, 176px"
+            sizes="(max-width: 640px) 144px, 208px"
             className="object-contain"
           />
         </div>
@@ -31,7 +31,7 @@ function LogoGroup({ duplicate = false }: { duplicate?: boolean }) {
 
 export function ClientLogoCarousel() {
   return (
-    <section className="section-pad overflow-hidden bg-[#f7f7fb]">
+    <section className="section-pad overflow-hidden bg-white">
       <div className="container-shell">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-heading text-3xl font-bold tracking-[-.045em] text-brand sm:text-4xl">
@@ -41,7 +41,7 @@ export function ClientLogoCarousel() {
             We value the relationships behind every project and every successful delivery.
           </p>
         </div>
-        <div className="client-logo-marquee mt-10" aria-label="Ratsonbase clients">
+        <div className="client-logo-marquee mt-10" role="region" aria-label="Ratsonbase client logos">
           <div className="client-logo-track">
             <LogoGroup />
             <LogoGroup duplicate />
