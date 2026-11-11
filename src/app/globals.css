@@ -1269,3 +1269,15 @@ input, select, textarea, button { font: inherit; }
     padding-top: calc(1.5rem + 72px) !important;
   }
 }
+
+
+/* Keep long editorial titles neatly truncated in article cards. */
+.blog-card-title,
+.article-related-card h3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
+}
