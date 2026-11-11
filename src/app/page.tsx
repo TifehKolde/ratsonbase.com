@@ -7,6 +7,7 @@ import { IntroVideo } from "@/components/intro-video";
 import { Reveal } from "@/components/reveal";
 import { ProjectCarousel } from "@/components/project-carousel";
 import { ManagingPartnerMessage } from "@/components/managing-partner-message";
+import { CompanyTrustMark } from "@/components/company-trust-mark";
 import { getPublicProjects, getPublicServices, type PublicProject, type PublicService } from "@/lib/public-api";
 
 export const metadata: Metadata = {
@@ -56,7 +57,7 @@ export default async function HomePage() {
           </div>
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,8,39,.88)_0%,rgba(5,8,39,.62)_52%,rgba(5,8,39,.28)_100%)]"/>
           <Reveal className="container-shell relative z-10 pt-0 sm:pt-10">
-            <p className="mb-4 font-heading text-xl font-extrabold leading-tight tracking-[-.04em] text-[#f1b5e9] sm:mb-5 sm:text-2xl">
+            <p className="mb-4 font-heading text-xl font-extrabold uppercase leading-tight tracking-[.12em] text-[#eeeeff] sm:mb-5 sm:text-2xl">
               Building with purpose
             </p>
             <h1 className="mt-0 max-w-[900px] font-heading text-[clamp(2.55rem,10.5vw,3.5rem)] font-bold leading-[.96] tracking-[-.075em] sm:mt-1 sm:text-[clamp(3.1rem,7vw,6.4rem)] sm:leading-[.92]">
@@ -90,14 +91,11 @@ export default async function HomePage() {
           <Reveal className="container-shell relative grid gap-10 lg:grid-cols-[.82fr_1.18fr] lg:gap-24">
             <div>
               <h2 className="mt-6 max-w-[520px] text-4xl font-bold leading-[1.04] text-brand sm:text-5xl lg:text-[3.6rem]">Building with purpose. Delivering with care.</h2>
-              <div className="mt-8 inline-flex items-center gap-3 border-y border-accent/35 py-3 pr-5">
-                <span className="h-7 w-1 rounded-full bg-accent" aria-hidden="true" />
-                <span className="text-[.68rem] font-extrabold uppercase tracking-[.2em] text-brand sm:text-xs">Proudly Nigerian · Built on trust</span>
-              </div>
+              <CompanyTrustMark />
             </div>
             <div className="lg:pt-2">
-              <p className="max-w-[760px] text-justify text-xl leading-[1.75] text-slate-700 sm:text-[1.4rem]">Ratsonbase Construction Limited is a proudly Nigerian construction and civil engineering company delivering building and infrastructure solutions across residential, commercial and industrial sectors.</p>
-              <p className="mt-6 max-w-[700px] text-justify text-base leading-8 text-slate-500">From early planning and procurement to construction, finishing and property solutions, we bring together practical expertise, careful coordination and a commitment to quality. Our work is guided by integrity, safety, teamwork, excellence and promptness.</p>
+              <p className="max-w-[760px] text-left text-xl leading-[1.75] text-slate-700 sm:text-[1.4rem]">Ratsonbase Construction Limited is a proudly Nigerian construction and civil engineering company delivering building and infrastructure solutions across residential, commercial and industrial sectors.</p>
+              <p className="mt-6 max-w-[760px] text-left text-base leading-8 text-slate-500">From early planning and procurement to construction, finishing and property solutions, we bring together practical expertise, careful coordination and a commitment to quality. Our work is guided by integrity, safety, teamwork, excellence and promptness.</p>
               <Link href="/about" className="mt-8 inline-flex items-center gap-3 text-sm font-extrabold text-brand transition hover:text-accent">Discover our story <ArrowUpRight size={17} className="text-accent"/></Link>
             </div>
           </Reveal>
