@@ -33,7 +33,7 @@ export default async function HomePage() {
     <>
       <SiteHeader />
       <main>
-        <section className="hero-photo relative flex min-h-[690px] items-center overflow-hidden py-32 text-white sm:min-h-[790px]">
+        <section className="hero-photo relative flex min-h-[640px] items-center overflow-hidden px-0 pt-24 pb-20 text-white sm:min-h-[790px] sm:py-32">
           <div className="hero-video-layer absolute inset-0">
             <video
               className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[center_35%] md:hidden"
@@ -55,22 +55,29 @@ export default async function HomePage() {
             />
           </div>
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,8,39,.88)_0%,rgba(5,8,39,.62)_52%,rgba(5,8,39,.28)_100%)]"/>
-          <Reveal className="container-shell relative z-10 pt-10">
-            <h1 className="mt-7 max-w-[900px] font-heading text-[clamp(3.1rem,7vw,6.4rem)] font-bold leading-[.92] tracking-[-.075em]">
+          <Reveal className="container-shell relative z-10 pt-0 sm:pt-10">
+            <h1 className="mt-3 max-w-[900px] font-heading text-[clamp(2.55rem,10.5vw,3.5rem)] font-bold leading-[.96] tracking-[-.075em] sm:mt-7 sm:text-[clamp(3.1rem,7vw,6.4rem)] sm:leading-[.92]">
               We build spaces <span className="text-[#e9a0df]">that move</span> life forward.
             </h1>
-            <p className="mt-8 max-w-[560px] text-base leading-8 text-white/80 sm:text-lg">
+            <p className="mt-5 max-w-[560px] text-sm leading-7 text-white/85 sm:mt-8 sm:text-lg sm:leading-8">
               Thoughtful construction. Dependable delivery. Lasting value. We turn ambitious ideas into places made to stand the test of time.
             </p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <Link href="/contact" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-accent px-7 text-sm font-bold text-white transition hover:-translate-y-1 hover:bg-[#980281]">Discuss your project <ArrowUpRight size={17}/></Link>
-              <Link href="/projects" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full border border-white/45 bg-white/5 px-7 text-sm font-bold text-white backdrop-blur-md transition hover:bg-white/15">Explore our work <ArrowRight size={17}/></Link>
+            <div className="mt-7 grid grid-cols-2 gap-2 sm:mt-10 sm:flex sm:flex-row sm:gap-3">
+              <Link href="/contact" className="inline-flex min-w-0 min-h-12 items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-accent px-1.5 text-[.62rem] font-bold text-white transition hover:-translate-y-1 hover:bg-[#980281] sm:min-h-14 sm:gap-3 sm:px-7 sm:text-sm">Discuss your project <ArrowUpRight size={14} className="shrink-0 sm:h-[17px] sm:w-[17px]"/></Link>
+              <Link href="/projects" className="inline-flex min-w-0 min-h-12 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/45 bg-white/5 px-1.5 text-[.62rem] font-bold text-white backdrop-blur-md transition hover:bg-white/15 sm:min-h-14 sm:gap-3 sm:px-7 sm:text-sm">Explore our work <ArrowRight size={14} className="shrink-0 sm:h-[17px] sm:w-[17px]"/></Link>
             </div>
           </Reveal>
-          <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/20 bg-[#08082f]/10 backdrop-blur-sm">
-            <div className="container-shell flex min-h-[72px] items-center justify-between gap-4 text-[.65rem] font-bold uppercase tracking-[.16em] text-white/75 sm:text-xs">
-              <span>Construction</span><span className="hidden sm:inline">Engineering</span><span>Renovation</span><span className="hidden md:inline">Project delivery</span><Link href="/about" className="text-white">Discover <ArrowUpRight className="ml-1 inline" size={14}/></Link>
+          <div className="hero-footer absolute bottom-0 left-0 right-0 z-10 flex min-h-[60px] items-center gap-4 overflow-hidden border-t border-white/20 bg-[#08082f]/20 backdrop-blur-sm sm:min-h-[72px]">
+            <div className="hero-marquee min-w-0 flex-1 overflow-hidden" aria-label="Construction, engineering, renovation and project delivery">
+              <div className="hero-marquee-track">
+                {[0, 1].map((copy) => (
+                  <div key={copy} className="hero-marquee-group" aria-hidden={copy === 1}>
+                    <span>Construction</span><span>Engineering</span><span>Renovation</span><span>Project delivery</span>
+                  </div>
+                ))}
+              </div>
             </div>
+            <Link href="/about" className="mr-4 inline-flex shrink-0 items-center whitespace-nowrap text-[.62rem] font-bold uppercase tracking-[.12em] text-white sm:mr-8 sm:text-xs">Discover <ArrowUpRight className="ml-1 inline" size={14}/></Link>
           </div>
           <div className="hero-orbit absolute -right-28 top-28 hidden h-72 w-72 rounded-full border border-white/20 lg:block"/>
         </section>
