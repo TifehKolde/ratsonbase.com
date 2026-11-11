@@ -1,5 +1,3 @@
-import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
 import { Reveal } from "@/components/reveal";
 
 const team = [
@@ -42,11 +40,6 @@ export function TeamSection() {
               </article>
             </Reveal>
           ))}
-        </div>
-        <p className="mt-5 text-xs leading-6 text-slate-400">Initial-based portraits are used until approved team photographs are provided.</p>
-        <div className="mt-8 flex flex-col gap-4 rounded-2xl border border-brand/10 bg-white p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
-          <p className="max-w-2xl text-sm leading-7 text-slate-600">Meet the people responsible for the work, the decisions and the standards that define Ratsonbase.</p>
-          <Link href="/contact" className="inline-flex shrink-0 items-center gap-2 text-sm font-extrabold text-brand transition hover:text-accent">Get in touch <ArrowUpRight size={16}/></Link>
         </div>
       </div>
     </section>
