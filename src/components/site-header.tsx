@@ -67,7 +67,7 @@ export function SiteHeader() {
               </span>
             </span>
           ) : (
-            <Image src="/logos/ratsonbase-logo.png" alt="Ratsonbase Construction Limited" width={220} height={64} priority sizes="(max-width: 640px) 170px, 210px" className="h-10 w-auto max-w-[170px] object-contain sm:h-12 sm:max-w-[210px]" />
+            <Image src="/logos/ratsonbase-logo.png" alt="Ratsonbase Construction Limited" width={220} height={64} priority sizes="(max-width: 640px) 175px, 210px" className="h-11 w-[175px] object-cover object-center sm:h-12 sm:w-[205px]" />
           )}
         </Link>
         <nav className="hidden items-center gap-6 xl:gap-7 lg:flex" aria-label="Main navigation">
@@ -83,7 +83,7 @@ export function SiteHeader() {
             <motion.aside id="mobile-navigation" role="dialog" aria-modal="true" aria-label="Mobile navigation" className="fixed inset-y-0 right-0 z-[9999] flex w-[min(88vw,420px)] max-w-full flex-col bg-white text-slate-950 shadow-2xl lg:hidden" initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ type: "spring", stiffness: 320, damping: 34 }}>
               <div className="flex h-[72px] shrink-0 items-center justify-between border-b border-slate-100 px-5 sm:px-6">
                 <Link href="/" onClick={() => setOpen(false)} aria-label="Ratsonbase home" className="flex items-center">
-                  <Image src="/logos/ratsonbase-logo.png" alt="Ratsonbase Construction Limited" width={200} height={58} sizes="170px" className="h-10 w-auto max-w-[175px] object-contain" />
+                  <Image src="/logos/ratsonbase-logo.png" alt="Ratsonbase Construction Limited" width={220} height={64} sizes="175px" className="h-11 w-[175px] object-cover object-center" />
                 </Link>
                 <button type="button" onClick={() => setOpen(false)} aria-label="Close menu" className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-200 text-brand"><X size={20}/></button>
               </div>
