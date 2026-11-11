@@ -25,10 +25,19 @@ export function SiteHeader() {
 
   useEffect(() => { setOpen(false); }, [pathname]);
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 36);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    let frame = 0;
+    const updateScrollState = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => setScrolled(window.scrollY > 12));
+    };
+    updateScrollState();
+    window.addEventListener("scroll", updateScrollState, { passive: true });
+    window.addEventListener("pageshow", updateScrollState);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateScrollState);
+      window.removeEventListener("pageshow", updateScrollState);
+    };
   }, []);
   useEffect(() => {
     if (!open) return;
@@ -45,18 +54,21 @@ export function SiteHeader() {
     : "sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 text-slate-950 backdrop-blur-xl";
 
   return (
-    <header className={headerClass}>
+    <header data-header-state={transparent ? "transparent" : "solid"}
+      className={headerClass}>
       <div className="container-shell flex h-[72px] items-center justify-between sm:h-[78px]">
         <Link href="/" className="flex min-w-0 items-center" aria-label="Ratsonbase Construction Limited home">
-          <Image
-            src={transparent ? "/logos/ratson%20logo%20white.png" : "/logos/ratsonbase-logo.png"}
-            alt="Ratsonbase Construction Limited"
-            width={220}
-            height={64}
-            priority
-            sizes="(max-width: 640px) 170px, 210px"
-            className="h-10 w-auto max-w-[170px] object-contain sm:h-12 sm:max-w-[210px]"
-          />
+          {transparent ? (
+            <span className="flex items-center gap-2.5">
+              <Image src="/logos/ratson%20logo%20white.png" alt="" width={46} height={46} priority className="h-10 w-10 object-contain sm:h-11 sm:w-11" />
+              <span className="leading-none text-white">
+                <span className="block font-heading text-base font-extrabold tracking-[-.055em] sm:text-lg">RATSONBASE</span>
+                <span className="mt-1 block text-[.52rem] font-bold tracking-[.16em] text-white/75 sm:text-[.58rem]">CONSTRUCTION LIMITED</span>
+              </span>
+            </span>
+          ) : (
+            <Image src="/logos/ratsonbase-logo.png" alt="Ratsonbase Construction Limited" width={220} height={64} priority sizes="(max-width: 640px) 170px, 210px" className="h-10 w-auto max-w-[170px] object-contain sm:h-12 sm:max-w-[210px]" />
+          )}
         </Link>
         <nav className="hidden items-center gap-6 xl:gap-7 lg:flex" aria-label="Main navigation">
           {links.map((link) => <Link key={link.href} href={link.href} aria-current={pathname === link.href || pathname.startsWith(link.href + "/") ? "page" : undefined} className={"text-sm font-semibold transition hover:text-accent " + (pathname === link.href ? "text-accent" : transparent ? "text-white/90" : "text-slate-950")}>{link.label}</Link>)}
