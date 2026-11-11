@@ -56,14 +56,14 @@ export default async function HomePage() {
           </div>
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,8,39,.88)_0%,rgba(5,8,39,.62)_52%,rgba(5,8,39,.28)_100%)]"/>
           <Reveal className="container-shell relative z-10 pt-0 sm:pt-10">
-            <p className="mb-4 font-heading text-xl font-semibold leading-tight tracking-[-.04em] text-white sm:mb-5 sm:text-2xl">
+            <p className="mb-4 font-heading text-xl font-extrabold leading-tight tracking-[-.04em] text-[#f1b5e9] sm:mb-5 sm:text-2xl">
               Building with purpose
             </p>
             <h1 className="mt-0 max-w-[900px] font-heading text-[clamp(2.55rem,10.5vw,3.5rem)] font-bold leading-[.96] tracking-[-.075em] sm:mt-1 sm:text-[clamp(3.1rem,7vw,6.4rem)] sm:leading-[.92]">
               We build spaces <span className="text-[#e9a0df]">that move</span> life forward.
             </h1>
             <p className="mt-5 max-w-[560px] text-sm leading-7 text-white/85 sm:mt-8 sm:text-lg sm:leading-8">
-              Thoughtful construction. Dependable delivery. Lasting value. We turn ambitious ideas into places made to stand the test of time.
+              Thoughtful construction. Dependable delivery. Lasting value.<br className="hidden sm:block" /> We turn ambitious ideas into places made to stand the test of time.
             </p>
             <div className="mt-7 grid grid-cols-2 gap-2 sm:mt-10 sm:flex sm:flex-row sm:gap-3">
               <Link href="/contact" className="inline-flex min-w-0 min-h-12 items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-accent px-1.5 text-[.62rem] font-bold text-white transition hover:-translate-y-1 hover:bg-[#980281] sm:min-h-14 sm:gap-3 sm:px-7 sm:text-sm">Discuss your project <ArrowUpRight size={14} className="shrink-0 sm:h-[17px] sm:w-[17px]"/></Link>
@@ -88,8 +88,18 @@ export default async function HomePage() {
         <section className="section-pad relative overflow-hidden">
           <div className="construction-linework pointer-events-none absolute -right-16 top-10 hidden h-[430px] w-[430px] opacity-60 lg:block"/>
           <Reveal className="container-shell relative grid gap-10 lg:grid-cols-[.82fr_1.18fr] lg:gap-24">
-            <div><h2 className="mt-6 max-w-[520px] text-4xl font-bold leading-[1.04] text-brand sm:text-5xl lg:text-[3.6rem]">Building with purpose. Delivering with care.</h2><p className="mt-7 max-w-md text-sm font-semibold uppercase tracking-[.13em] text-accent">Ratsonbase Construction Limited, Nigeria</p></div>
-            <div className="lg:pt-2"><p className="max-w-[760px] text-xl leading-[1.75] text-slate-700 sm:text-[1.4rem]">Ratsonbase Construction Limited is a proudly Nigerian construction and civil engineering company delivering building and infrastructure solutions across residential, commercial and industrial sectors.</p><p className="mt-6 max-w-[700px] text-base leading-8 text-slate-500">From early planning and procurement to construction, finishing and property solutions, we bring together practical expertise, careful coordination and a commitment to quality. Our work is guided by integrity, safety, teamwork, excellence and promptness.</p><Link href="/about" className="mt-8 inline-flex items-center gap-3 text-sm font-extrabold text-brand transition hover:text-accent">Discover our story <ArrowUpRight size={17} className="text-accent"/></Link></div>
+            <div>
+              <h2 className="mt-6 max-w-[520px] text-4xl font-bold leading-[1.04] text-brand sm:text-5xl lg:text-[3.6rem]">Building with purpose. Delivering with care.</h2>
+              <div className="mt-8 inline-flex items-center gap-3 border-y border-accent/35 py-3 pr-5">
+                <span className="h-7 w-1 rounded-full bg-accent" aria-hidden="true" />
+                <span className="text-[.68rem] font-extrabold uppercase tracking-[.2em] text-brand sm:text-xs">Proudly Nigerian · Built on trust</span>
+              </div>
+            </div>
+            <div className="lg:pt-2">
+              <p className="max-w-[760px] text-justify text-xl leading-[1.75] text-slate-700 sm:text-[1.4rem]">Ratsonbase Construction Limited is a proudly Nigerian construction and civil engineering company delivering building and infrastructure solutions across residential, commercial and industrial sectors.</p>
+              <p className="mt-6 max-w-[700px] text-justify text-base leading-8 text-slate-500">From early planning and procurement to construction, finishing and property solutions, we bring together practical expertise, careful coordination and a commitment to quality. Our work is guided by integrity, safety, teamwork, excellence and promptness.</p>
+              <Link href="/about" className="mt-8 inline-flex items-center gap-3 text-sm font-extrabold text-brand transition hover:text-accent">Discover our story <ArrowUpRight size={17} className="text-accent"/></Link>
+            </div>
           </Reveal>
         </section>
 
