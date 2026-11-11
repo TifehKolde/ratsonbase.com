@@ -48,7 +48,7 @@ export default async function HomePage() {
             <iframe
               className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[56.25vw] min-h-full w-[177.78vh] min-w-full -translate-x-1/2 -translate-y-1/2 md:block"
               src="https://www.youtube-nocookie.com/embed/YppH2GNQ-Z8?autoplay=1&mute=1&controls=0&loop=1&playlist=YppH2GNQ-Z8&playsinline=1&rel=0&modestbranding=1"
-              title="Ratsonbase Construction Limited company film"
+              title="Ratsonbase homepage background video"
               allow="autoplay; encrypted-media; picture-in-picture"
               referrerPolicy="strict-origin-when-cross-origin"
               aria-hidden="true"
@@ -57,7 +57,7 @@ export default async function HomePage() {
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,8,39,.88)_0%,rgba(5,8,39,.62)_52%,rgba(5,8,39,.28)_100%)]"/>
           <Reveal className="container-shell relative z-10 pt-0 sm:pt-10">
             <p className="mb-3 text-base font-bold leading-tight text-white sm:mb-4 sm:text-xl">
-              Building with purpose,
+              Building with purpose
             </p>
             <h1 className="mt-0 max-w-[900px] font-heading text-[clamp(2.55rem,10.5vw,3.5rem)] font-bold leading-[.96] tracking-[-.075em] sm:mt-1 sm:text-[clamp(3.1rem,7vw,6.4rem)] sm:leading-[.92]">
               We build spaces <span className="text-[#e9a0df]">that move</span> life forward.
