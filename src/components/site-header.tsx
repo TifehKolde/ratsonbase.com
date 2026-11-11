@@ -12,7 +12,7 @@ const links = [
   { label: "About us", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Projects", href: "/projects" },
-  { label: "Blog", href: "/blog" },
+  { label: "Blog", href: "/blogs" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -51,7 +51,7 @@ export function SiteHeader() {
           <span className="leading-none"><span className="block font-heading text-base font-extrabold tracking-[-.055em] sm:text-[1.08rem]">RATSONBASE</span><span className={"mt-1 block text-[.55rem] font-bold tracking-[.17em] sm:text-[.57rem] " + (transparent ? "text-white/70" : "text-slate-500")}>CONSTRUCTION LIMITED</span></span>
         </Link>
         <nav className="hidden items-center gap-6 xl:gap-7 lg:flex" aria-label="Main navigation">
-          {links.map((link) => <Link key={link.href} href={link.href} aria-current={pathname === link.href ? "page" : undefined} className={"text-sm font-semibold transition hover:text-accent " + (pathname === link.href ? "text-accent" : transparent ? "text-white/90" : "text-slate-950")}>{link.label}</Link>)}
+          {links.map((link) => <Link key={link.href} href={link.href} aria-current={pathname === link.href || pathname.startsWith(link.href + "/") ? "page" : undefined} className={"text-sm font-semibold transition hover:text-accent " + (pathname === link.href ? "text-accent" : transparent ? "text-white/90" : "text-slate-950")}>{link.label}</Link>)}
         </nav>
         <Link href="/contact" className="hidden items-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-bold text-white transition hover:bg-[#980281] lg:inline-flex">Request a quote <ArrowUpRight size={16}/></Link>
         <button type="button" className={"grid h-10 w-10 place-items-center rounded-full transition lg:hidden " + (transparent ? "border border-white/40 text-white hover:bg-white/10" : "border border-slate-200 text-slate-950 hover:border-brand hover:bg-brand-light")} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}>{open ? <X size={20}/> : <Menu size={20}/>}</button>
