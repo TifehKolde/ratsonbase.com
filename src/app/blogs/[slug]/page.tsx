@@ -60,7 +60,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <section className="article-editorial-hero">
           <div className="container-shell relative z-10">
             <Reveal>
-              <Breadcrumbs variant="dark" items={[{ label: "Blogs", href: "/blogs" }, { label: post.title }]} />
+              <Breadcrumbs variant="dark" align="center" items={[{ label: "Blogs", href: "/blogs" }, { label: post.title }]} />
               <div className="mx-auto mt-3 max-w-4xl text-center sm:mt-4">
                 <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-[.7rem] font-bold uppercase tracking-[.13em] text-slate-500">
                   <span className="rounded-full border border-brand/15 bg-brand-light px-4 py-2 text-brand">{post.category?.name || "Ratsonbase Journal"}</span>
