@@ -48,10 +48,12 @@ export function SiteHeader() {
     return () => { document.body.style.overflow = previous; window.removeEventListener("keydown", closeOnEscape); };
   }, [open]);
 
-  const transparent = isHome && !scrolled;
-  const headerClass = isHome
-    ? "fixed inset-x-0 top-0 z-50 transition-all duration-300 " + (transparent ? "border-b border-white/15 bg-transparent text-white" : "border-b border-slate-200/80 bg-white/95 text-slate-950 shadow-[0_8px_30px_rgba(10,10,40,.06)] backdrop-blur-xl")
-    : "sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 text-slate-950 backdrop-blur-xl";
+  const transparent = !scrolled;
+  const headerClass =
+    "fixed inset-x-0 top-0 z-50 transition-all duration-300 " +
+    (transparent
+      ? "border-b border-white/15 bg-transparent text-white"
+      : "border-b border-white/50 bg-white/85 text-slate-950 shadow-[0_8px_30px_rgba(10,10,40,.08)] backdrop-blur-2xl supports-[backdrop-filter]:bg-white/75");
 
   return (
     <header data-header-state={transparent ? "transparent" : "solid"}
@@ -87,7 +89,7 @@ export function SiteHeader() {
                 </Link>
                 <button type="button" onClick={() => setOpen(false)} aria-label="Close menu" className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-200 text-brand"><X size={20}/></button>
               </div>
-              <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-6 sm:px-6 sm:py-8">
+              <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-6 pt-1 sm:px-6 sm:pb-8 sm:pt-2">
                 <nav className="grid" aria-label="Mobile navigation links">
                   {links.map((link,index) => <motion.div key={link.href} initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: .04 + index * .045 }}>
                     <Link href={link.href} onClick={() => setOpen(false)} aria-current={pathname === link.href ? "page" : undefined} className={"flex min-h-14 items-center justify-between gap-4 border-b border-slate-100 py-4 text-lg font-semibold tracking-[-.035em] transition hover:text-accent sm:text-xl " + (pathname === link.href ? "text-accent" : "text-slate-950")}><span>{link.label}</span><ArrowUpRight size={18} className="shrink-0 text-slate-300"/></Link>
