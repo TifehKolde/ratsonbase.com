@@ -74,7 +74,7 @@ export function SiteHeader() {
             <div className="border-t border-slate-100 bg-[#f8f8fc] p-6">
               <p className="text-sm leading-6 text-slate-500">Have a project in mind? Tell us what you are planning.</p>
               <Link href="/contact" onClick={() => setOpen(false)} className="mt-4 flex min-h-13 items-center justify-center gap-2 rounded-full bg-accent px-6 py-4 text-sm font-bold text-white transition hover:bg-[#980281]">Request a quote <ArrowUpRight size={17}/></Link>
-              <a href="mailto:info@ratsonbase.com" className="mt-4 block text-center text-xs font-semibold text-brand">info@ratsonbase.com</a>
+              <a href="mailto:hello@ratsonbase.com" className="mt-4 block text-center text-xs font-semibold text-brand">hello@ratsonbase.com</a>
             </div>
           </motion.aside>
         </>}
