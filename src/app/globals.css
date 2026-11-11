@@ -1170,16 +1170,15 @@ input, select, textarea, button { font: inherit; }
 }
 .client-logo-item {
   position: relative;
-  width: clamp(7.5rem, 14vw, 11rem);
-  height: 4.5rem;
+  width: clamp(9rem, 16vw, 13rem);
+  height: 5.5rem;
   flex: 0 0 auto;
-  opacity: .72;
-  filter: grayscale(1);
-  transition: opacity .3s ease, filter .3s ease;
+  opacity: 1;
+  filter: none;
+  transition: transform .3s ease;
 }
 .client-logo-item:hover {
-  opacity: 1;
-  filter: grayscale(0);
+  transform: scale(1.06);
 }
 @keyframes client-logo-scroll {
   from { transform: translateX(0); }
