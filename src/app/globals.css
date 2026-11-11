@@ -1259,3 +1259,13 @@ input, select, textarea, button { font: inherit; }
     padding-top: calc(2.1rem + 72px);
   }
 }
+
+/* Keep article detail content clear of the fixed glass navigation. */
+.article-editorial-hero {
+  padding-top: calc(clamp(1rem, 2vw, 1.75rem) + 78px);
+}
+@media (max-width: 767px) {
+  .article-editorial-hero {
+    padding-top: calc(1.5rem + 72px) !important;
+  }
+}
