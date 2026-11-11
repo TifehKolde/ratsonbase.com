@@ -104,7 +104,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             </div>
           </div>
         </section>
-        <ProjectCarousel projects={relatedProjects} heading="Continue exploring our work." compactTop />
+        <ProjectCarousel projects={relatedProjects} heading="Explore more of our projects" compactTop />
       </main>
       <SiteFooter />
     </>
