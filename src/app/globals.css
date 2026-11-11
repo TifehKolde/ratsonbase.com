@@ -1142,3 +1142,50 @@ input, select, textarea, button { font: inherit; }
 @media (prefers-reduced-motion:reduce) {
   .hero-marquee-track { animation:none; transform:none; }
 }
+
+
+/* Client logo marquee */
+.client-logo-marquee {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+.client-logo-track {
+  display: flex;
+  width: max-content;
+  animation: client-logo-scroll 34s linear infinite;
+  will-change: transform;
+}
+.client-logo-marquee:hover .client-logo-track {
+  animation-play-state: paused;
+}
+.client-logo-group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  padding-inline: clamp(1.5rem, 3vw, 3rem);
+}
+.client-logo-item {
+  position: relative;
+  width: clamp(7.5rem, 14vw, 11rem);
+  height: 4.5rem;
+  flex: 0 0 auto;
+  opacity: .72;
+  filter: grayscale(1);
+  transition: opacity .3s ease, filter .3s ease;
+}
+.client-logo-item:hover {
+  opacity: 1;
+  filter: grayscale(0);
+}
+@keyframes client-logo-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .client-logo-track { animation: none; transform: none; }
+  .client-logo-group:last-child { display: none; }
+}
