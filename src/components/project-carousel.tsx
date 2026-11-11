@@ -54,16 +54,17 @@ export function ProjectCarousel({ projects, heading = "A closer look at our work
     <section className="section-pad overflow-hidden bg-white">
       <div className="container-shell">
         <Reveal>
-          <div className="grid gap-8 border-b border-[#e8e8ef] pb-9 md:grid-cols-[1fr_auto] md:items-end">
+          <div className="grid gap-7 border-b border-[#e8e8ef] pb-9 md:grid-cols-[1.1fr_.9fr] md:items-end md:gap-12">
             <div>
-              
               <h2 className="mt-5 max-w-3xl font-heading text-[clamp(2.65rem,6vw,5.25rem)] font-bold leading-[.98] tracking-[-.065em] text-brand">{heading}</h2>
-              <p className="mt-5 max-w-xl text-base leading-8 text-slate-500">Explore selected residential, commercial and infrastructure projects shaped by careful planning and considered execution.</p>
             </div>
-            <div className="flex items-center gap-3 md:pb-1">
-              <Link href="/projects" className="mr-3 text-sm font-extrabold text-brand transition hover:text-accent">Explore all work <ArrowUpRight className="ml-1 inline" size={15}/></Link>
-              <button type="button" aria-label="Previous projects" onClick={() => goTo(Math.max(0, active - 1))} disabled={active === 0} className="grid h-12 w-12 place-items-center rounded-full border border-brand/15 bg-white text-brand transition hover:border-brand hover:bg-brand hover:text-white disabled:cursor-not-allowed disabled:opacity-30"><ArrowLeft size={18}/></button>
-              <button type="button" aria-label="Next projects" onClick={() => goTo(Math.min(projects.length - 1, active + 1))} disabled={active >= projects.length - 1} className="grid h-12 w-12 place-items-center rounded-full border border-brand/15 bg-white text-brand transition hover:border-brand hover:bg-brand hover:text-white disabled:cursor-not-allowed disabled:opacity-30"><ArrowRight size={18}/></button>
+            <div className="flex flex-col gap-6 md:pb-1">
+              <p className="max-w-xl text-base leading-8 text-slate-500 md:ml-auto">Explore selected residential, commercial and infrastructure projects shaped by careful planning and considered execution.</p>
+              <div className="flex items-center justify-start gap-3 md:justify-end">
+                <Link href="/projects" className="mr-3 text-sm font-extrabold text-brand transition hover:text-accent">Explore all work <ArrowUpRight className="ml-1 inline" size={15}/></Link>
+                <button type="button" aria-label="Previous projects" onClick={() => goTo(Math.max(0, active - 1))} disabled={active === 0} className="grid h-12 w-12 place-items-center rounded-full border border-brand/15 bg-white text-brand transition hover:border-brand hover:bg-brand hover:text-white disabled:cursor-not-allowed disabled:opacity-30"><ArrowLeft size={18}/></button>
+                <button type="button" aria-label="Next projects" onClick={() => goTo(Math.min(projects.length - 1, active + 1))} disabled={active >= projects.length - 1} className="grid h-12 w-12 place-items-center rounded-full border border-brand/15 bg-white text-brand transition hover:border-brand hover:bg-brand hover:text-white disabled:cursor-not-allowed disabled:opacity-30"><ArrowRight size={18}/></button>
+              </div>
             </div>
           </div>
         </Reveal>
