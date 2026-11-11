@@ -72,7 +72,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                   <div className="mt-10 rounded-2xl border border-[#e8e8f1] bg-[#f8f8fc] p-6 sm:p-8">
                     <h2 className="text-xl font-bold text-brand">Our approach</h2>
                     <p className="mt-3 text-sm leading-7 text-slate-600 sm:text-base">Every project starts with understanding the brief, aligning on priorities and planning the work carefully. For more information about this project or a similar brief, our team will be happy to speak with you.</p>
-                    <Link href="/contact" className="relative z-10 mt-6 inline-flex min-h-12 items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-bold !text-white transition hover:-translate-y-1 hover:bg-[#17178d]">Discuss a similar project <ArrowUpRight size={16}/></Link>
+                    <Link href="/contact" style={{ color: "#ffffff" }} className="relative z-10 mt-6 inline-flex min-h-12 items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-bold !text-white transition hover:-translate-y-1 hover:bg-[#17178d]">Discuss a similar project <ArrowUpRight size={16}/></Link>
                   </div>
                 </Reveal>
               </div>
