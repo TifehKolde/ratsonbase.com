@@ -1326,3 +1326,106 @@ input, select, textarea, button { font: inherit; }
 .article-content li { overflow-wrap: break-word; word-break: normal; }
 .article-content hr { border: 0; border-top: 1px solid #e4e4ef; }
 .dark .article-content hr { border-top-color: rgba(255,255,255,.14); }
+
+
+/* Prevent CMS article blocks from being clipped on narrow screens. */
+.article-reading-layout,
+.article-reading-column,
+.article-content {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+.article-content > *,
+.article-content [class*="wp-block-"],
+.article-content [style*="width"] {
+  min-width: 0;
+  max-width: 100% !important;
+}
+.article-content p,
+.article-content li,
+.article-content a,
+.article-content strong,
+.article-content em {
+  overflow-wrap: anywhere;
+}
+.article-content .wp-block-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+.article-content .wp-block-column {
+  flex: 1 1 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+.article-content .wp-block-media-text {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+}
+.article-content .wp-block-media-text__media,
+.article-content .wp-block-media-text__content,
+.article-content .wp-block-image,
+.article-content .wp-block-gallery,
+.article-content .wp-block-embed__wrapper {
+  min-width: 0;
+  max-width: 100%;
+}
+.article-content .wp-block-image img,
+.article-content .wp-block-gallery img,
+.article-content .wp-block-media-text img {
+  display: block;
+  width: auto;
+  max-width: 100% !important;
+  height: auto !important;
+  margin-inline: auto;
+}
+.article-content .alignwide,
+.article-content .alignfull {
+  width: 100%;
+  max-width: 100% !important;
+  margin-inline: 0;
+}
+.article-content .wp-block-table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.article-content pre,
+.article-content code {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 767px) {
+  .ratsonbase-article-page .container-shell {
+    width: calc(100% - 2rem);
+    min-width: 0;
+  }
+  .article-reading-layout,
+  .article-reading-column,
+  .article-content {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .article-content .wp-block-columns {
+    display: block;
+  }
+  .article-content .wp-block-column + .wp-block-column {
+    margin-top: 1.25rem;
+  }
+  .article-content .wp-block-media-text {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .article-content .wp-block-media-text__content {
+    padding: 1rem 0 0;
+  }
+  .article-content figure,
+  .article-content .wp-block-image,
+  .article-content .wp-block-gallery {
+    margin-inline: 0;
+  }
+}
