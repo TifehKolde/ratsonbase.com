@@ -54,7 +54,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           description={project.location || "A closer look at a Ratsonbase project."}
           breadcrumbs={[{ label: "Projects", href: "/projects" }, { label: project.title }]} backgroundImage={project.featured_image || "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=2200&q=88"}
         />
-        <section className="section-pad">
+        <section className="section-pad !pb-0">
           <div className="container-shell">
             <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-14">
               <div className="min-w-0">
@@ -104,7 +104,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             </div>
           </div>
         </section>
-        <ProjectCarousel projects={relatedProjects} heading="Continue exploring our work." />
+        <ProjectCarousel projects={relatedProjects} heading="Continue exploring our work." compactTop />
       </main>
       <SiteFooter />
     </>
