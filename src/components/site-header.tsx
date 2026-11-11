@@ -17,7 +17,7 @@ const links = [
   { label: "Contact", href: "/contact" },
 ];
 
-export function SiteHeader() {
+export function SiteHeader({ forceSolid = false }: { forceSolid?: boolean }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
@@ -47,7 +47,7 @@ export function SiteHeader() {
     return () => { document.body.style.overflow = previous; window.removeEventListener("keydown", closeOnEscape); };
   }, [open]);
 
-  const transparent = !scrolled;
+  const transparent = !forceSolid && !scrolled;
   const headerClass =
     "fixed inset-x-0 top-0 z-50 transition-all duration-300 " +
     (transparent
