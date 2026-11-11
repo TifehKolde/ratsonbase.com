@@ -7,7 +7,6 @@ import { IntroVideo } from "@/components/intro-video";
 import { Reveal } from "@/components/reveal";
 import { ProjectCarousel } from "@/components/project-carousel";
 import { ManagingPartnerMessage } from "@/components/managing-partner-message";
-import { CompanyTrustMark } from "@/components/company-trust-mark";
 import { getPublicProjects, getPublicServices, type PublicProject, type PublicService } from "@/lib/public-api";
 
 export const metadata: Metadata = {
@@ -91,7 +90,6 @@ export default async function HomePage() {
           <Reveal className="container-shell relative grid gap-10 lg:grid-cols-[.82fr_1.18fr] lg:gap-24">
             <div>
               <h2 className="mt-6 max-w-[520px] text-4xl font-bold leading-[1.04] text-brand sm:text-5xl lg:text-[3.6rem]">Building with purpose. Delivering with care.</h2>
-              <CompanyTrustMark />
             </div>
             <div className="lg:pt-2">
               <p className="max-w-[760px] text-left text-xl leading-[1.75] text-slate-700 sm:text-[1.4rem]">Ratsonbase Construction Limited is a proudly Nigerian construction and civil engineering company delivering building and infrastructure solutions across residential, commercial and industrial sectors.</p>
