@@ -56,7 +56,7 @@ export default async function HomePage() {
           </div>
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,8,39,.88)_0%,rgba(5,8,39,.62)_52%,rgba(5,8,39,.28)_100%)]"/>
           <Reveal className="container-shell relative z-10 pt-0 sm:pt-10">
-            <p className="mb-3 text-base font-bold leading-tight text-white sm:mb-4 sm:text-xl">
+            <p className="mb-4 font-heading text-xl font-semibold leading-tight tracking-[-.04em] text-white sm:mb-5 sm:text-2xl">
               Building with purpose
             </p>
             <h1 className="mt-0 max-w-[900px] font-heading text-[clamp(2.55rem,10.5vw,3.5rem)] font-bold leading-[.96] tracking-[-.075em] sm:mt-1 sm:text-[clamp(3.1rem,7vw,6.4rem)] sm:leading-[.92]">
