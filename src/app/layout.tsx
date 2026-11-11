@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
+import { RouteScrollManager } from "@/components/route-scroll-manager";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const bricolage = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-bricolage", display: "swap" });
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en-NG">
       <body className={`${inter.variable} ${bricolage.variable} antialiased`}>
+        <RouteScrollManager />
         {children}
         <script
           type="application/ld+json"
