@@ -1145,40 +1145,94 @@ input, select, textarea, button { font: inherit; }
 
 
 /* Client logo marquee */
+.client-partners-section {
+  border-top: 1px solid #ececf3;
+  border-bottom: 1px solid #ececf3;
+}
+.client-partners-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.client-partners-heading h2 {
+  max-width: 650px;
+}
 .client-logo-marquee {
   position: relative;
   overflow: hidden;
   width: 100%;
-  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  padding-block: .5rem;
+  mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
 }
 .client-logo-track {
   display: flex;
   width: max-content;
-  animation: client-logo-scroll 34s linear infinite;
+  animation: client-logo-scroll 42s linear infinite;
   will-change: transform;
 }
-.client-logo-marquee:hover .client-logo-track {
+.client-logo-marquee:hover .client-logo-track,
+.client-logo-marquee:focus-within .client-logo-track {
   animation-play-state: paused;
 }
 .client-logo-group {
   display: flex;
   flex: 0 0 auto;
   align-items: center;
-  gap: clamp(2.5rem, 6vw, 5.5rem);
-  padding-inline: clamp(1.5rem, 3vw, 3rem);
+  gap: clamp(1rem, 2.2vw, 1.75rem);
+  padding-inline: clamp(.75rem, 1.5vw, 1.25rem);
 }
 .client-logo-item {
-  position: relative;
-  width: clamp(9rem, 16vw, 13rem);
-  height: 5.5rem;
+  display: flex;
+  width: clamp(10rem, 17vw, 13.5rem);
+  height: 7rem;
   flex: 0 0 auto;
-  opacity: 1;
-  filter: none;
-  transition: transform .3s ease;
+  align-items: center;
+  justify-content: center;
+  padding: .8rem 1rem;
+  border: 1px solid #ededf3;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 5px 18px rgba(1,0,110,.035);
+  transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease;
+}
+.client-logo-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 .client-logo-item:hover {
-  transform: scale(1.06);
+  transform: translateY(-3px);
+  border-color: rgba(180,4,154,.24);
+  box-shadow: 0 12px 28px rgba(1,0,110,.08);
+}
+@keyframes client-logo-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (max-width: 767px) {
+  .client-partners-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: .85rem;
+  }
+  .client-partners-heading h2 {
+    max-width: 100%;
+    font-size: clamp(1.9rem, 8vw, 2.5rem);
+    line-height: 1.08;
+  }
+  .client-partners-heading p {
+    max-width: 34rem;
+  }
+  .client-logo-marquee { margin-top: 2rem; }
+  .client-logo-item {
+    width: 9.5rem;
+    height: 6rem;
+    padding: .65rem;
+    border-radius: .85rem;
+  }
+  .client-logo-group { gap: .85rem; }
 }
 @keyframes client-logo-scroll {
   from { transform: translateX(0); }
@@ -1187,4 +1241,6 @@ input, select, textarea, button { font: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .client-logo-track { animation: none; transform: none; }
   .client-logo-group:last-child { display: none; }
+  .client-logo-marquee { overflow-x: auto; mask-image: none; -webkit-mask-image: none; }
+  .client-logo-item { transition: none; }
 }
