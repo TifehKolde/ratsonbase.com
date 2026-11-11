@@ -8,7 +8,6 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Reveal } from "@/components/reveal";
 import { BlogEngagement } from "@/components/blog-engagement";
 import { ShareArticleButton } from "@/components/share-article-button";
-import { ArticleReadingProgress } from "@/components/article-reading-progress";
 import { BlogThemeShell } from "@/components/blog-theme-shell";
 import { getPublicPostBySlug, getPublicPosts, getPublicComments, type PublicPost, type PublicComment } from "@/lib/public-api";
 
@@ -54,7 +53,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   return (
     <>
       <SiteHeader forceSolid />
-      <ArticleReadingProgress />
       <BlogThemeShell>
       <main className="ratsonbase-article-page">
         <section className="article-editorial-hero">
