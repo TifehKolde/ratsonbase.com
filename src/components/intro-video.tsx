@@ -19,6 +19,7 @@ export function IntroVideo() {
         </div>
         <div className="video-frame group relative mx-auto mt-12 aspect-video w-full max-w-[1120px] overflow-hidden rounded-[1.6rem] border border-white/15 bg-black shadow-[0_35px_100px_rgba(0,0,0,.42)] sm:mt-16">
           <iframe
+            loading="lazy"
             className="absolute inset-0 h-full w-full"
             src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&controls=1&rel=0&playsinline=1&modestbranding=1`}
             title="Ratsonbase Construction Limited introduction video"
