@@ -49,7 +49,7 @@ export default async function HomePage() {
           <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(5,8,39,.88)_0%,rgba(5,8,39,.62)_52%,rgba(5,8,39,.28)_100%)]"/>
           <div className="container-shell relative z-10 pt-0 sm:pt-10">
             <div className="mb-5 sm:mb-6">
-              <p className="font-heading text-base font-extrabold uppercase leading-tight tracking-[.12em] text-white sm:text-lg">
+              <p className="font-heading text-base font-extrabold uppercase leading-tight tracking-[.12em] text-[#B4049A] sm:text-lg">
                 Building with purpose
               </p>
               <span aria-hidden="true" className="mt-3 block h-[3px] w-10 rounded-full bg-white" />
