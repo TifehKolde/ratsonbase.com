@@ -49,10 +49,10 @@ export default async function HomePage() {
           <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(5,8,39,.88)_0%,rgba(5,8,39,.62)_52%,rgba(5,8,39,.28)_100%)]"/>
           <div className="container-shell relative z-10 pt-0 sm:pt-10">
             <div className="mb-5 sm:mb-6">
-              <p className="font-heading text-base font-extrabold uppercase leading-tight tracking-[.12em] text-[#eeeeff] sm:text-lg">
+              <p className="font-heading text-base font-extrabold uppercase leading-tight tracking-[.12em] text-white sm:text-lg">
                 Building with purpose
               </p>
-              <span aria-hidden="true" className="mt-3 block h-[3px] w-10 rounded-full bg-[#B4049A]" />
+              <span aria-hidden="true" className="mt-3 block h-[3px] w-10 rounded-full bg-white" />
             </div>
             <h1 className="mt-0 max-w-[900px] font-heading text-[clamp(2.55rem,10.5vw,3.5rem)] font-bold leading-[.96] tracking-[-.075em] sm:mt-1 sm:text-[clamp(3.1rem,7vw,6.4rem)] sm:leading-[.92]">
               We build spaces <span className="text-[#e9a0df]">that move</span> life forward.
