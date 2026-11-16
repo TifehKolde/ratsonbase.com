@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { preload } from "react-dom";
 import { ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -32,12 +33,19 @@ export default async function HomePage() {
   try { services = await getPublicServices(); } catch { /* API fallback is shown below. */ }
   try { projects = await getPublicProjects(); } catch { /* API fallback is shown below. */ }
 
+  const heroSlides = projects
+    .filter((project) => project.featured_image)
+    .map((project) => ({ src: project.featured_image as string, alt: project.title }));
+  if (heroSlides[0]?.src) {
+    preload(heroSlides[0].src, { as: "image", fetchPriority: "high" });
+  }
+
   return (
     <>
       <SiteHeader />
       <main>
         <section className="hero-photo relative flex min-h-[640px] items-center overflow-hidden px-0 pt-24 pb-20 text-white sm:min-h-[790px] sm:py-32">
-          <HeroImageSlider slides={projects.filter((project) => project.featured_image).map((project) => ({ src: project.featured_image as string, alt: project.title }))} />
+          <HeroImageSlider slides={heroSlides} />
           <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(5,8,39,.88)_0%,rgba(5,8,39,.62)_52%,rgba(5,8,39,.28)_100%)]"/>
           <div className="container-shell relative z-10 pt-0 sm:pt-10">
             <p className="mb-4 font-heading text-xl font-extrabold uppercase leading-tight tracking-[.12em] text-[#eeeeff] sm:mb-5 sm:text-2xl">
