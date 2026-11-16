@@ -5,6 +5,7 @@ import { ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { IntroVideo } from "@/components/intro-video";
+import { HeroImageSlider } from "@/components/hero-image-slider";
 import { Reveal } from "@/components/reveal";
 import { ProjectCarousel } from "@/components/project-carousel";
 import { ClientLogoCarousel } from "@/components/client-logo-carousel";
@@ -36,28 +37,9 @@ export default async function HomePage() {
       <SiteHeader />
       <main>
         <section className="hero-photo relative flex min-h-[640px] items-center overflow-hidden px-0 pt-24 pb-20 text-white sm:min-h-[790px] sm:py-32">
-          <div className="hero-video-layer absolute inset-0">
-            <video
-              className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[center_35%] md:hidden"
-              src="/videos/wumego.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-hidden="true"
-            />
-            <iframe
-              className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[56.25vw] min-h-full w-[177.78vh] min-w-full -translate-x-1/2 -translate-y-1/2 md:block"
-              src="https://www.youtube-nocookie.com/embed/YppH2GNQ-Z8?autoplay=1&mute=1&controls=0&loop=1&playlist=YppH2GNQ-Z8&playsinline=1&rel=0&modestbranding=1"
-              title="Ratsonbase homepage background video"
-              allow="autoplay; encrypted-media; picture-in-picture"
-              referrerPolicy="strict-origin-when-cross-origin"
-              aria-hidden="true"
-            />
-          </div>
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,8,39,.88)_0%,rgba(5,8,39,.62)_52%,rgba(5,8,39,.28)_100%)]"/>
-          <Reveal className="container-shell relative z-10 pt-0 sm:pt-10">
+          <HeroImageSlider slides={projects.filter((project) => project.featured_image).map((project) => ({ src: project.featured_image as string, alt: project.title }))} />
+          <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(5,8,39,.88)_0%,rgba(5,8,39,.62)_52%,rgba(5,8,39,.28)_100%)]"/>
+          <div className="container-shell relative z-10 pt-0 sm:pt-10">
             <p className="mb-4 font-heading text-xl font-extrabold uppercase leading-tight tracking-[.12em] text-[#eeeeff] sm:mb-5 sm:text-2xl">
               Building with purpose
             </p>
@@ -71,7 +53,7 @@ export default async function HomePage() {
               <Link href="/contact" className="inline-flex min-w-0 min-h-12 items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-accent px-1.5 text-[.62rem] font-bold text-white transition hover:-translate-y-1 hover:bg-[#980281] sm:min-h-14 sm:gap-3 sm:px-7 sm:text-sm">Discuss your project <ArrowUpRight size={14} className="shrink-0 sm:h-[17px] sm:w-[17px]"/></Link>
               <Link href="/projects" className="inline-flex min-w-0 min-h-12 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/45 bg-white/5 px-1.5 text-[.62rem] font-bold text-white backdrop-blur-md transition hover:bg-white/15 sm:min-h-14 sm:gap-3 sm:px-7 sm:text-sm">Explore our work <ArrowRight size={14} className="shrink-0 sm:h-[17px] sm:w-[17px]"/></Link>
             </div>
-          </Reveal>
+          </div>
           <div className="hero-footer absolute bottom-0 left-0 right-0 z-10 flex min-h-[60px] items-center gap-4 overflow-hidden border-t border-white/20 bg-[#08082f]/20 backdrop-blur-sm sm:min-h-[72px]">
             <div className="hero-marquee min-w-0 flex-1 overflow-hidden" aria-label="Construction, engineering, renovation and project delivery">
               <div className="hero-marquee-track">
