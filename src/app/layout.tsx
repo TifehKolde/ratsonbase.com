@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import Script from "next/script";
+import { Suspense } from "react";
 import { Inter, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { RouteScrollManager } from "@/components/route-scroll-manager";
 import { ScrollProgressIndicator } from "@/components/article-reading-progress";
+import { GoogleAnalyticsPageView } from "@/components/google-analytics-page-view";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const bricolage = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-bricolage", display: "swap" });
@@ -57,6 +60,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en-NG">
       <body className={`${inter.variable} ${bricolage.variable} antialiased`}>
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`\n            window.dataLayer = window.dataLayer || [];\n            window.gtag = function(){ window.dataLayer.push(arguments); };\n            window.gtag("js", new Date());\n            window.gtag("config", "G-GWNTCT34LH", { send_page_view: false });\n            var analyticsScript = document.createElement("script");\n            analyticsScript.async = true;\n            analyticsScript.src = "https://www.googletagmanager.com/gtag/js?id=G-GWNTCT34LH";\n            document.head.appendChild(analyticsScript);\n          `}
+        </Script>
+        <Suspense fallback={null}>
+          <GoogleAnalyticsPageView />
+        </Suspense>
         <RouteScrollManager />
         <ScrollProgressIndicator />
         {children}
