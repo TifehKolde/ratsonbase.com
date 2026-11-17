@@ -8,7 +8,50 @@ import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { getPublicServiceBySlug, getPublicServices, type PublicService } from "@/lib/public-api";
 
-export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{const{slug}=await params;try{const s=await getPublicServiceBySlug(slug);return{title:s.title,alternates:{canonical:"/services/"+encodeURIComponent(slug)},description:s.description};}catch{return{title:"Service"};}}
+const serviceSeoMetadata: Record<string, { title: string; description: string }> = {
+  "building-construction": {
+    title: "Building Construction in Lagos & Nigeria | Ratsonbase",
+    description:
+      "Ratsonbase delivers residential and commercial building construction in Lagos and across Nigeria, from site preparation and foundations to roofing and finishing.",
+  },
+};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+
+  try {
+    const service = await getPublicServiceBySlug(slug);
+    const seo = serviceSeoMetadata[slug];
+    const title = seo?.title ?? service.title;
+    const description = seo?.description ?? service.description;
+    const canonical = "/services/" + encodeURIComponent(slug);
+
+    return {
+      title: seo ? { absolute: title } : title,
+      description,
+      alternates: { canonical },
+      openGraph: {
+        type: "website",
+        locale: "en_NG",
+        url: canonical,
+        siteName: "Ratsonbase Construction Limited",
+        title,
+        description,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+      },
+    };
+  } catch {
+    return { title: "Service" };
+  }
+}
 const benefits=["A conversation focused on your requirements and desired outcome","A clearer understanding of the project scope and practical considerations","Communication around priorities, responsibilities and next steps","An approach that considers quality, safety and the experience of the client"];
 export default async function ServiceDetailPage({params}:{params:Promise<{slug:string}>}) {
  const{slug}=await params;let service:PublicService;try{service=await getPublicServiceBySlug(slug);}catch{notFound();}
