@@ -15,6 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   try {
     const post = await getPublicPostBySlug(slug);
+    const shareImage = post.featured_image || "/opengraph-image";
     return {
       title: post.meta_title || post.title,
       description: post.meta_description || post.excerpt || undefined,
@@ -23,14 +24,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         title: post.meta_title || post.title,
         description: post.meta_description || post.excerpt || undefined,
         url: `https://www.ratsonbase.com/blogs/${encodeURIComponent(slug)}`,
-        images: post.featured_image ? [{ url: post.featured_image, alt: post.title }] : [],
+        images: [{ url: shareImage, width: 1200, height: 630, alt: post.title }],
         type: "article",
       },
       twitter: {
         card: "summary_large_image",
         title: post.meta_title || post.title,
         description: post.meta_description || post.excerpt || undefined,
-        images: post.featured_image ? [post.featured_image] : [],
+        images: [shareImage],
       },
     };
   } catch { return { title: "Article | Ratsonbase Construction Limited" }; }
