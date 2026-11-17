@@ -14,7 +14,28 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   try {
     const project = await getPublicProjectBySlug(slug);
-    return { title: project.title, description: project.description, alternates: { canonical: `/projects/${encodeURIComponent(slug)}` } };
+    const canonical = `/projects/${encodeURIComponent(slug)}`;
+    const images = project.featured_image ? [{ url: project.featured_image, alt: project.title }] : [];
+    return {
+      title: project.title,
+      description: project.description,
+      alternates: { canonical },
+      openGraph: {
+        type: "website",
+        locale: "en_NG",
+        url: canonical,
+        siteName: "Ratsonbase Construction Limited",
+        title: project.title,
+        description: project.description,
+        images,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: project.title,
+        description: project.description,
+        images: project.featured_image ? [project.featured_image] : [],
+      },
+    };
   } catch {
     return { title: "Project" };
   }
