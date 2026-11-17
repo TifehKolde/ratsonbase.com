@@ -19,7 +19,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: post.meta_title || post.title,
       description: post.meta_description || post.excerpt || undefined,
       alternates: { canonical: `https://www.ratsonbase.com/blogs/${encodeURIComponent(slug)}` },
-      openGraph: { title: post.meta_title || post.title, description: post.meta_description || post.excerpt || undefined, url: `https://www.ratsonbase.com/blogs/${encodeURIComponent(slug)}`, images: post.featured_image ? [post.featured_image] : [], type: "article" },
+      openGraph: {
+        title: post.meta_title || post.title,
+        description: post.meta_description || post.excerpt || undefined,
+        url: `https://www.ratsonbase.com/blogs/${encodeURIComponent(slug)}`,
+        images: post.featured_image ? [{ url: post.featured_image, alt: post.title }] : [],
+        type: "article",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: post.meta_title || post.title,
+        description: post.meta_description || post.excerpt || undefined,
+        images: post.featured_image ? [post.featured_image] : [],
+      },
     };
   } catch { return { title: "Article | Ratsonbase Construction Limited" }; }
 }
