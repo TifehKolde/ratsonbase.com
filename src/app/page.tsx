@@ -14,10 +14,27 @@ import { ManagingPartnerMessage } from "@/components/managing-partner-message";
 import { getPublicProjects, getPublicServices, type PublicProject, type PublicService } from "@/lib/public-api";
 
 export const metadata: Metadata = {
-  title: "Construction & Civil Engineering Company in Nigeria",
+  title: {
+    absolute: "Construction Company in Lagos & Nigeria | Ratsonbase",
+  },
   description:
-    "Ratsonbase Construction Limited delivers residential, commercial and industrial construction, civil engineering and renovation solutions in Nigeria. Discuss your project with our team.",
+    "Ratsonbase Construction Limited provides building construction, civil engineering, project management and renovation services in Lagos and across Nigeria. Discuss your project with our team.",
   alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "en_NG",
+    url: "/",
+    siteName: "Ratsonbase Construction Limited",
+    title: "Construction Company in Lagos & Nigeria | Ratsonbase",
+    description:
+      "Ratsonbase Construction Limited provides building construction, civil engineering, project management and renovation services in Lagos and across Nigeria. Discuss your project with our team.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Construction Company in Lagos & Nigeria | Ratsonbase",
+    description:
+      "Ratsonbase Construction Limited provides building construction, civil engineering, project management and renovation services in Lagos and across Nigeria. Discuss your project with our team.",
+  },
 };
 
 const values = [
