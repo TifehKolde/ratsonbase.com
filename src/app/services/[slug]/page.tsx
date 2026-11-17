@@ -34,6 +34,26 @@ const serviceSeoMetadata: Record<string, { title: string; description: string }>
     description:
       "Ratsonbase supports residential and commercial projects with architectural design and building drawings in Lagos and across Nigeria, helping clients plan layouts, spaces and the drawings needed to guide construction and support approval applications.",
   },
+  "real-estate-and-property-development": {
+    title: "Real Estate & Property Development in Lagos | Ratsonbase",
+    description:
+      "Ratsonbase supports real estate and property development in Lagos and across Nigeria, helping clients plan and deliver residential, commercial and mixed-use projects from development concept through construction.",
+  },
+  "joint-venture-jv-property-development": {
+    title: "Joint Venture Property Development in Lagos & Nigeria | Ratsonbase",
+    description:
+      "Ratsonbase helps landowners and development partners explore joint venture property development opportunities in Lagos and across Nigeria, with project responsibilities, contributions and returns established through agreed terms.",
+  },
+  "power-and-solar-energy-solutions": {
+    title: "Solar & Power Solutions in Lagos | Ratsonbase",
+    description:
+      "Ratsonbase helps homes and businesses in Lagos and across Nigeria explore suitable power and solar energy solutions, including solar panels and related systems based on their property’s electricity needs.",
+  },
+  "building-renovation-and-remodelling": {
+    title: "Building Renovation & Remodelling in Lagos | Ratsonbase",
+    description:
+      "Ratsonbase provides building renovation and remodelling services in Lagos and across Nigeria, including repairs, layout improvements, kitchen and bathroom upgrades, replacement finishes and property refreshes.",
+  },
   "lagos-building-approvals-and-permits": {
     title: "Building Approvals & Permits in Lagos | Ratsonbase",
     description:
