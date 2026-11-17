@@ -24,6 +24,11 @@ const serviceSeoMetadata: Record<string, { title: string; description: string }>
     description:
       "Ratsonbase provides civil engineering and infrastructure services in Lagos and across Nigeria, including road construction and rehabilitation, drainage systems, foundations, concrete works and culverts.",
   },
+  "lagos-building-approvals-and-permits": {
+    title: "Building Approvals & Permits in Lagos | Ratsonbase",
+    description:
+      "Ratsonbase helps property owners and developers navigate building approval requirements in Lagos, prepare supporting documents and drawings, and coordinate application submissions to the relevant authorities. Approval remains subject to the authorities’ requirements and decision.",
+  },
 };
 
 export async function generateMetadata({
