@@ -14,6 +14,11 @@ const serviceSeoMetadata: Record<string, { title: string; description: string }>
     description:
       "Ratsonbase delivers residential and commercial building construction in Lagos and across Nigeria, from site preparation and foundations to roofing and finishing.",
   },
+  "construction-project-management": {
+    title: "Construction Project Management in Lagos & Nigeria | Ratsonbase",
+    description:
+      "Ratsonbase provides construction project management in Lagos and across Nigeria, coordinating site activities, contractors, schedules and quality to help keep building projects on track.",
+  },
 };
 
 export async function generateMetadata({
