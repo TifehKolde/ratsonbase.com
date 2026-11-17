@@ -7,8 +7,9 @@ import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { TeamSection } from "@/components/team-section";
 import { ManagingPartnerMessage } from "@/components/managing-partner-message";
+import { createPageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = { title: "About Us", alternates: { canonical: "/about" }, description: "Discover Ratsonbase Construction Limited, our approach to construction, our values and our commitment to thoughtful project delivery." };
+export const metadata: Metadata = createPageMetadata({ title: "About Ratsonbase", description: "Discover Ratsonbase Construction Limited, our approach to construction, our values and our commitment to thoughtful project delivery.", path: "/about" });
 
 const principles = [
   { icon: ShieldCheck, title: "Integrity in every decision", text: "We value honesty, accountability and clear communication. We aim to set realistic expectations and keep clients informed as work progresses." },
