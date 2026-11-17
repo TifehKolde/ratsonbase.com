@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       }
     }
 
-    const images = shareImage ? [{ url: shareImage, alt: `${project.title} project by Ratsonbase Construction Limited` }] : [];
+    shareImage = shareImage || "/opengraph-image";
+    const images = [{ url: shareImage, width: 1200, height: 630, alt: `${project.title} project by Ratsonbase Construction Limited` }];
     return {
       title: project.title,
       description: project.description,
@@ -47,7 +48,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         card: "summary_large_image",
         title: project.title,
         description: project.description,
-        images: shareImage ? [shareImage] : [],
+        images: [shareImage],
       },
     };
   } catch {
