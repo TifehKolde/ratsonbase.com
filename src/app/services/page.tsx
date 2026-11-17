@@ -8,7 +8,22 @@ import { Reveal } from "@/components/reveal";
 import { getPublicServices, type PublicService } from "@/lib/public-api";
 import { createPageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = createPageMetadata({ title: "Construction Services", description: "Explore building construction, civil engineering, project management, renovation and property services from Ratsonbase Construction Limited.", path: "/services" });
+export async function generateMetadata(): Promise<Metadata> {
+  let image: string | undefined;
+  try {
+    const services = await getPublicServices();
+    image = services.find((service) => service.featured_image)?.featured_image || undefined;
+  } catch {
+    // Use the branded fallback image if the services API is unavailable.
+  }
+  return createPageMetadata({
+    title: "Construction Services",
+    description: "Explore building construction, civil engineering, project management, renovation and property services from Ratsonbase Construction Limited.",
+    path: "/services",
+    image,
+    imageAlt: "Construction and engineering services by Ratsonbase",
+  });
+}
 const steps=[{icon:ClipboardCheck,title:"Understand the brief",text:"We start by listening to your requirements, understanding the intended outcome and identifying the information needed to define the work."},{icon:Ruler,title:"Plan the work",text:"We consider scope, site context, priorities and practical delivery requirements so expectations and next steps are clear."},{icon:HardHat,title:"Coordinate delivery",text:"We focus on responsible execution, communication and attention to workmanship throughout the agreed project."},{icon:ShieldCheck,title:"Review the outcome",text:"We review the work against the brief and communicate relevant handover information and next steps."}];
 export default async function ServicesPage() {
  let services:PublicService[]=[]; let unavailable=false;
