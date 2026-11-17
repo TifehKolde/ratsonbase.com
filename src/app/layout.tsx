@@ -26,6 +26,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "Ratsonbase Construction Limited",
     title: "Ratsonbase Construction Limited",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Ratsonbase Construction Limited — Building with purpose" }],
     description:
       "Construction, civil engineering, renovation and property solutions across Nigeria.",
   },
@@ -34,6 +35,7 @@ export const metadata: Metadata = {
     title: "Ratsonbase Construction Limited",
     description:
       "Construction, civil engineering, renovation and property solutions across Nigeria.",
+    images: ["/opengraph-image"],
   },
   robots: {
     index: true,
