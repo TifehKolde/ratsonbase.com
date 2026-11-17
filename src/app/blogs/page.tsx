@@ -4,11 +4,13 @@ import { SiteFooter } from "@/components/site-footer";
 import { getPublicPosts, type PublicPost } from "@/lib/public-api";
 import { BlogIndexClient } from "@/components/blog-index-client";
 import { BlogThemeShell } from "@/components/blog-theme-shell";
+import { createPageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
-  title: "Construction Insights & Articles", alternates: { canonical: "/blogs" },
-  description: "Ideas, expertise and perspectives shaping the spaces where we live, work and build.",
-};
+export const metadata: Metadata = createPageMetadata({
+  title: "Construction Insights & Articles",
+  description: "Ideas, expertise and perspectives on construction, engineering, property development and the built environment from Ratsonbase.",
+  path: "/blogs",
+});
 
 export default async function BlogsPage() {
   let posts: PublicPost[] = [];
