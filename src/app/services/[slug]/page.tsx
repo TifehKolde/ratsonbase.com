@@ -86,11 +86,13 @@ export async function generateMetadata({
         siteName: "Ratsonbase Construction Limited",
         title,
         description,
+        images: service.featured_image ? [{ url: service.featured_image, alt: service.title }] : [],
       },
       twitter: {
         card: "summary_large_image",
         title,
         description,
+        images: service.featured_image ? [service.featured_image] : [],
       },
     };
   } catch {
