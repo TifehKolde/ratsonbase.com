@@ -6,8 +6,9 @@ import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { getPublicProjects, type PublicProject } from "@/lib/public-api";
+import { createPageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = { title: "Our Projects", alternates: { canonical: "/projects" }, description: "Explore construction, engineering and renovation projects by Ratsonbase Construction Limited." };
+export const metadata: Metadata = createPageMetadata({ title: "Our Projects", description: "Explore selected building construction, engineering and renovation projects delivered by Ratsonbase Construction Limited.", path: "/projects" });
 export default async function ProjectsPage() {
  let projects:PublicProject[]=[];let unavailable=false;try{projects=await getPublicProjects();}catch{unavailable=true;}
  return <><SiteHeader/><main><PageHero title="Work shaped by purpose and possibility." description="Explore a selection of Ratsonbase projects and discover the thinking, planning and practical work behind each brief." breadcrumbs={[{label:"Projects"}]} backgroundImage="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=2200&q=88"/>
