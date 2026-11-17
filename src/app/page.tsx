@@ -13,29 +13,40 @@ import { ClientLogoCarousel } from "@/components/client-logo-carousel";
 import { ManagingPartnerMessage } from "@/components/managing-partner-message";
 import { getPublicProjects, getPublicServices, type PublicProject, type PublicService } from "@/lib/public-api";
 
-export const metadata: Metadata = {
-  title: {
-    absolute: "Construction Company in Lagos & Nigeria | Ratsonbase",
-  },
-  description:
-    "Ratsonbase Construction Limited provides building construction, civil engineering, project management and renovation services in Lagos and across Nigeria. Discuss your project with our team.",
-  alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    locale: "en_NG",
-    url: "/",
-    siteName: "Ratsonbase Construction Limited",
-    title: "Construction Company in Lagos & Nigeria | Ratsonbase",
-    description:
-      "Ratsonbase Construction Limited provides building construction, civil engineering, project management and renovation services in Lagos and across Nigeria. Discuss your project with our team.",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Construction Company in Lagos & Nigeria | Ratsonbase",
-    description:
-      "Ratsonbase Construction Limited provides building construction, civil engineering, project management and renovation services in Lagos and across Nigeria. Discuss your project with our team.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  let shareImage: string | undefined;
+  try {
+    const projects = await getPublicProjects();
+    shareImage = projects.find((project) => project.featured_image)?.featured_image || undefined;
+  } catch {
+    // Keep the page metadata available if the projects API is temporarily unavailable.
+  }
+
+  const title = "Construction Company in Lagos & Nigeria | Ratsonbase";
+  const description =
+    "Ratsonbase Construction Limited provides building construction, civil engineering, project management and renovation services in Lagos and across Nigeria. Discuss your project with our team.";
+
+  return {
+    title: { absolute: title },
+    description,
+    alternates: { canonical: "/" },
+    openGraph: {
+      type: "website",
+      locale: "en_NG",
+      url: "/",
+      siteName: "Ratsonbase Construction Limited",
+      title,
+      description,
+      images: shareImage ? [{ url: shareImage, alt: "A Ratsonbase construction project" }] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: shareImage ? [shareImage] : [],
+    },
+  };
+}
 
 const values = [
   "Quality workmanship at every stage",
