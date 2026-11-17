@@ -6,11 +6,22 @@ import { BlogIndexClient } from "@/components/blog-index-client";
 import { BlogThemeShell } from "@/components/blog-theme-shell";
 import { createPageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = createPageMetadata({
-  title: "Construction Insights & Articles",
-  description: "Ideas, expertise and perspectives on construction, engineering, property development and the built environment from Ratsonbase.",
-  path: "/blogs",
-});
+export async function generateMetadata(): Promise<Metadata> {
+  let image: string | undefined;
+  try {
+    const posts = (await getPublicPosts()).posts;
+    image = posts.find((post) => post.featured_image)?.featured_image || undefined;
+  } catch {
+    // Use the branded fallback image if the articles API is unavailable.
+  }
+  return createPageMetadata({
+    title: "Construction Insights & Articles",
+    description: "Ideas, expertise and perspectives on construction, engineering, property development and the built environment from Ratsonbase.",
+    path: "/blogs",
+    image,
+    imageAlt: "Construction insights and articles from Ratsonbase",
+  });
+}
 
 export default async function BlogsPage() {
   let posts: PublicPost[] = [];
