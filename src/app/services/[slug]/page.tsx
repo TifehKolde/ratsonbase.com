@@ -24,6 +24,16 @@ const serviceSeoMetadata: Record<string, { title: string; description: string }>
     description:
       "Ratsonbase provides civil engineering and infrastructure services in Lagos and across Nigeria, including road construction and rehabilitation, drainage systems, foundations, concrete works and culverts.",
   },
+  "architectural design and drawings": {
+    title: "Architectural Design & Building Drawings in Lagos | Ratsonbase",
+    description:
+      "Ratsonbase supports residential and commercial projects with architectural design and building drawings in Lagos and across Nigeria, helping clients plan layouts, spaces and the drawings needed to guide construction and support approval applications.",
+  },
+  "architectural-design-and-building-drawings": {
+    title: "Architectural Design & Building Drawings in Lagos | Ratsonbase",
+    description:
+      "Ratsonbase supports residential and commercial projects with architectural design and building drawings in Lagos and across Nigeria, helping clients plan layouts, spaces and the drawings needed to guide construction and support approval applications.",
+  },
   "lagos-building-approvals-and-permits": {
     title: "Building Approvals & Permits in Lagos | Ratsonbase",
     description:
