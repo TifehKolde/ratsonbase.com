@@ -15,7 +15,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   try {
     const project = await getPublicProjectBySlug(slug);
     const canonical = `/projects/${encodeURIComponent(slug)}`;
-    const images = project.featured_image ? [{ url: project.featured_image, alt: project.title }] : [];
+    let shareImage = project.featured_image || undefined;
+
+    // Some projects have their best real photographs in the gallery rather than
+    // the featured-image field. Use the first gallery image as the social preview
+    // when no featured image has been assigned.
+    if (!shareImage) {
+      try {
+        const gallery = await getPublicProjectImages(project.id);
+        shareImage = gallery.find((image) => image.image_url)?.image_url;
+      } catch {
+        // Keep metadata valid even if the optional gallery request fails.
+      }
+    }
+
+    const images = shareImage ? [{ url: shareImage, alt: `${project.title} project by Ratsonbase Construction Limited` }] : [];
     return {
       title: project.title,
       description: project.description,
@@ -33,7 +47,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         card: "summary_large_image",
         title: project.title,
         description: project.description,
-        images: project.featured_image ? [project.featured_image] : [],
+        images: shareImage ? [shareImage] : [],
       },
     };
   } catch {
