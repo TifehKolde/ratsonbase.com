@@ -19,6 +19,11 @@ const serviceSeoMetadata: Record<string, { title: string; description: string }>
     description:
       "Ratsonbase provides construction project management in Lagos and across Nigeria, coordinating site activities, contractors, schedules and quality to help keep building projects on track.",
   },
+  "civil-engineering-and-infrastructure": {
+    title: "Civil Engineering & Infrastructure Services in Lagos | Ratsonbase",
+    description:
+      "Ratsonbase provides civil engineering and infrastructure services in Lagos and across Nigeria, including road construction and rehabilitation, drainage systems, foundations, concrete works and culverts.",
+  },
 };
 
 export async function generateMetadata({
