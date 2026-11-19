@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   description:
     "Ratsonbase Construction Limited is a Nigerian construction and civil engineering company delivering residential, commercial and industrial building solutions.",
-  icons: { icon: [{ url: "/favicon.png", type: "image/png", sizes: "512x512" }], apple: [{ url: "/apple-icon", type: "image/png", sizes: "180x180" }] },
+  icons: { icon: [{ url: "/favicon.png", type: "image/png", sizes: "512x512" }] },
   openGraph: {
     type: "website",
     locale: "en_NG",
