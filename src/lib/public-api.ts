@@ -9,7 +9,7 @@ export type PublicService = {
 };
 export type PublicProject = {
   id: number; title: string; slug: string; description: string;
-  project_type: string; location?: string | null; client?: string | null; status: string;
+  project_type: string; location?: string | null; status: string;
   start_date?: string | null; completion_date?: string | null;
   featured_image?: string | null;
   gallery_images?: string[] | null;
@@ -36,6 +36,38 @@ export type PublicPost = {
   comments_count?: number; likes_count?: number;
 };
 type ApiEnvelope<T> = { success: boolean; data?: T; error?: { message?: string } };
+type ApiProject = PublicProject & { client?: string | null };
+
+export function formatProjectDuration(startValue?: string | null, endValue?: string | null): string | null {
+  if (!startValue) return null;
+  const parseDate = (value: string) => new Date(value.length === 10 ? `${value}T00:00:00` : value);
+  const start = parseDate(startValue);
+  const end = endValue ? parseDate(endValue) : new Date();
+  if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime()) || end < start) return null;
+  let years = end.getFullYear() - start.getFullYear();
+  let months = end.getMonth() - start.getMonth();
+  const days = end.getDate() - start.getDate();
+  if (days < 0) months -= 1;
+  if (months < 0) { years -= 1; months += 12; }
+  const totalMonths = years * 12 + months;
+  let duration: string;
+  if (totalMonths >= 12) {
+    const wholeYears = Math.floor(totalMonths / 12);
+    const remainingMonths = totalMonths % 12;
+    duration = [wholeYears ? `${wholeYears} ${wholeYears === 1 ? "year" : "years"}` : "", remainingMonths ? `${remainingMonths} ${remainingMonths === 1 ? "month" : "months"}` : ""].filter(Boolean).join(", ");
+  } else if (totalMonths > 0) {
+    duration = `${totalMonths} ${totalMonths === 1 ? "month" : "months"}`;
+  } else {
+    const elapsedDays = Math.max(1, Math.floor((end.getTime() - start.getTime()) / 86400000));
+    duration = `${elapsedDays} ${elapsedDays === 1 ? "day" : "days"}`;
+  }
+  return endValue ? duration : `${duration} (ongoing)`;
+}
+
+function omitClient(project: ApiProject): PublicProject {
+  const { client: _client, ...publicProject } = project;
+  return publicProject;
+}
 
 async function getPublicData<T>(path: string): Promise<T> {
   const response = await fetch(API_BASE_URL + path, {
@@ -57,8 +89,8 @@ export async function getPublicServiceBySlug(slug: string): Promise<PublicServic
   return data.service;
 }
 export async function getPublicProjects(): Promise<PublicProject[]> {
-  const data = await getPublicData<{ projects: PublicProject[] }>("/api/v1/projects");
-  return data.projects ?? [];
+  const data = await getPublicData<{ projects: ApiProject[] }>("/api/v1/projects");
+  return (data.projects ?? []).map(omitClient);
 }
 export async function getPublicProjectImages(projectId: number): Promise<PublicProjectImage[]> {
   const data = await getPublicData<{ images: PublicProjectImage[] }>(
@@ -67,8 +99,8 @@ export async function getPublicProjectImages(projectId: number): Promise<PublicP
   return data.images ?? [];
 }
 export async function getPublicProjectBySlug(slug: string): Promise<PublicProject> {
-  const data = await getPublicData<{ project: PublicProject }>("/api/v1/projects/" + encodeURIComponent(slug));
-  return data.project;
+  const data = await getPublicData<{ project: ApiProject }>("/api/v1/projects/" + encodeURIComponent(slug));
+  return omitClient(data.project);
 }
 export async function getPublicPosts(): Promise<{
   posts: PublicPost[];
