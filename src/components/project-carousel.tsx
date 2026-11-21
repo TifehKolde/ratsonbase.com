@@ -3,14 +3,8 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
-import type { PublicProject } from "@/lib/public-api";
+import { formatProjectDuration, type PublicProject } from "@/lib/public-api";
 import { Reveal } from "@/components/reveal";
-
-function formatProjectDate(value?: string | null) {
-  if (!value) return "";
-  const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? "" : new Intl.DateTimeFormat("en", { month: "short", year: "numeric" }).format(date);
-}
 
 export function ProjectCarousel({ projects, heading = "A closer look at our work", compactTop = false }: {
   projects: PublicProject[];
@@ -71,9 +65,7 @@ export function ProjectCarousel({ projects, heading = "A closer look at our work
         </Reveal>
         <div ref={trackRef} onScroll={handleScroll} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)} className="project-slider-track mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-5" aria-label="Recent Ratsonbase projects">
           {projects.map((project, index) => {
-            const startDate = formatProjectDate(project.start_date);
-            const endDate = formatProjectDate(project.completion_date);
-            const timeline = [startDate, endDate].filter(Boolean).join(", ");
+            const timeline = formatProjectDuration(project.start_date, project.completion_date);
             return (
               <Reveal key={project.id} className="w-[88%] max-w-[760px] shrink-0 snap-start sm:w-[76%] lg:w-[calc(58%-12px)]" delay={index * 0.04}>
                 <article className="group relative overflow-hidden rounded-[1.35rem] border border-slate-200 bg-white transition duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_24px_65px_rgba(1,0,110,.12)]">
@@ -88,7 +80,7 @@ export function ProjectCarousel({ projects, heading = "A closer look at our work
                       <div className="min-w-0 flex-1"><h3 className="mt-0 font-heading text-xl font-bold leading-snug tracking-[-.035em] text-brand [overflow-wrap:normal] [word-break:normal] sm:text-3xl sm:leading-tight sm:tracking-[-.04em]">{project.title}</h3><p className="mt-3 line-clamp-3 max-w-xl text-sm leading-7 text-slate-500">{project.description}</p></div>
                       <Link href={"/projects/" + project.slug} aria-label={"Explore project: " + project.title} className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-brand text-white transition duration-300 hover:rotate-45 hover:bg-accent"><ArrowUpRight size={21} className="text-white"/></Link>
                     </div>
-                    {timeline && <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-xs text-slate-500"><span><strong className="font-bold text-slate-700">Timeline:</strong> {timeline}</span></div>}
+                    {timeline && <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-xs text-slate-500"><span><strong className="font-bold text-slate-700">Duration:</strong> {timeline}</span></div>}
                     <div className="mt-7 flex items-center justify-end border-t border-slate-100 pt-5"><Link href={"/projects/"+project.slug} className="text-xs font-extrabold text-brand transition hover:text-accent">View project <ArrowUpRight className="ml-1 inline" size={14}/></Link></div>
                   </div>
                 </article>
