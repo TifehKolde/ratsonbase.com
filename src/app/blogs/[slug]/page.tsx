@@ -86,7 +86,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     : <span className="grid h-12 w-12 place-items-center rounded-full bg-brand text-sm font-extrabold text-white ring-4 ring-white shadow-md">{initials(author)}</span>}
                   <div><p className="text-sm font-bold text-brand">By {author}</p><p className="mt-1 text-xs text-slate-500">Ratsonbase Construction Limited</p></div>
                 </div>
-                <ShareArticleButton />
+                <ShareArticleButton title={post.title} slug={slug} />
               </div>
             </Reveal>
           </div>
