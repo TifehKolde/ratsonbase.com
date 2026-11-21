@@ -1,39 +1,30 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy, Facebook, Linkedin, MessageCircle, Twitter } from "lucide-react";
+import { Briefcase, Check, Copy, Globe, MessageCircle, Send } from "lucide-react";
 
-export function ShareArticleButton() {
+type ShareArticleButtonProps = {
+  title: string;
+  slug: string;
+};
+
+export function ShareArticleButton({ title, slug }: ShareArticleButtonProps) {
   const [message, setMessage] = useState("");
-
-  function articleUrl() {
-    const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.ratsonbase.com").replace(/\/$/, "");
-    return new URL(window.location.pathname, siteUrl).toString();
-  }
-
-  async function copyArticleLink() {
-    try {
-      await navigator.clipboard.writeText(articleUrl());
-      setMessage("Link copied");
-    } catch {
-      setMessage("Unable to copy link in this browser.");
-    }
-  }
-
-  const url = typeof window !== "undefined" ? articleUrl() : "https://www.ratsonbase.com";
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.ratsonbase.com").replace(/\/$/, "");
+  const url = `${siteUrl}/blogs/${encodeURIComponent(slug)}`;
   const encodedUrl = encodeURIComponent(url);
-  const encodedText = encodeURIComponent(document.title);
+  const encodedText = encodeURIComponent(title);
 
   const socialLinks = [
     {
       label: "Facebook",
       href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-      icon: <Facebook size={16} />,
+      icon: <Globe size={16} />,
     },
     {
       label: "LinkedIn",
       href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
-      icon: <Linkedin size={16} />,
+      icon: <Briefcase size={16} />,
     },
     {
       label: "WhatsApp",
@@ -43,9 +34,18 @@ export function ShareArticleButton() {
     {
       label: "X",
       href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedText}`,
-      icon: <Twitter size={16} />,
+      icon: <Send size={16} />,
     },
   ];
+
+  async function copyArticleLink() {
+    try {
+      await navigator.clipboard.writeText(url);
+      setMessage("Link copied");
+    } catch {
+      setMessage("Unable to copy link in this browser.");
+    }
+  }
 
   return (
     <div className="mt-7 flex flex-col items-center justify-center gap-3">
