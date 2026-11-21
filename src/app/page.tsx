@@ -81,8 +81,9 @@ export default async function HomePage() {
                 Building with purpose
               </p>
             </div>
-            <h1 className="hero-headline mt-0 max-w-[820px] font-heading text-[clamp(2.1rem,7.2vw,3.35rem)] font-bold leading-[1.02] tracking-[-.065em] sm:mt-1 sm:text-[clamp(3rem,5.2vw,5.1rem)] sm:leading-[.98]">
-              We build spaces <span className="text-[#e9a0df]">that move</span> life forward.
+            <h1 className="hero-headline mt-0 max-w-[900px] font-heading text-[clamp(1.65rem,8vw,3.35rem)] font-bold leading-[1.04] tracking-[-.06em] sm:mt-1 sm:text-[clamp(3rem,5.2vw,5.1rem)] sm:leading-[.98]">
+              <span className="hero-headline-line hero-headline-line-one">We build spaces</span>
+              <span className="hero-headline-line hero-headline-line-two"><span className="hero-highlight-word">that move</span> life forward.</span>
             </h1>
             <p className="mt-5 max-w-[560px] text-sm leading-7 text-white/85 sm:mt-8 sm:text-lg sm:leading-8">
               Thoughtful construction. Dependable delivery. Lasting value.<br className="hidden sm:block" /> We turn ambitious ideas into places made to stand the test of time.
