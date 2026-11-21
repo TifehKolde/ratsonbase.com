@@ -1472,3 +1472,21 @@ header[data-header-state="transparent"]::after {
   content: none !important;
   display: none !important;
 }
+
+
+/* Homepage headline: subtle entrance motion with fluid sizing across screens. */
+.hero-headline {
+  opacity: 0;
+  animation: hero-headline-enter .85s cubic-bezier(.2,.75,.25,1) .12s forwards;
+  text-wrap: balance;
+}
+@keyframes hero-headline-enter {
+  from { opacity:0; transform:translate3d(0,18px,0); }
+  to { opacity:1; transform:translate3d(0,0,0); }
+}
+@media (max-width: 640px) {
+  .hero-headline { max-width: 100%; letter-spacing:-.055em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-headline { opacity:1; animation:none; }
+}
