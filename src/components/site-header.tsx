@@ -74,7 +74,7 @@ export function SiteHeader({ forceSolid = false }: { forceSolid?: boolean }) {
       form_elapsed_ms: Date.now() - quoteStartedAt.current,
       turnstile_token: quoteToken,
     };
-    const apiBase = (process.env.NEXT_PUBLIC_API_BASE_URL || "https://construction-api-qv4x.onrender.com").replace(/\\/$/, "");
+    const apiBase = (process.env.NEXT_PUBLIC_API_BASE_URL || "https://construction-api-qv4x.onrender.com").replace(/\/$/, "");
     try {
       const response = await fetch(`${apiBase}/api/v1/quotes`, {
         method: "POST",
