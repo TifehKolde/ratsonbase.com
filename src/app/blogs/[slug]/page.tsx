@@ -104,8 +104,23 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </Reveal>
             )}
 
-            <div className="article-reading-layout mx-auto max-w-6xl">
-              <div className="article-reading-column min-w-0">
+            {post.tags && post.tags.length > 0 && (
+              <Reveal delay={0.06}>
+                <div className="mx-auto mb-12 flex max-w-5xl flex-wrap items-center justify-center gap-2 px-3 sm:justify-start sm:px-6 lg:px-8">
+                  {post.tags.map((tag) => (
+                    <span
+                      key={tag.id}
+                      className="rounded-full border border-brand/10 bg-brand-light/70 px-3.5 py-2 text-[.68rem] font-bold lowercase tracking-[.04em] text-brand/80"
+                    >
+                      {tag.name}
+                    </span>
+                  ))}
+                </div>
+              </Reveal>
+            )}
+
+            <div className="article-reading-layout mx-auto max-w-5xl px-3 sm:px-6 lg:px-8">
+              <div className="article-reading-column mx-auto min-w-0 max-w-3xl">
                 {post.excerpt && <p className="article-lead">{post.excerpt}</p>}
                 <div className="article-content" dangerouslySetInnerHTML={{ __html: post.content_html }} />
 
