@@ -8,7 +8,7 @@ import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { ProjectCarousel } from "@/components/project-carousel";
 import { ProjectMedia } from "@/components/project-media";
-import { getPublicProjectBySlug, getPublicProjectImages, getPublicProjects, type PublicProject } from "@/lib/public-api";
+import { formatProjectDuration, getPublicProjectBySlug, getPublicProjectImages, getPublicProjects, type PublicProject } from "@/lib/public-api";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -56,38 +56,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
-function getProjectDuration(startValue?: string | null, endValue?: string | null) {
-  if (!startValue) return null;
-  const parseDate = (value: string) => new Date(value + (value.length === 10 ? "T00:00:00" : ""));
-  const start = parseDate(startValue);
-  const end = endValue ? parseDate(endValue) : new Date();
-  if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime()) || end < start) return null;
-
-  let years = end.getFullYear() - start.getFullYear();
-  let months = end.getMonth() - start.getMonth();
-  let days = end.getDate() - start.getDate();
-  if (days < 0) months -= 1;
-  if (months < 0) {
-    years -= 1;
-    months += 12;
-  }
-
-  const totalMonths = years * 12 + months;
-  let duration: string;
-  if (totalMonths >= 12) {
-    const wholeYears = Math.floor(totalMonths / 12);
-    const remainingMonths = totalMonths % 12;
-    duration = [wholeYears ? `${wholeYears} ${wholeYears === 1 ? "year" : "years"}` : "", remainingMonths ? `${remainingMonths} ${remainingMonths === 1 ? "month" : "months"}` : ""].filter(Boolean).join(", ");
-  } else if (totalMonths > 0) {
-    duration = `${totalMonths} ${totalMonths === 1 ? "month" : "months"}`;
-  } else {
-    const elapsedDays = Math.max(1, Math.floor((end.getTime() - start.getTime()) / 86400000));
-    duration = `${elapsedDays} ${elapsedDays === 1 ? "day" : "days"}`;
-  }
-
-  return endValue ? duration : `${duration} (ongoing)`;
-}
-
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   let project: PublicProject;
@@ -101,7 +69,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
     { label: "Project type", value: project.project_type, icon: Tag },
     { label: "Location", value: project.location, icon: MapPin },
     { label: "Status", value: project.status?.replace(/[_-]/g, " "), icon: CheckCircle2 },
-    { label: "Duration", value: getProjectDuration(project.start_date, project.completion_date), icon: CalendarDays },
+    { label: "Duration", value: formatProjectDuration(project.start_date, project.completion_date), icon: CalendarDays },
   ].filter((item) => item.value);
 
   return (
