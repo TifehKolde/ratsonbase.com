@@ -81,7 +81,7 @@ export default async function HomePage() {
                 Building with purpose
               </p>
             </div>
-            <h1 className="mt-0 max-w-[900px] font-heading text-[clamp(2.55rem,10.5vw,3.5rem)] font-bold leading-[.96] tracking-[-.075em] sm:mt-1 sm:text-[clamp(3.1rem,7vw,6.4rem)] sm:leading-[.92]">
+            <h1 className="hero-headline mt-0 max-w-[820px] font-heading text-[clamp(2.1rem,7.2vw,3.35rem)] font-bold leading-[1.02] tracking-[-.065em] sm:mt-1 sm:text-[clamp(3rem,5.2vw,5.1rem)] sm:leading-[.98]">
               We build spaces <span className="text-[#e9a0df]">that move</span> life forward.
             </h1>
             <p className="mt-5 max-w-[560px] text-sm leading-7 text-white/85 sm:mt-8 sm:text-lg sm:leading-8">
