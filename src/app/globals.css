@@ -2221,3 +2221,45 @@ body:has(.blog-index-page) header > .container-shell > nav {
   margin-left: auto;
   margin-right: clamp(1.25rem, 3vw, 2.75rem);
 }
+
+/* Global site header: dark brand header at rest, glass-white header on scroll. */
+header[data-header-state="transparent"] {
+  background: #030307 !important;
+  background-image: none !important;
+  color: #fff !important;
+  border: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+header[data-header-state="transparent"] nav a {
+  color: rgba(255,255,255,.94) !important;
+}
+header[data-header-state="transparent"] nav a:hover,
+header[data-header-state="transparent"] nav a[aria-current="page"] {
+  color: #e879d5 !important;
+}
+header[data-header-state="solid"] {
+  background: rgba(255,255,255,.78) !important;
+  background-image: none !important;
+  color: #10111b !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(15,23,42,.07) !important;
+  box-shadow: 0 8px 32px rgba(15,23,42,.08) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(18px) !important;
+  backdrop-filter: saturate(180%) blur(18px) !important;
+}
+header[data-header-state="solid"] nav a {
+  color: #171827 !important;
+}
+header[data-header-state="solid"] nav a:hover,
+header[data-header-state="solid"] nav a[aria-current="page"] {
+  color: #b4049a !important;
+}
+header > .container-shell > nav {
+  margin-left: auto !important;
+  margin-right: clamp(1.25rem, 3vw, 2.75rem) !important;
+}
+@media (max-width: 1023px) {
+  header > .container-shell > nav { margin-right: 0 !important; }
+}
