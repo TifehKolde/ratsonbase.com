@@ -94,7 +94,6 @@ export function BlogIndexClient({ posts }: { posts: PublicPost[] }) {
         <div className="insights-hero-pattern" aria-hidden="true" />
         <div className="container-shell insights-hero-inner">
           <div className="insights-newsletter">
-            <p className="insights-eyebrow">Ratsonbase Journal</p>
             <h1>Stay in the<br /><span>flow</span> of what’s<br />next.</h1>
             <p className="insights-intro">Ideas, perspectives and practical knowledge from the people shaping the built environment. Join our circle and stay informed.</p>
             <form className="insights-subscribe-form" onSubmit={handleSubscribe}>
