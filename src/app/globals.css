@@ -2293,3 +2293,71 @@ header > .container-shell > nav {
   .article-editorial-cover { margin-top:1.5rem; border-radius:.85rem; }
   .article-editorial-cover img { aspect-ratio:1.35; }
 }
+
+
+/* Editorial article refinement: deep Ratsonbase navy, clear breadcrumb and aligned tags. */
+.ratsonbase-article-page .article-editorial-hero {
+  padding:clamp(8.75rem,11vw,10.75rem) 1.5rem 0;
+  background:#070725;
+}
+.ratsonbase-article-page .article-editorial-hero::before {
+  opacity:1;
+  background:
+    radial-gradient(ellipse at 78% 4%,rgba(180,4,154,.12),transparent 42%),
+    radial-gradient(ellipse at 12% 78%,rgba(1,0,110,.55),transparent 58%),
+    linear-gradient(135deg,#09092d 0%,#070725 56%,#05051d 100%);
+}
+.article-editorial-inner { width:min(100%,760px); }
+.article-breadcrumb {
+  display:flex;
+  min-width:0;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:.45rem;
+  margin-bottom:2rem;
+  color:rgba(226,230,245,.58);
+  font-size:.72rem;
+  line-height:1.5;
+}
+.article-breadcrumb a {
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;
+  color:rgba(235,237,248,.78);
+  text-decoration:none;
+  transition:color .2s ease;
+}
+.article-breadcrumb a:hover { color:#f08adf; }
+.article-breadcrumb > svg { flex:none; opacity:.5; }
+.article-breadcrumb [aria-current="page"] {
+  overflow:hidden;
+  max-width:min(46vw,390px);
+  color:rgba(235,237,248,.52);
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.ratsonbase-article-page > article { background:#fff; }
+.article-content-tags {
+  width:100%;
+  margin-left:0;
+  padding:0;
+}
+.article-content-tag {
+  display:inline-flex;
+  align-items:center;
+  min-height:29px;
+  border:1px solid rgba(180,4,154,.17);
+  border-radius:999px;
+  background:rgba(180,4,154,.055);
+  padding:.35rem .75rem;
+  color:#8f087d;
+  font-size:.69rem;
+  font-weight:650;
+  line-height:1.25;
+}
+@media (max-width:767px) {
+  .ratsonbase-article-page .article-editorial-hero { padding:7.5rem 1.1rem 0; }
+  .article-breadcrumb { gap:.35rem; margin-bottom:1.5rem; font-size:.67rem; }
+  .article-breadcrumb [aria-current="page"] { max-width:38vw; }
+  .article-content-tags { margin-bottom:2rem; }
+}
