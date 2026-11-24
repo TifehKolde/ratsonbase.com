@@ -117,9 +117,9 @@ export function SiteHeader(_props: { forceSolid?: boolean } = {}) {
           )}
         </Link>
         <nav className="hidden items-center gap-6 xl:gap-7 lg:flex" aria-label="Main navigation">
-          {links.map((link) => <Link key={link.href} href={link.href} aria-current={pathname === link.href || pathname.startsWith(link.href + "/") ? "page" : undefined} className={"text-sm font-semibold transition hover:text-accent " + (pathname === link.href ? "text-accent" : transparent ? "text-white/90" : "text-slate-950")}>{link.label}</Link>)}
+          {links.map((link) => <Link key={link.href} href={link.href} aria-current={pathname === link.href || pathname.startsWith(link.href + "/") ? "page" : undefined} className={"text-sm font-semibold uppercase tracking-[.08em] transition hover:text-accent " + (pathname === link.href ? "text-accent" : transparent ? "text-white/90" : "text-slate-950")}>{link.label}</Link>)}
         </nav>
-        <button type="button" onClick={openQuoteModal} className="hidden items-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-bold text-white transition hover:bg-[#980281] lg:inline-flex">Request a quote <ArrowUpRight size={16}/></button>
+        <button type="button" onClick={openQuoteModal} className="hidden items-center gap-2 rounded-[8px] bg-accent px-5 py-3 text-sm font-bold uppercase tracking-[.06em] text-white transition hover:bg-[#980281] lg:inline-flex">Request a quote <ArrowUpRight size={16}/></button>
         <button type="button" className={"grid h-10 w-10 place-items-center rounded-full transition lg:hidden " + (transparent ? "border border-white/40 text-white hover:bg-white/10" : "border border-slate-200 text-slate-950 hover:border-brand hover:bg-brand-light")} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}>{open ? <X size={20}/> : <Menu size={20}/>}</button>
       </div>
       {typeof document !== "undefined" && createPortal(
@@ -136,13 +136,13 @@ export function SiteHeader(_props: { forceSolid?: boolean } = {}) {
               <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-6 pt-1 sm:px-6 sm:pb-8 sm:pt-2">
                 <nav className="grid" aria-label="Mobile navigation links">
                   {links.map((link,index) => <motion.div key={link.href} initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: .04 + index * .045 }}>
-                    <Link href={link.href} onClick={() => setOpen(false)} aria-current={pathname === link.href ? "page" : undefined} className={"flex min-h-14 items-center justify-between gap-4 border-b border-slate-100 py-4 text-lg font-semibold tracking-[-.035em] transition hover:text-accent sm:text-xl " + (pathname === link.href ? "text-accent" : "text-slate-950")}><span>{link.label}</span><ArrowUpRight size={18} className="shrink-0 text-slate-300"/></Link>
+                    <Link href={link.href} onClick={() => setOpen(false)} aria-current={pathname === link.href ? "page" : undefined} className={"flex min-h-14 items-center justify-between gap-4 border-b border-slate-100 py-4 text-lg font-semibold uppercase tracking-[.04em] transition hover:text-accent sm:text-xl " + (pathname === link.href ? "text-accent" : "text-slate-950")}><span>{link.label}</span><ArrowUpRight size={18} className="shrink-0 text-slate-300"/></Link>
                   </motion.div>)}
                 </nav>
               </div>
               <div className="shrink-0 border-t border-slate-100 bg-[#f8f8fc] p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:p-6">
                 <p className="text-sm leading-6 text-slate-500">Have a project in mind? Tell us what you are planning.</p>
-                <button type="button" onClick={openQuoteModal} className="mt-4 flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#980281]">Request a quote <ArrowUpRight size={17}/></button>
+                <button type="button" onClick={openQuoteModal} className="mt-4 flex min-h-12 w-full items-center justify-center gap-2 rounded-[8px] bg-accent px-6 py-3.5 text-sm font-bold uppercase tracking-[.06em] text-white transition hover:bg-[#980281]">Request a quote <ArrowUpRight size={17}/></button>
                 <a href="mailto:hello@ratsonbase.com" className="mt-4 block text-center text-xs font-semibold text-brand">hello@ratsonbase.com</a>
               </div>
             </motion.aside>
