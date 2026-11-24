@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, CalendarDays, Clock3 } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, CalendarDays, Clock3, ChevronRight, Home } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Reveal } from "@/components/reveal";
@@ -69,6 +69,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <main className="ratsonbase-article-page">
         <section className="article-editorial-hero">
           <div className="article-editorial-inner">
+            <nav aria-label="Breadcrumb" className="article-breadcrumb">
+              <Link href="/" aria-label="Home"><Home size={13} /> Home</Link>
+              <ChevronRight size={13} />
+              <Link href="/blogs">Insights</Link>
+              <ChevronRight size={13} />
+              <span aria-current="page">{post.title}</span>
+            </nav>
             <Reveal>
               <div className="article-editorial-heading">
                 <span className="article-category-pill">{post.category?.name || "Ratsonbase Insights"}</span>
@@ -97,23 +104,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         <article className="section-pad !pt-10 sm:!pt-14">
           <div className="container-shell">
-            {post.tags && post.tags.length > 0 && (
-              <Reveal delay={0.06}>
-                <div className="mx-auto mb-12 flex max-w-5xl flex-wrap items-center justify-center gap-2 px-3 sm:justify-start sm:px-6 lg:px-8">
-                  {post.tags.map((tag) => (
-                    <span
-                      key={tag.id}
-                      className="rounded-full border border-brand/10 bg-brand-light/70 px-3.5 py-2 text-[.68rem] font-bold lowercase tracking-[.04em] text-brand/80"
-                    >
-                      {tag.name}
-                    </span>
-                  ))}
-                </div>
-              </Reveal>
-            )}
-
             <div className="article-reading-layout mx-auto max-w-5xl px-3 sm:px-6 lg:px-8">
               <div className="article-reading-column mx-auto min-w-0 max-w-3xl">
+                {post.tags && post.tags.length > 0 && (
+                  <Reveal delay={0.06}>
+                    <div className="article-content-tags mb-10 flex flex-wrap items-center justify-start gap-2">
+                      {post.tags.map((tag) => (
+                        <span key={tag.id} className="article-content-tag">{tag.name}</span>
+                      ))}
+                    </div>
+                  </Reveal>
+                )}
                 <div className="article-content" dangerouslySetInnerHTML={{ __html: post.content_html }} />
 
                 <Reveal delay={0.08}>
