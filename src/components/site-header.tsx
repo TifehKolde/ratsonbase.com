@@ -11,7 +11,6 @@ import { ArrowUpRight, ClipboardList, Menu, X } from "lucide-react";
 import { TurnstileField } from "@/components/turnstile-field";
 
 const links = [
-  { label: "Home", href: "/" },
   { label: "About us", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Projects", href: "/projects" },
@@ -93,12 +92,12 @@ export function SiteHeader({ forceSolid = false }: { forceSolid?: boolean }) {
     }
   }
 
-  const transparent = !forceSolid && !scrolled;
+  const transparent = !scrolled;
   const headerClass =
     "fixed inset-x-0 top-0 z-50 transition-all duration-300 " +
     (transparent
-      ? "border-b-0 bg-transparent text-white"
-      : "border-b border-white/50 bg-white/85 text-slate-950 shadow-[0_8px_30px_rgba(10,10,40,.08)] backdrop-blur-2xl supports-[backdrop-filter]:bg-white/75");
+      ? "border-0 bg-transparent text-white shadow-none"
+      : "border-b border-slate-900/5 bg-white/75 text-slate-950 shadow-[0_8px_30px_rgba(10,10,40,.08)] backdrop-blur-2xl supports-[backdrop-filter]:bg-white/70");
 
   return (
     <header data-header-state={transparent ? "transparent" : "solid"}
