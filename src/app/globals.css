@@ -2209,3 +2209,15 @@ body:has(.blog-index-page) header > .container-shell > button:not([aria-controls
 @media (max-width: 1023px) {
   body:has(.blog-index-page) header > .container-shell { min-height: 72px; }
 }
+
+/* Insights header: clean solid dark surface and right-aligned navigation. */
+body:has(.blog-index-page) header[data-header-state],
+body:has(.blog-index-page) header[data-header-state="transparent"],
+body:has(.blog-index-page) header[data-header-state="solid"] {
+  background-color: #030307 !important;
+  background-image: none !important;
+}
+body:has(.blog-index-page) header > .container-shell > nav {
+  margin-left: auto;
+  margin-right: clamp(1.25rem, 3vw, 2.75rem);
+}
