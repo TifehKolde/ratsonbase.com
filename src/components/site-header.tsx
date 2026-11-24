@@ -101,7 +101,7 @@ export function SiteHeader({ forceSolid = false }: { forceSolid?: boolean }) {
       : "border-b border-white/50 bg-white/85 text-slate-950 shadow-[0_8px_30px_rgba(10,10,40,.08)] backdrop-blur-2xl supports-[backdrop-filter]:bg-white/75");
 
   return (
-    <header data-header-state={transparent ? "transparent" : "solid"}
+    <header data-header-state={transparent ? "transparent" : "solid"} data-insights-header={pathname === "/blogs" ? "true" : undefined}
       className={headerClass}>
       <div className="container-shell flex h-[72px] items-center justify-between sm:h-[78px]">
         <Link href="/" className="flex min-w-0 items-center" aria-label="Ratsonbase Construction Limited home">
