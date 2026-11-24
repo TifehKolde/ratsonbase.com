@@ -18,7 +18,7 @@ const links = [
   { label: "Contact", href: "/contact" },
 ];
 
-export function SiteHeader({ forceSolid = false }: { forceSolid?: boolean }) {
+export function SiteHeader(_props: { forceSolid?: boolean } = {}) {
   const [open, setOpen] = useState(false);
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
