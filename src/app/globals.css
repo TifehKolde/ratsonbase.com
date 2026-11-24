@@ -1683,3 +1683,33 @@ header[data-header-state="transparent"]::after {
   .insights-feature-info { padding:.6rem; }
   .insights-feature-info h2 { font-size:.65rem; }
 }
+
+
+/* Keep the Insights navigation and editorial hero on the same centered grid. */
+header[data-insights-header="true"] > .container-shell {
+  width:min(100% - (var(--page-gutter) * 2),900px);
+  max-width:900px;
+}
+header[data-insights-header="true"][data-header-state="transparent"] {
+  border:0 !important;
+  border-bottom:0 !important;
+  box-shadow:none !important;
+  background:transparent !important;
+}
+header[data-insights-header="true"][data-header-state="transparent"]::before,
+header[data-insights-header="true"][data-header-state="transparent"]::after {
+  display:none !important;
+  content:none !important;
+}
+.insights-hero-inner {
+  width:min(100% - (var(--page-gutter) * 2),900px);
+  max-width:900px;
+  margin-inline:auto;
+}
+@media (max-width:767px) {
+  header[data-insights-header="true"] > .container-shell,
+  .insights-hero-inner {
+    width:calc(100% - 2rem);
+    max-width:520px;
+  }
+}
