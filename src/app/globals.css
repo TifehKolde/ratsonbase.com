@@ -1723,3 +1723,81 @@ header[data-header-state="transparent"]::after {
     max-width: 520px;
   }
 }
+
+/* Insights editorial hero: roomier proportions inspired by the supplied reference. */
+.insights-hero {
+  min-height: 620px;
+  padding: 8.75rem 0 5.25rem;
+}
+.insights-hero .insights-hero-inner {
+  width: min(100% - (var(--page-gutter) * 2), 1188px);
+  max-width: 1188px;
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.18fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+}
+.insights-newsletter { max-width: 440px; }
+.insights-hero h1 {
+  max-width: 440px;
+  font-size: clamp(2.8rem, 4.25vw, 4rem);
+  line-height: 1.02;
+}
+.insights-intro {
+  max-width: 430px;
+  margin-top: 1.15rem;
+  font-size: .94rem;
+  line-height: 1.75;
+}
+.insights-subscribe-form { margin-top: 1.6rem; }
+.insights-subscribe-row {
+  max-width: 430px;
+  padding: .3rem;
+}
+.insights-subscribe-row input {
+  padding: .8rem .95rem;
+  font-size: .82rem;
+}
+.insights-subscribe-row button {
+  padding: .85rem 1.15rem;
+  font-size: .76rem;
+}
+.insights-featured { gap: 1.15rem; }
+.insights-feature-image { aspect-ratio: .92; }
+.insights-feature-info { padding: 1rem 1rem 1.15rem; }
+.insights-feature-meta { font-size: .65rem; }
+.insights-feature-info h2 { margin-top: .65rem; font-size: .94rem; line-height: 1.45; }
+@media (max-width: 767px) {
+  .insights-hero { min-height: 0; padding: 7rem 0 3rem; }
+  .insights-hero .insights-hero-inner {
+    width: calc(100% - 2rem);
+    max-width: 520px;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .insights-hero h1 { max-width: 380px; font-size: clamp(2.35rem, 9vw, 3.2rem); }
+  .insights-intro { font-size: .86rem; }
+  .insights-featured { max-width: 100%; gap: .8rem; }
+  .insights-feature-image { aspect-ratio: 1.05; }
+  .insights-feature-info { padding: .75rem; }
+  .insights-feature-meta { font-size: .56rem; }
+  .insights-feature-info h2 { font-size: .76rem; }
+}
+
+/* Remove every possible bottom edge from the transparent overlay header. */
+header[data-header-state="transparent"],
+header[data-header-state="transparent"].fixed,
+header[data-header-state="transparent"] > .container-shell {
+  border: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+  background-image: none !important;
+}
+header[data-header-state="transparent"]::before,
+header[data-header-state="transparent"]::after,
+header[data-header-state="transparent"] > .container-shell::before,
+header[data-header-state="transparent"] > .container-shell::after {
+  content: none !important;
+  display: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
