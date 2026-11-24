@@ -1697,3 +1697,29 @@ header[data-header-state="transparent"]::after {
     max-width:520px;
   }
 }
+
+/* Final Insights header cleanup and shared container alignment. */
+header[data-header-state="transparent"] {
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+  filter: none !important;
+}
+header[data-header-state="transparent"]::before,
+header[data-header-state="transparent"]::after {
+  content: none !important;
+  display: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.insights-hero .insights-hero-inner {
+  width: min(100% - (var(--page-gutter) * 2), 1440px);
+  max-width: 1440px;
+  margin-inline: auto;
+}
+@media (max-width: 767px) {
+  .insights-hero .insights-hero-inner {
+    width: calc(100% - 2rem);
+    max-width: 520px;
+  }
+}
