@@ -15,11 +15,11 @@ export async function generateMetadata(): Promise<Metadata> {
     // Use the branded fallback image if the articles API is unavailable.
   }
   return createPageMetadata({
-    title: "Construction Insights & Articles",
+    title: "Insights",
     description: "Ideas, expertise and perspectives on construction, engineering, property development and the built environment from Ratsonbase.",
     path: "/blogs",
     image,
-    imageAlt: "Construction insights and articles from Ratsonbase",
+    imageAlt: "Insights from Ratsonbase Construction Limited",
   });
 }
 
