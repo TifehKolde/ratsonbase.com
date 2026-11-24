@@ -122,7 +122,7 @@ export async function likePublicPost(slug: string, email: string): Promise<{ lik
   return payload.data;
 }
 
-export async function subscribeToNewsletter(input: { email: string; first_name?: string }): Promise<{ subscriber?: { status?: string } }> {
+export async function subscribeToNewsletter(input: { email: string; first_name?: string; website?: string; form_elapsed_ms?: number; turnstile_token: string }): Promise<{ subscriber?: { status?: string } }> {
   const response = await fetch(API_BASE_URL + "/api/v1/newsletter", {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
