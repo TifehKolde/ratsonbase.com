@@ -69,41 +69,35 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <BlogThemeShell>
       <main className="ratsonbase-article-page">
         <section className="article-editorial-hero">
-          <div className="container-shell relative z-10">
+          <div className="article-editorial-inner">
             <Reveal>
-              <Breadcrumbs variant="dark" align="center" items={[{ label: "Insights", href: "/blogs" }, { label: post.title }]} />
-              <div className="mx-auto mt-3 max-w-4xl text-center sm:mt-4">
-                <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-[.7rem] font-bold uppercase tracking-[.13em] text-slate-500">
-                  <span className="rounded-full border border-brand/15 bg-brand-light px-4 py-2 text-brand">{post.category?.name || "Ratsonbase Insights"}</span>
-                  <span className="inline-flex items-center gap-2"><CalendarDays size={14} className="text-accent" />{published}</span>
-                  <span className="inline-flex items-center gap-2"><Clock3 size={14} className="text-accent" />{readTime(post.content_html)} min read</span>
+              <div className="article-editorial-heading">
+                <span className="article-category-pill">{post.category?.name || "Ratsonbase Insights"}</span>
+                <h1>{post.title}</h1>
+                {post.excerpt && <p className="article-editorial-excerpt">{post.excerpt}</p>}
+                <div className="article-editorial-meta">
+                  <span className="article-author-meta">
+                    {post.author?.profile_picture
+                      ? <img src={post.author.profile_picture} alt="" />
+                      : <span className="article-author-initials">{initials(author)}</span>}
+                    <span>{author}</span>
+                  </span>
+                  <span><CalendarDays size={15} />{published}</span>
+                  <span><Clock3 size={15} />{readTime(post.content_html)} min read</span>
                 </div>
-                <h1 className="mt-4 font-heading text-[clamp(2.2rem,5.2vw,4.35rem)] font-bold leading-[1.04] tracking-[-.065em] text-brand">{post.title}</h1>
-
-                <div className="mt-4 inline-flex items-center gap-3 border-t border-brand/10 pt-4 text-left">
-                  {post.author?.profile_picture
-                    ? <img src={post.author.profile_picture} alt={author} className="h-12 w-12 rounded-full object-cover ring-4 ring-white shadow-md" />
-                    : <span className="grid h-12 w-12 place-items-center rounded-full bg-brand text-sm font-extrabold text-white ring-4 ring-white shadow-md">{initials(author)}</span>}
-                  <div><p className="text-sm font-bold text-brand">By {author}</p><p className="mt-1 text-xs text-slate-500">Ratsonbase Construction Limited</p></div>
-                </div>
-                <ShareArticleButton title={post.title} slug={slug} />
+                <div className="article-editorial-share"><ShareArticleButton title={post.title} slug={slug} /></div>
               </div>
+              {post.featured_image && (
+                <figure className="article-editorial-cover">
+                  <img src={post.featured_image} alt={post.title} />
+                </figure>
+              )}
             </Reveal>
           </div>
-          <div className="article-hero-orbit article-hero-orbit-one" />
-          <div className="article-hero-orbit article-hero-orbit-two" />
         </section>
 
         <article className="section-pad !pt-10 sm:!pt-14">
           <div className="container-shell">
-            {post.featured_image && (
-              <Reveal delay={0.04}>
-                <figure className="article-feature-figure mx-auto mb-14 max-w-5xl overflow-hidden rounded-[1.5rem] border border-brand/[.07] bg-white shadow-[0_24px_70px_rgba(1,0,110,.10)]">
-                  <img src={post.featured_image} alt={post.title} className="aspect-[16/8.5] w-full object-cover" />
-                </figure>
-              </Reveal>
-            )}
-
             {post.tags && post.tags.length > 0 && (
               <Reveal delay={0.06}>
                 <div className="mx-auto mb-12 flex max-w-5xl flex-wrap items-center justify-center gap-2 px-3 sm:justify-start sm:px-6 lg:px-8">
