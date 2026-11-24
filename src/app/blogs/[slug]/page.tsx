@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, CalendarDays, Clock3 } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Reveal } from "@/components/reveal";
 import { BlogEngagement } from "@/components/blog-engagement";
 import { ShareArticleButton } from "@/components/share-article-button";
@@ -115,7 +114,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
             <div className="article-reading-layout mx-auto max-w-5xl px-3 sm:px-6 lg:px-8">
               <div className="article-reading-column mx-auto min-w-0 max-w-3xl">
-                {post.excerpt && <p className="article-lead">{post.excerpt}</p>}
                 <div className="article-content" dangerouslySetInnerHTML={{ __html: post.content_html }} />
 
                 <Reveal delay={0.08}>
