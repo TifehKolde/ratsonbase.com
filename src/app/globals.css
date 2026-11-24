@@ -1685,10 +1685,10 @@ header[data-header-state="transparent"]::after {
 }
 
 
-/* Widen the Insights hero content without changing the navbar layout. */
+/* Align the Insights hero content to the exact site-wide navbar container. */
 .insights-hero-inner {
-  width:min(100% - (var(--page-gutter) * 2),1320px);
-  max-width:1320px;
+  width:min(100% - (var(--page-gutter) * 2),1440px);
+  max-width:1440px;
   margin-inline:auto;
 }
 @media (max-width:767px) {
