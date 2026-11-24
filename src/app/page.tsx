@@ -11,7 +11,7 @@ import { Reveal } from "@/components/reveal";
 import { ProjectCarousel } from "@/components/project-carousel";
 import { ClientLogoCarousel } from "@/components/client-logo-carousel";
 import { ManagingPartnerMessage } from "@/components/managing-partner-message";
-import { getPublicProjects, getPublicServices, type PublicProject, type PublicService } from "@/lib/public-api";
+import { getPublicProjects, getPublicServices, getPublicPosts, type PublicProject, type PublicService, type PublicPost } from "@/lib/public-api";
 
 export async function generateMetadata(): Promise<Metadata> {
   let shareImage: string | undefined;
@@ -58,8 +58,10 @@ const values = [
 export default async function HomePage() {
   let services: PublicService[] = [];
   let projects: PublicProject[] = [];
+  let insights: PublicPost[] = [];
   try { services = await getPublicServices(); } catch { /* API fallback is shown below. */ }
   try { projects = await getPublicProjects(); } catch { /* API fallback is shown below. */ }
+  try { insights = (await getPublicPosts()).posts.slice(0, 3); } catch { /* Insights are optional when the API is unavailable. */ }
 
   const heroSlides = projects
     .filter((project) => project.featured_image)
@@ -150,6 +152,38 @@ export default async function HomePage() {
             </div>
           </Reveal>
         </section>
+
+        {insights.length > 0 && (
+          <section className="section-pad relative overflow-hidden bg-[#f7f7fb]">
+            <Reveal className="container-shell">
+              <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+                <div>
+                  <p className="text-[.68rem] font-extrabold uppercase tracking-[.17em] text-accent">Ideas &amp; perspectives</p>
+                  <h2 className="mt-3 max-w-[650px] font-heading text-4xl font-bold leading-tight tracking-[-.045em] text-brand sm:text-5xl">From our insights</h2>
+                  <p className="mt-4 max-w-xl text-sm leading-7 text-slate-500 sm:text-base">Practical knowledge and fresh perspectives on construction, engineering and the built environment.</p>
+                </div>
+                <Link href="/blogs" className="inline-flex shrink-0 items-center gap-2 text-sm font-bold text-brand transition hover:text-accent">Explore all insights <ArrowUpRight size={16}/></Link>
+              </div>
+              <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                {insights.map((post,index) => (
+                  <Reveal key={post.id} delay={index * 0.07}>
+                    <article className="group h-full overflow-hidden rounded-2xl border border-brand/[.08] bg-white transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(1,0,110,.10)]">
+                      <Link href={"/blogs/"+post.slug} className="block aspect-[16/10] overflow-hidden bg-brand-light">
+                        {post.featured_image ? <img src={post.featured_image} alt={post.title} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105"/> : <div className="h-full w-full bg-brand"/>}
+                      </Link>
+                      <div className="p-6">
+                        <p className="text-[.66rem] font-bold uppercase tracking-[.12em] text-accent">{post.category?.name || "Ratsonbase Insights"}</p>
+                        <Link href={"/blogs/"+post.slug}><h3 className="mt-3 line-clamp-2 font-heading text-xl font-bold leading-snug text-brand transition group-hover:text-accent">{post.title}</h3></Link>
+                        {post.excerpt && <p className="mt-3 line-clamp-3 text-sm leading-7 text-slate-500">{post.excerpt}</p>}
+                        <Link href={"/blogs/"+post.slug} className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand transition hover:text-accent">Read article <ArrowUpRight size={15}/></Link>
+                      </div>
+                    </article>
+                  </Reveal>
+                ))}
+              </div>
+            </Reveal>
+          </section>
+        )}
 
         <ManagingPartnerMessage storyAction="link" />
 
