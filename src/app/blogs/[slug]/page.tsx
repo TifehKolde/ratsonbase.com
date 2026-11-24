@@ -71,10 +71,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <section className="article-editorial-hero">
           <div className="container-shell relative z-10">
             <Reveal>
-              <Breadcrumbs variant="dark" align="center" items={[{ label: "Blogs", href: "/blogs" }, { label: post.title }]} />
+              <Breadcrumbs variant="dark" align="center" items={[{ label: "Insights", href: "/blogs" }, { label: post.title }]} />
               <div className="mx-auto mt-3 max-w-4xl text-center sm:mt-4">
                 <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-[.7rem] font-bold uppercase tracking-[.13em] text-slate-500">
-                  <span className="rounded-full border border-brand/15 bg-brand-light px-4 py-2 text-brand">{post.category?.name || "Ratsonbase Journal"}</span>
+                  <span className="rounded-full border border-brand/15 bg-brand-light px-4 py-2 text-brand">{post.category?.name || "Ratsonbase Insights"}</span>
                   <span className="inline-flex items-center gap-2"><CalendarDays size={14} className="text-accent" />{published}</span>
                   <span className="inline-flex items-center gap-2"><Clock3 size={14} className="text-accent" />{readTime(post.content_html)} min read</span>
                 </div>
@@ -149,7 +149,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <BlogEngagement slug={slug} initialComments={post.comments_count || 0} comments={comments} />
 
                 <div className="mt-10 flex flex-col gap-4 border-t border-brand/10 pt-7 sm:flex-row sm:items-center sm:justify-between">
-                  <Link href="/blogs" className="inline-flex items-center gap-2 text-sm font-bold text-brand transition hover:text-accent"><ArrowLeft size={16} /> Back to all articles</Link>
+                  <Link href="/blogs" className="inline-flex items-center gap-2 text-sm font-bold text-brand transition hover:text-accent"><ArrowLeft size={16} /> Back to all insights</Link>
                   <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-bold text-accent">Discuss a project with us <ArrowUpRight size={16} /></Link>
                 </div>
               </div>
@@ -163,7 +163,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <div className="mx-auto max-w-6xl">
                 <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
                   <div><p className="text-[.68rem] font-extrabold uppercase tracking-[.17em] text-accent">Explore more</p><h2 className="mt-3 font-heading text-3xl font-bold tracking-[-.05em] text-brand sm:text-4xl">Continue reading</h2></div>
-                  <Link href="/blogs" className="inline-flex items-center gap-2 text-sm font-bold text-brand transition hover:text-accent">Visit the journal <ArrowUpRight size={16} /></Link>
+                  <Link href="/blogs" className="inline-flex items-center gap-2 text-sm font-bold text-brand transition hover:text-accent">Explore Insights <ArrowUpRight size={16} /></Link>
                 </div>
                 <div className="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
                   {related.map((item, index) => (
