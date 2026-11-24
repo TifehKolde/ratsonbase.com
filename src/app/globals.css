@@ -2120,3 +2120,14 @@ body:has(.blog-index-page) header::after {
   .insights-feature-image { aspect-ratio: 1.65; }
   .insights-feature-info { min-height: 112px; }
 }
+
+/* Brand refinement: quieter logo texture and Ratsonbase accent on the hero keyword. */
+.insights-hero-pattern {
+  opacity: .045;
+}
+.insights-hero h1 span {
+  color: #b4049a;
+}
+@media (max-width: 767px) {
+  .insights-hero-pattern { opacity: .04; }
+}
