@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useRef, useState } from "react";
+import type { FormEvent } from "react";
 import Link from "next/link";
 import { ArrowUpRight, CalendarDays, Search } from "lucide-react";
 import { TurnstileField } from "@/components/turnstile-field";
@@ -59,7 +60,7 @@ export function BlogIndexClient({ posts }: { posts: PublicPost[] }) {
     (post.title + " " + (post.excerpt || "") + " " + (post.category?.name || "")).toLowerCase().includes(search.toLowerCase().trim())
   ), [posts, category, search]);
 
-  async function handleSubscribe(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubscribe(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!token) { setSubscribeStatus("Please complete the security check."); return; }
     setSubmitting(true);
