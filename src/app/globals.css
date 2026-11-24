@@ -2147,3 +2147,65 @@ body:has(.blog-index-page) header::after {
   font-weight: 650;
   line-height: 1.35;
 }
+
+/* Insights navigation styled to echo the dark patterned Assembly reference header. */
+body:has(.blog-index-page) header[data-header-state],
+body:has(.blog-index-page) header[data-header-state="transparent"],
+body:has(.blog-index-page) header[data-header-state="solid"] {
+  border: 0 !important;
+  border-bottom: 0 !important;
+  background-color: #030307 !important;
+  background-image:
+    linear-gradient(rgba(0,0,0,.91), rgba(0,0,0,.91)),
+    url("/logos/ratson%20logo%20white.png") !important;
+  background-repeat: repeat, repeat;
+  background-size: auto, 245px auto;
+  background-position: center, 0 0;
+  color: #fff !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+body:has(.blog-index-page) header > .container-shell {
+  min-height: 78px;
+}
+body:has(.blog-index-page) header nav a {
+  color: rgba(255,255,255,.94) !important;
+  font-size: .76rem;
+  font-weight: 750;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+  transition: color .2s ease;
+}
+body:has(.blog-index-page) header nav a:hover,
+body:has(.blog-index-page) header nav a[aria-current="page"] {
+  color: #e879d5 !important;
+}
+body:has(.blog-index-page) header nav a[aria-current="page"] {
+  position: relative;
+}
+body:has(.blog-index-page) header nav a[aria-current="page"]::after {
+  position: absolute;
+  right: 0;
+  bottom: -.55rem;
+  left: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: #b4049a;
+  content: "";
+}
+body:has(.blog-index-page) header > .container-shell > button:not([aria-controls]) {
+  border-radius: 999px;
+  background: #fff !important;
+  color: #080812 !important;
+  padding: .8rem 1.5rem;
+  font-weight: 700;
+  box-shadow: none;
+  transition: transform .2s ease, background-color .2s ease;
+}
+body:has(.blog-index-page) header > .container-shell > button:not([aria-controls]):hover {
+  transform: translateY(-1px);
+  background: #fceafa !important;
+}
+@media (max-width: 1023px) {
+  body:has(.blog-index-page) header > .container-shell { min-height: 72px; }
+}
