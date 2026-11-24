@@ -6,7 +6,6 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Reveal } from "@/components/reveal";
 import { BlogEngagement } from "@/components/blog-engagement";
-import { ShareArticleButton } from "@/components/share-article-button";
 import { BlogThemeShell } from "@/components/blog-theme-shell";
 import { getPublicPostBySlug, getPublicPosts, getPublicComments, type PublicPost, type PublicComment } from "@/lib/public-api";
 
@@ -80,7 +79,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <div className="article-editorial-heading">
                 <span className="article-category-pill">{post.category?.name || "Ratsonbase Insights"}</span>
                 <h1>{post.title}</h1>
-                {post.excerpt && <p className="article-editorial-excerpt">{post.excerpt}</p>}
                 <div className="article-editorial-meta">
                   <span className="article-author-meta">
                     {post.author?.profile_picture
@@ -91,7 +89,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   <span><CalendarDays size={15} />{published}</span>
                   <span><Clock3 size={15} />{readTime(post.content_html)} min read</span>
                 </div>
-                <div className="article-editorial-share"><ShareArticleButton title={post.title} slug={slug} /></div>
               </div>
               {post.featured_image && (
                 <figure className="article-editorial-cover">
@@ -140,6 +137,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 )}
 
                 <BlogEngagement slug={slug} initialComments={post.comments_count || 0} comments={comments} />
+
+                <Reveal delay={0.08}>
+                  <div className="article-bottom-share mt-12 border-t border-brand/10 pt-8">
+                    <div>
+                      <p className="text-sm font-bold text-brand">Enjoyed this article?</p>
+                      <p className="mt-1 text-sm text-slate-500">Share it with someone who may find it useful.</p>
+                    </div>
+                    <div className="mt-4"><ShareArticleButton title={post.title} slug={slug} /></div>
+                  </div>
+                </Reveal>
 
                 <div className="mt-10 flex flex-col gap-4 border-t border-brand/10 pt-7 sm:flex-row sm:items-center sm:justify-between">
                   <Link href="/blogs" className="inline-flex items-center gap-2 text-sm font-bold text-brand transition hover:text-accent"><ArrowLeft size={16} /> Back to all insights</Link>
