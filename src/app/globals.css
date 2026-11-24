@@ -1801,3 +1801,87 @@ header[data-header-state="transparent"] > .container-shell::after {
   border: 0 !important;
   box-shadow: none !important;
 }
+
+
+/* Ratsonbase Insights — reference-matched hero with the actual brand mark as its pattern. */
+.insights-hero {
+  min-height: 620px;
+  padding: 8.75rem 0 5.25rem;
+  background:
+    radial-gradient(ellipse at 12% 12%, rgba(180,4,154,.24), transparent 42%),
+    linear-gradient(118deg, #01006e 0%, #09083f 54%, #05051f 100%);
+}
+.insights-hero-pattern {
+  inset: -22%;
+  z-index: 0;
+  opacity: .105;
+  background-image: url("/logos/ratson%20logo%20white.png");
+  background-repeat: repeat;
+  background-size: 250px auto;
+  background-position: 0 0;
+  transform: rotate(-13deg) scale(1.18);
+  mask-image: linear-gradient(90deg, #000 0%, #000 82%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 82%, transparent 100%);
+}
+.insights-hero::after {
+  z-index: 0;
+  background: linear-gradient(90deg, rgba(1,0,110,.28), rgba(1,0,45,.04) 52%, rgba(5,5,31,.24));
+}
+.insights-hero .insights-hero-inner {
+  position: relative;
+  z-index: 1;
+  width: min(100% - (var(--page-gutter) * 2), 1188px);
+  max-width: 1188px;
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.18fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+}
+.insights-eyebrow { color: #e9a4df; }
+.insights-hero h1 span { color: #e45bd0; }
+.insights-subscribe-row {
+  border-color: rgba(255,255,255,.2);
+  background: rgba(255,255,255,.09);
+  backdrop-filter: blur(12px);
+}
+.insights-subscribe-row button {
+  background: #b4049a;
+  color: #fff;
+}
+.insights-subscribe-row button:hover { background: #d52cbd; }
+.insights-feature-card {
+  border-color: rgba(255,255,255,.16);
+  background: rgba(4,4,44,.76);
+  box-shadow: 0 18px 55px rgba(0,0,0,.18);
+}
+.insights-feature-card:hover { border-color: rgba(228,91,208,.7); }
+.insights-feature-meta span:last-child { color: #e45bd0; }
+.insights-feature-arrow { border-color: rgba(228,91,208,.55); }
+.insights-featured-empty { border-color: rgba(228,91,208,.25); }
+.insights-categories button.is-active {
+  border-color: #f1c5eb;
+  background: #fceafa;
+  color: #8f087d;
+}
+.insight-card:hover h2 { color: #b4049a; }
+.insight-read-link { color: #a20b8e; }
+
+/* The Insights overlay header must remain free of a bottom divider at every scroll state. */
+body:has(.blog-index-page) header {
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+body:has(.blog-index-page) header::before,
+body:has(.blog-index-page) header::after {
+  content: none !important;
+  display: none !important;
+}
+@media (max-width: 767px) {
+  .insights-hero { min-height: 0; padding: 7rem 0 3rem; }
+  .insights-hero .insights-hero-inner {
+    width: calc(100% - 2rem);
+    max-width: 520px;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .insights-hero-pattern { background-size: 175px auto; opacity: .085; }
+}
