@@ -2131,3 +2131,19 @@ body:has(.blog-index-page) header::after {
 @media (max-width: 767px) {
   .insights-hero-pattern { opacity: .04; }
 }
+
+/* Ratsonbase brand treatment for category labels inside insight cards. */
+.insights-feature-meta .insights-category-tag,
+.insight-card-meta .insights-category-tag {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border: 1px solid rgba(180,4,154,.28);
+  border-radius: 999px;
+  background: rgba(180,4,154,.13);
+  padding: .2rem .55rem;
+  color: #e879d5 !important;
+  font-size: .92em;
+  font-weight: 650;
+  line-height: 1.35;
+}
