@@ -1885,3 +1885,30 @@ body:has(.blog-index-page) header::after {
   }
   .insights-hero-pattern { background-size: 175px auto; opacity: .085; }
 }
+
+
+/* Insights hero refinement: deeper overlay, quieter logo texture, shorter featured images. */
+.insights-hero {
+  background:
+    radial-gradient(ellipse at 12% 12%, rgba(180,4,154,.09), transparent 42%),
+    linear-gradient(118deg, #02020f 0%, #05051c 54%, #02020c 100%);
+}
+.insights-hero-pattern {
+  opacity: .035;
+  background-size: 280px auto;
+}
+.insights-hero::after {
+  background: linear-gradient(90deg, rgba(2,2,15,.48), rgba(2,2,15,.16) 52%, rgba(2,2,12,.42));
+}
+.insights-feature-image {
+  aspect-ratio: 1.38;
+}
+@media (max-width: 767px) {
+  .insights-hero-pattern {
+    opacity: .03;
+    background-size: 190px auto;
+  }
+  .insights-feature-image {
+    aspect-ratio: 1.4;
+  }
+}
