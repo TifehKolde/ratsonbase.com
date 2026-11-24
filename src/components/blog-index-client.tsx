@@ -21,7 +21,7 @@ function FeaturedInsight({ post }: { post: PublicPost }) {
         {post.featured_image ? <img src={post.featured_image} alt={post.title} loading="eager" /> : <div className="insight-card-placeholder" />}
       </div>
       <div className="insights-feature-info">
-        <div className="insights-feature-meta"><span>{formatDate(post.published_at || post.created_at)}</span><span>·</span><span>{post.category?.name || "Insights"}</span></div>
+        <div className="insights-feature-meta"><span>{formatDate(post.published_at || post.created_at)}</span><span>·</span><span className="insights-category-tag">{post.category?.name || "Insights"}</span></div>
         <h2>{post.title}</h2>
       </div>
       <span className="insights-feature-arrow"><ArrowUpRight size={14}/></span>
@@ -36,7 +36,7 @@ function PostCard({ post }: { post: PublicPost }) {
         {post.featured_image ? <img src={post.featured_image} alt={post.title} loading="lazy" /> : <div className="insight-card-placeholder" />}
       </Link>
       <div className="insight-card-copy">
-        <div className="insight-card-meta"><span>{formatDate(post.published_at || post.created_at)}</span>{post.category?.name && <><span aria-hidden="true">·</span><span>{post.category.name}</span></>}</div>
+        <div className="insight-card-meta"><span>{formatDate(post.published_at || post.created_at)}</span>{post.category?.name && <><span aria-hidden="true">·</span><span className="insights-category-tag">{post.category.name}</span></>}</div>
         <Link href={"/blogs/" + post.slug}><h2>{post.title}</h2></Link>
         {post.excerpt && <p>{post.excerpt}</p>}
         <Link href={"/blogs/" + post.slug} className="insight-read-link">Read article <ArrowUpRight size={15}/></Link>
