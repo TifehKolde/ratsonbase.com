@@ -3258,3 +3258,108 @@ header > .container-shell > nav {
   .insights-featured-track,
   .insights-featured-track-item { transition:none !important; }
 }
+
+
+/* Insights hero alignment refinement: balanced copy and carousel columns. */
+.insights-hero {
+  min-height:390px;
+  padding:7rem 0 3.5rem;
+}
+.insights-hero .insights-hero-inner {
+  display:grid;
+  width:min(100% - (var(--page-gutter) * 2), 1200px);
+  max-width:1200px;
+  grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  align-items:center;
+  gap:clamp(2.5rem,5vw,5rem);
+  margin-inline:auto;
+}
+.insights-newsletter {
+  width:100%;
+  max-width:440px;
+  justify-self:start;
+}
+.insights-hero h1 {
+  max-width:430px;
+  margin-top:0;
+  font-size:clamp(2.35rem,4vw,3.35rem);
+  line-height:1.02;
+}
+.insights-intro {
+  max-width:420px;
+  margin-top:1rem;
+  font-size:.88rem;
+  line-height:1.7;
+}
+.insights-subscribe-form { margin-top:1.35rem; }
+.insights-subscribe-row { max-width:390px; }
+.insights-featured {
+  width:100%;
+  max-width:660px;
+  justify-self:end;
+  align-self:center;
+}
+.insights-featured-viewport {
+  padding:.7rem 0 .85rem;
+}
+.insights-featured-track {
+  gap:1rem;
+}
+.insights-featured-track-item {
+  flex-basis:calc(33.3333% - .6667rem) !important;
+  width:calc(33.3333% - .6667rem);
+}
+.insights-featured .insights-feature-image {
+  height:178px !important;
+  min-height:178px !important;
+  max-height:178px;
+}
+.insights-slider-controls {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:.35rem;
+}
+@media (max-width:1023px) and (min-width:768px) {
+  .insights-hero .insights-hero-inner {
+    width:min(100% - 3rem, 920px);
+    grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+    gap:2rem;
+  }
+  .insights-newsletter { max-width:390px; }
+  .insights-hero h1 { font-size:clamp(2.1rem,4vw,2.8rem); }
+  .insights-featured .insights-feature-image {
+    height:148px !important;
+    min-height:148px !important;
+    max-height:148px;
+  }
+}
+@media (max-width:767px) {
+  .insights-hero { min-height:0; padding:6.5rem 0 2.75rem; }
+  .insights-hero .insights-hero-inner {
+    width:calc(100% - 2rem);
+    max-width:560px;
+    grid-template-columns:1fr;
+    gap:1.5rem;
+  }
+  .insights-newsletter { max-width:100%; }
+  .insights-hero h1 { max-width:400px; font-size:clamp(2.15rem,8vw,2.8rem); }
+  .insights-intro { max-width:480px; font-size:.82rem; }
+}
+
+/* Remove the visible divider beneath the shared site header in either state. */
+header[data-header-state],
+header[data-header-state] > .container-shell {
+  border:0 !important;
+  border-bottom:0 !important;
+  outline:0 !important;
+}
+header[data-header-state]::before,
+header[data-header-state]::after,
+header[data-header-state] > .container-shell::before,
+header[data-header-state] > .container-shell::after {
+  content:none !important;
+  display:none !important;
+  border:0 !important;
+  box-shadow:none !important;
+}
