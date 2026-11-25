@@ -2891,3 +2891,110 @@ header > .container-shell > nav {
   .insight-card-copy h2,
   .insight-card-copy h3 { font-size:.94rem; }
 }
+
+
+/* Insights hero: two compact portrait feature cards shown together. */
+.insights-featured {
+  width:100%;
+  max-width:540px;
+}
+.insights-featured-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  align-items:start;
+  gap:1rem;
+}
+.insights-featured .insights-feature-card {
+  display:flex;
+  min-width:0;
+  flex-direction:column;
+  overflow:hidden;
+  min-height:0;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:1rem;
+  background:rgba(255,255,255,.075);
+}
+.insights-featured .insights-feature-image {
+  width:100%;
+  height:auto;
+  min-height:0;
+  aspect-ratio:5 / 6;
+  overflow:hidden;
+}
+.insights-featured .insights-feature-image img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.insights-featured .insights-feature-info {
+  min-height:108px;
+  padding:.85rem .9rem 1rem;
+}
+.insights-featured .insights-feature-meta {
+  flex-wrap:wrap;
+  gap:.3rem;
+  font-size:.61rem;
+}
+.insights-featured .insights-feature-info h2 {
+  display:-webkit-box;
+  overflow:hidden;
+  margin-top:.55rem;
+  font-size:clamp(.82rem,1vw,.98rem);
+  line-height:1.32;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+}
+.insights-featured .insights-feature-arrow {
+  right:.75rem;
+  bottom:.75rem;
+}
+.insights-featured .insights-feature-card { position:relative; }
+.insights-featured .insights-featured-slide { width:100%; }
+.insights-slider-controls { margin-top:.7rem; }
+@media (min-width:768px) {
+  .insights-featured { max-width:540px; }
+}
+@media (max-width:1023px) and (min-width:768px) {
+  .insights-hero-inner { grid-template-columns:minmax(0,1fr) minmax(300px,.9fr); gap:1.75rem; }
+  .insights-featured-grid { gap:.7rem; }
+  .insights-featured .insights-feature-info { min-height:100px; padding:.7rem; }
+  .insights-featured .insights-feature-meta { font-size:.56rem; }
+  .insights-featured .insights-feature-info h2 { font-size:.82rem; }
+}
+
+/* Category filters remain usable when the number of categories grows. */
+.insights-toolbar { min-width:0; }
+.insights-categories {
+  min-width:0;
+  max-width:100%;
+  flex:1 1 auto;
+  flex-wrap:nowrap;
+  overflow-x:auto;
+  overflow-y:hidden;
+  white-space:nowrap;
+  padding:0 0 .35rem;
+  scrollbar-width:thin;
+  scrollbar-color:#d8c7d7 transparent;
+  overscroll-behavior-x:contain;
+}
+.insights-categories button {
+  flex:0 0 auto;
+  white-space:nowrap;
+}
+.insights-search {
+  flex:0 0 220px;
+}
+@media (max-width:767px) {
+  .insights-categories { display:none; }
+  .insights-search { flex:1 1 auto; }
+}
+
+/* Insight listing titles use the Ratsonbase navy on hover, not magenta. */
+.blog-index-page .insight-card-copy h2 {
+  color:#20202b;
+  transition:color .18s ease;
+}
+.blog-index-page .insight-card:hover .insight-card-copy h2,
+.blog-index-page .insight-card-copy a:hover h2 {
+  color:#01006e;
+}
