@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return createPageMetadata({
     title: "Insights",
     description: "Ideas, expertise and perspectives on construction, engineering, property development and the built environment from Ratsonbase.",
-    path: "/blogs",
+    path: "/insights",
     image,
     imageAlt: "Insights from Ratsonbase Construction Limited",
   });
