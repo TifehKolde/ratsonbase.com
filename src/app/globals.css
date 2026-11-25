@@ -2361,3 +2361,83 @@ header > .container-shell > nav {
   .article-breadcrumb [aria-current="page"] { max-width:38vw; }
   .article-content-tags { margin-bottom:2rem; }
 }
+
+
+/* Final individual Insight hero layout: Assembly-inspired, Ratsonbase navy. */
+.ratsonbase-article-page .article-editorial-hero {
+  padding:clamp(8.5rem,11vw,10rem) 1.5rem 0;
+  background:#070725;
+}
+.ratsonbase-article-page .article-editorial-hero::before {
+  opacity:1;
+  background:
+    radial-gradient(ellipse at 82% 5%,rgba(180,4,154,.13),transparent 40%),
+    radial-gradient(ellipse at 8% 82%,rgba(1,0,110,.5),transparent 55%),
+    linear-gradient(135deg,#09092d 0%,#070725 58%,#05051d 100%);
+}
+.ratsonbase-article-page .article-editorial-inner {
+  width:min(100%,760px);
+  margin-inline:auto;
+}
+.ratsonbase-article-page .article-editorial-heading { text-align:left; }
+.ratsonbase-article-page .article-editorial-heading h1 {
+  max-width:100%;
+  margin-top:1rem;
+  color:#fff;
+  font-size:clamp(2.15rem,5.2vw,3.65rem);
+  line-height:1.06;
+  letter-spacing:-.045em;
+  text-wrap:balance;
+}
+.ratsonbase-article-page .article-editorial-excerpt {
+  max-width:740px;
+  margin-top:1.25rem;
+  color:#c7c7d5;
+  font-size:clamp(.98rem,1.5vw,1.12rem);
+  line-height:1.65;
+}
+.ratsonbase-article-page .article-editorial-meta {
+  justify-content:flex-start;
+  margin-top:1.5rem;
+}
+.ratsonbase-article-page .article-editorial-cover {
+  margin-top:1.9rem;
+  border-radius:1.1rem;
+}
+.ratsonbase-article-page .article-editorial-cover img {
+  display:block;
+  width:100%;
+  aspect-ratio:1.78;
+  object-fit:cover;
+}
+.ratsonbase-article-page .article-bottom-share {
+  display:block;
+  margin-top:3rem;
+  padding-top:2rem;
+  border-top:1px solid rgba(1,0,110,.12);
+  text-align:center;
+}
+.ratsonbase-article-page .article-bottom-share > div:first-child p:first-child {
+  color:#01006e;
+}
+@media (max-width:767px) {
+  .ratsonbase-article-page .article-editorial-hero { padding:7.25rem 1.1rem 0; }
+  .ratsonbase-article-page .article-editorial-heading h1 {
+    font-size:clamp(2rem,8.2vw,2.8rem);
+    line-height:1.08;
+  }
+  .ratsonbase-article-page .article-editorial-excerpt {
+    margin-top:1rem;
+    font-size:.96rem;
+  }
+  .ratsonbase-article-page .article-editorial-meta {
+    gap:.75rem 1rem;
+    margin-top:1.25rem;
+    font-size:.72rem;
+  }
+  .ratsonbase-article-page .article-editorial-cover {
+    margin-top:1.45rem;
+    border-radius:.85rem;
+  }
+  .ratsonbase-article-page .article-editorial-cover img { aspect-ratio:1.35; }
+}
