@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Reveal } from "@/components/reveal";
 import { BlogEngagement } from "@/components/blog-engagement";
+import { ShareArticleButton } from "@/components/share-article-button";
 import { BlogThemeShell } from "@/components/blog-theme-shell";
 import { getPublicPostBySlug, getPublicPosts, getPublicComments, type PublicPost, type PublicComment } from "@/lib/public-api";
 
@@ -79,6 +80,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <div className="article-editorial-heading">
                 <span className="article-category-pill">{post.category?.name || "Ratsonbase Insights"}</span>
                 <h1>{post.title}</h1>
+                {post.excerpt && <p className="article-editorial-excerpt">{post.excerpt}</p>}
                 <div className="article-editorial-meta">
                   <span className="article-author-meta">
                     {post.author?.profile_picture
