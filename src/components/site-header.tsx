@@ -97,7 +97,7 @@ export function SiteHeader(_props: { forceSolid?: boolean } = {}) {
     "fixed inset-x-0 top-0 z-50 transition-all duration-300 " +
     (transparent
       ? "border-0 bg-transparent text-white shadow-none"
-      : "border-b border-slate-900/5 bg-white/75 text-slate-950 shadow-[0_8px_30px_rgba(10,10,40,.08)] backdrop-blur-2xl supports-[backdrop-filter]:bg-white/70");
+      : "border-0 bg-white/75 text-slate-950 shadow-[0_8px_30px_rgba(10,10,40,.08)] backdrop-blur-2xl supports-[backdrop-filter]:bg-white/70");
 
   return (
     <header data-header-state={transparent ? "transparent" : "solid"}
