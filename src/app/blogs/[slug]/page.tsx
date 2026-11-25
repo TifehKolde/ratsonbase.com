@@ -18,11 +18,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {
       title: post.meta_title || post.title,
       description: post.meta_description || post.excerpt || undefined,
-      alternates: { canonical: `https://www.ratsonbase.com/blogs/${encodeURIComponent(slug)}` },
+      alternates: { canonical: `https://www.ratsonbase.com/insights/${encodeURIComponent(slug)}` },
       openGraph: {
         title: post.meta_title || post.title,
         description: post.meta_description || post.excerpt || undefined,
-        url: `https://www.ratsonbase.com/blogs/${encodeURIComponent(slug)}`,
+        url: `https://www.ratsonbase.com/insights/${encodeURIComponent(slug)}`,
         images: [{ url: shareImage, width: 1200, height: 630, alt: post.title }],
         type: "article",
       },
@@ -72,7 +72,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <nav aria-label="Breadcrumb" className="article-breadcrumb">
               <Link href="/" aria-label="Home"><Home size={13} /> Home</Link>
               <ChevronRight size={13} />
-              <Link href="/blogs">Insights</Link>
+              <Link href="/insights">Insights</Link>
               <ChevronRight size={13} />
               <span aria-current="page">{post.title}</span>
             </nav>
@@ -170,7 +170,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <div className="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
                   {related.map((item, index) => (
                     <Reveal key={item.id} delay={index * 0.06}>
-                      <Link href={"/blogs/" + item.slug} className="article-related-card insight-card group block h-full">
+                      <Link href={"/insights/" + item.slug} className="article-related-card insight-card group block h-full">
                         <div className="insight-card-image">{item.featured_image ? <img src={item.featured_image} alt={item.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" /> : <div className="insight-card-placeholder" />}</div>
                         <div className="insight-card-copy"><div className="insight-card-meta"><span>{dateLabel(item.published_at || item.created_at)}</span><span aria-hidden="true">·</span><span className="insights-category-tag">{item.category?.name || "Insights"}</span></div><h3 className="mt-2 line-clamp-2">{item.title}</h3>{item.excerpt && <p className="line-clamp-2">{item.excerpt}</p>}<span className="insight-read-link">Read article <ArrowUpRight size={15} /></span></div>
                       </Link>
