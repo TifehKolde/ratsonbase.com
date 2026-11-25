@@ -60,22 +60,26 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <section className="article-editorial-hero">
           <div className="container-shell relative z-10">
             <Reveal>
-              <Breadcrumbs variant="dark" align="center" items={[{ label: "Blogs", href: "/blogs" }, { label: post.title }]} />
+              <Breadcrumbs variant="dark" align="center" items={[{ label: "Insights", href: "/blogs" }, { label: post.title }]} />
               <div className="mx-auto mt-3 max-w-4xl text-center sm:mt-4">
-                <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-[.7rem] font-bold uppercase tracking-[.13em] text-slate-500">
-                  <span className="rounded-full border border-brand/15 bg-brand-light px-4 py-2 text-brand">{post.category?.name || "Ratsonbase Journal"}</span>
-                  <span className="inline-flex items-center gap-2"><CalendarDays size={14} className="text-accent" />{published}</span>
-                  <span className="inline-flex items-center gap-2"><Clock3 size={14} className="text-accent" />{readTime(post.content_html)} min read</span>
+                <span className="article-category-pill">{post.category?.name || "Ratsonbase Insights"}</span>
+                <h1 className="mt-5 font-heading text-[clamp(2.2rem,5.2vw,4.35rem)] font-bold leading-[1.04] tracking-[-.065em] text-white">{post.title}</h1>
+                {post.excerpt && <p className="article-editorial-excerpt mx-auto">{post.excerpt}</p>}
+                <div className="article-editorial-meta justify-center">
+                  <span className="article-author-meta">
+                    {post.author?.profile_picture
+                      ? <img src={post.author.profile_picture} alt="" />
+                      : <span className="article-author-initials">{initials(author)}</span>}
+                    <span>{author}</span>
+                  </span>
+                  <span><CalendarDays size={15} />{published}</span>
+                  <span><Clock3 size={15} />{readTime(post.content_html)} min read</span>
                 </div>
-                <h1 className="mt-4 font-heading text-[clamp(2.2rem,5.2vw,4.35rem)] font-bold leading-[1.04] tracking-[-.065em] text-brand">{post.title}</h1>
-
-                <div className="mt-4 inline-flex items-center gap-3 border-t border-brand/10 pt-4 text-left">
-                  {post.author?.profile_picture
-                    ? <img src={post.author.profile_picture} alt={author} className="h-12 w-12 rounded-full object-cover ring-4 ring-white shadow-md" />
-                    : <span className="grid h-12 w-12 place-items-center rounded-full bg-brand text-sm font-extrabold text-white ring-4 ring-white shadow-md">{initials(author)}</span>}
-                  <div><p className="text-sm font-bold text-brand">By {author}</p><p className="mt-1 text-xs text-slate-500">Ratsonbase Construction Limited</p></div>
-                </div>
-                <ShareArticleButton />
+                {post.featured_image && (
+                  <figure className="article-editorial-cover">
+                    <img src={post.featured_image} alt={post.title} />
+                  </figure>
+                )}
               </div>
             </Reveal>
           </div>
@@ -85,14 +89,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         <article className="section-pad !pt-10 sm:!pt-14">
           <div className="container-shell">
-            {post.featured_image && (
-              <Reveal delay={0.04}>
-                <figure className="article-feature-figure mx-auto mb-14 max-w-5xl overflow-hidden rounded-[1.5rem] border border-brand/[.07] bg-white shadow-[0_24px_70px_rgba(1,0,110,.10)]">
-                  <img src={post.featured_image} alt={post.title} className="aspect-[16/8.5] w-full object-cover" />
-                </figure>
-              </Reveal>
-            )}
-
             <div className="article-reading-layout mx-auto max-w-6xl">
               <div className="article-reading-column min-w-0">
                 {post.excerpt && <p className="article-lead">{post.excerpt}</p>}
@@ -123,6 +119,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 )}
 
                 <BlogEngagement slug={slug} initialComments={post.comments_count || 0} comments={comments} />
+
+                <div className="article-bottom-share mt-12 border-t border-brand/10 pt-8">
+                  <p className="text-center text-sm font-semibold text-brand">Enjoyed this article? Share it with someone who may find it useful.</p>
+                  <ShareArticleButton />
+                </div>
 
                 <div className="mt-10 flex flex-col gap-4 border-t border-brand/10 pt-7 sm:flex-row sm:items-center sm:justify-between">
                   <Link href="/blogs" className="inline-flex items-center gap-2 text-sm font-bold text-brand transition hover:text-accent"><ArrowLeft size={16} /> Back to all articles</Link>
