@@ -2998,3 +2998,60 @@ header > .container-shell > nav {
 .blog-index-page .insight-card-copy a:hover h2 {
   color:#01006e;
 }
+
+
+/* Compact, continuously sliding two-card featured carousel. */
+.insights-featured { max-width:540px; }
+.insights-featured-viewport {
+  width:100%;
+  overflow:hidden;
+}
+.insights-featured-track {
+  display:flex;
+  width:100%;
+  align-items:stretch;
+  gap:1rem;
+  transition:transform .65s cubic-bezier(.22,.75,.25,1);
+  will-change:transform;
+}
+.insights-featured-track-item {
+  flex:0 0 calc((100% - 1rem) / 2);
+  min-width:0;
+}
+.insights-featured .insights-feature-card {
+  height:100%;
+  min-height:0;
+}
+.insights-featured .insights-feature-image {
+  aspect-ratio:5 / 5.5;
+}
+.insights-featured .insights-feature-info {
+  min-height:88px;
+  padding:.7rem .8rem .85rem;
+}
+.insights-featured .insights-feature-meta {
+  font-size:.57rem;
+  line-height:1.35;
+}
+.insights-featured .insights-feature-info h2 {
+  margin-top:.4rem;
+  font-size:clamp(.78rem,.92vw,.9rem);
+  line-height:1.28;
+  -webkit-line-clamp:2;
+}
+.insights-featured .insights-feature-arrow {
+  right:.65rem;
+  bottom:.65rem;
+  width:1.65rem;
+  height:1.65rem;
+}
+.insights-slider-controls { margin-top:.55rem; }
+@media (max-width:1023px) and (min-width:768px) {
+  .insights-featured-track { gap:.7rem; }
+  .insights-featured-track-item { flex-basis:calc((100% - .7rem) / 2); }
+  .insights-featured .insights-feature-image { aspect-ratio:5 / 5.4; }
+  .insights-featured .insights-feature-info { min-height:82px; padding:.6rem .65rem .75rem; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .insights-featured-track { transition:none; }
+}
