@@ -4,7 +4,6 @@ import { Suspense } from "react";
 import { Inter, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { RouteScrollManager } from "@/components/route-scroll-manager";
-import { ScrollProgressIndicator } from "@/components/article-reading-progress";
 import { GoogleAnalyticsPageView } from "@/components/google-analytics-page-view";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -70,7 +69,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <GoogleAnalyticsPageView />
         </Suspense>
         <RouteScrollManager />
-        <ScrollProgressIndicator />
         {children}
         <script
           type="application/ld+json"
