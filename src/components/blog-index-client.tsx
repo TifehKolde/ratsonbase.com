@@ -60,7 +60,7 @@ export function BlogIndexClient({ posts }: { posts: PublicPost[] }) {
   useEffect(() => {
     if (featured.length < 2) return;
     const interval = window.setInterval(() => {
-      setActiveFeatured((current) => (current + 1) % Math.max(1, featured.length - 1));
+      setActiveFeatured((current) => (current + 1) % featured.length);
     }, 5500);
     return () => window.clearInterval(interval);
   }, [featured.length]);
@@ -120,21 +120,25 @@ export function BlogIndexClient({ posts }: { posts: PublicPost[] }) {
               <div className="insights-featured-slider">
                 <div className="insights-featured-slide" key="featured-track">
                   <div className="insights-featured-viewport">
-                    <div className="insights-featured-track" style={{ transform: `translateX(calc(-${activeFeatured * 50}% - ${activeFeatured * 0.5}rem))` }}>
-                      {featured.map(post => <div className="insights-featured-track-item" key={post.id}><FeaturedInsight post={post} /></div>)}
+                    <div className="insights-featured-track" style={{ transform: `translateX(calc(-${(activeFeatured + 1) * 33.3333}% - ${(activeFeatured + 1) * 0.3333}rem))` }}>
+                      {[featured[featured.length - 1], ...featured, featured[0]].map((post, index) => {
+                        const isCenter = index === activeFeatured + 1;
+                        const isSide = index === activeFeatured || index === activeFeatured + 2;
+                        return <div className={`insights-featured-track-item ${isCenter ? "is-center" : isSide ? "is-side" : "is-hidden"}`} key={`featured-${index}-${post.id}`}><FeaturedInsight post={post} /></div>;
+                      })}
                     </div>
                   </div>
                 </div>
                 {featured.length > 1 && (
                   <div className="insights-slider-controls">
                     <div className="insights-slider-dots" aria-label="Choose featured article">
-                      {Array.from({ length: Math.max(1, featured.length - 1) }, (_, index) => (
+                      {Array.from({ length: featured.length }, (_, index) => (
                         <button key={index} type="button" aria-label={`Show featured slide ${index + 1}`} aria-pressed={activeFeatured === index} className={activeFeatured === index ? "is-active" : ""} onClick={() => setActiveFeatured(index)} />
                       ))}
                     </div>
                     <div className="flex gap-2">
-                      <button type="button" aria-label="Previous featured article" onClick={() => setActiveFeatured((activeFeatured - 1 + Math.max(1, featured.length - 1)) % Math.max(1, featured.length - 1))}><ChevronLeft size={16}/></button>
-                      <button type="button" aria-label="Next featured article" onClick={() => setActiveFeatured((activeFeatured + 1) % Math.max(1, featured.length - 1))}><ChevronRight size={16}/></button>
+                      <button type="button" aria-label="Previous featured article" onClick={() => setActiveFeatured((activeFeatured - 1 + featured.length) % featured.length)}><ChevronLeft size={16}/></button>
+                      <button type="button" aria-label="Next featured article" onClick={() => setActiveFeatured((activeFeatured + 1) % featured.length)}><ChevronRight size={16}/></button>
                     </div>
                   </div>
                 )}
