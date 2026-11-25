@@ -145,6 +145,12 @@ export function BlogIndexClient({ posts }: { posts: PublicPost[] }) {
           <div className="insights-categories" role="group" aria-label="Filter insights by category">
             {categories.map(item => <button key={item} type="button" onClick={() => setCategory(item)} aria-pressed={category === item} className={category === item ? "is-active" : ""}>{item}</button>)}
           </div>
+          <label className="insights-category-select">
+            <span>Category</span>
+            <select value={category} onChange={event => setCategory(event.target.value)} aria-label="Filter insights by category">
+              {categories.map(item => <option key={item} value={item}>{item}</option>)}
+            </select>
+          </label>
           <label className="insights-search"><Search size={16} aria-hidden="true"/><input value={search} onChange={event => setSearch(event.target.value)} type="search" placeholder="Search insights..."/></label>
         </div>
         <section className="insights-results" aria-label="All insights">
