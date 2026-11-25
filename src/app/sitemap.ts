@@ -9,7 +9,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${siteUrl}/about`, priority: 0.7, changeFrequency: "monthly" },
     { url: `${siteUrl}/services`, priority: 0.9, changeFrequency: "weekly" },
     { url: `${siteUrl}/projects`, priority: 0.9, changeFrequency: "weekly" },
-    { url: `${siteUrl}/blogs`, priority: 0.8, changeFrequency: "weekly" },
+    { url: `${siteUrl}/insights`, priority: 0.8, changeFrequency: "weekly" },
     { url: `${siteUrl}/contact`, priority: 0.6, changeFrequency: "monthly" },
   ];
 
@@ -37,7 +37,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   if (posts.status === "fulfilled") {
     routes.push(...posts.value.posts.map((post) => ({
-      url: `${siteUrl}/blogs/${encodeURIComponent(post.slug)}`,
+      url: `${siteUrl}/insights/${encodeURIComponent(post.slug)}`,
       ...(post.published_at ? { lastModified: new Date(post.published_at) } : {}),
       changeFrequency: "monthly" as const,
       priority: 0.7,
