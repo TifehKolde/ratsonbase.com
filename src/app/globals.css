@@ -3509,3 +3509,16 @@ header[data-header-state] > .container-shell::after {
 @media (prefers-reduced-motion:reduce) {
   .insights-featured-track { transition:none !important; }
 }
+
+/* Match the Insights hero's outer container to the shared header container exactly. */
+.insights-hero .insights-hero-inner {
+  width:min(100% - (var(--page-gutter) * 2),1440px) !important;
+  max-width:1440px !important;
+  margin-inline:auto !important;
+}
+@media (max-width:1023px) and (min-width:768px) {
+  .insights-hero .insights-hero-inner {
+    width:min(100% - (var(--page-gutter) * 2),1440px) !important;
+    max-width:1440px !important;
+  }
+}
