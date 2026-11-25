@@ -1,9 +1,9 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { FormEvent } from "react";
 import Link from "next/link";
-import { ArrowUpRight, CalendarDays, Search } from "lucide-react";
+import { ArrowUpRight, CalendarDays, Search, ChevronLeft, ChevronRight } from "lucide-react";
 import { TurnstileField } from "@/components/turnstile-field";
 import { subscribeToNewsletter } from "@/lib/public-api";
 import type { PublicPost } from "@/lib/public-api";
@@ -54,7 +54,16 @@ export function BlogIndexClient({ posts }: { posts: PublicPost[] }) {
   const [subscribeStatus, setSubscribeStatus] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const startedAt = useRef(Date.now());
-  const featured = posts.slice(0, 2);
+  const featured = posts.slice(0, 5);
+  const [activeFeatured, setActiveFeatured] = useState(0);
+
+  useEffect(() => {
+    if (featured.length < 2) return;
+    const interval = window.setInterval(() => {
+      setActiveFeatured((current) => (current + 1) % featured.length);
+    }, 5500);
+    return () => window.clearInterval(interval);
+  }, [featured.length]);
   const filtered = useMemo(() => posts.filter(post =>
     (category === "All insights" || post.category?.name === category) &&
     (post.title + " " + (post.excerpt || "") + " " + (post.category?.name || "")).toLowerCase().includes(search.toLowerCase().trim())
@@ -106,8 +115,27 @@ export function BlogIndexClient({ posts }: { posts: PublicPost[] }) {
               {subscribeStatus && <p className="insights-subscribe-status" role="status">{subscribeStatus}</p>}
             </form>
           </div>
-          <div className="insights-featured">
-            {featured.length > 0 ? featured.map(post => <FeaturedInsight key={post.id} post={post}/>) : <div className="insights-featured-empty">Fresh perspectives are coming soon.</div>}
+          <div className="insights-featured" aria-label="Featured insights">
+            {featured.length > 0 ? (
+              <div className="insights-featured-slider">
+                <div className="insights-featured-slide" key={featured[activeFeatured]?.id}>
+                  <FeaturedInsight post={featured[activeFeatured]} />
+                </div>
+                {featured.length > 1 && (
+                  <div className="insights-slider-controls">
+                    <div className="insights-slider-dots" aria-label="Choose featured article">
+                      {featured.map((post, index) => (
+                        <button key={post.id} type="button" aria-label={`Show featured article ${index + 1}`} aria-pressed={activeFeatured === index} className={activeFeatured === index ? "is-active" : ""} onClick={() => setActiveFeatured(index)} />
+                      ))}
+                    </div>
+                    <div className="flex gap-2">
+                      <button type="button" aria-label="Previous featured article" onClick={() => setActiveFeatured((activeFeatured - 1 + featured.length) % featured.length)}><ChevronLeft size={16}/></button>
+                      <button type="button" aria-label="Next featured article" onClick={() => setActiveFeatured((activeFeatured + 1) % featured.length)}><ChevronRight size={16}/></button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : <div className="insights-featured-empty">Fresh perspectives are coming soon.</div>}
           </div>
         </div>
       </section>
