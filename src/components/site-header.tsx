@@ -12,9 +12,9 @@ import { TurnstileField } from "@/components/turnstile-field";
 
 const links = [
   { label: "About us", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Projects", href: "/projects" },
-  { label: "Insights", href: "/blogs" },
+  { label: "What we do", href: "/services" },
+  { label: "Our portfolio", href: "/projects" },
+  { label: "Insights", href: "/insights" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -136,7 +136,7 @@ export function SiteHeader(_props: { forceSolid?: boolean } = {}) {
               <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-6 pt-1 sm:px-6 sm:pb-8 sm:pt-2">
                 <nav className="grid" aria-label="Mobile navigation links">
                   {links.map((link,index) => <motion.div key={link.href} initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: .04 + index * .045 }}>
-                    <Link href={link.href} onClick={() => setOpen(false)} aria-current={pathname === link.href ? "page" : undefined} className={"flex min-h-12 items-center justify-between gap-4 border-b border-slate-100 py-3 text-base font-semibold uppercase tracking-[.035em] transition hover:text-accent sm:text-lg " + (pathname === link.href ? "text-accent" : "text-slate-950")}><span>{link.label}</span><ArrowUpRight size={18} className="shrink-0 text-slate-300"/></Link>
+                    <Link href={link.href} onClick={() => setOpen(false)} aria-current={pathname === link.href ? "page" : undefined} className={"flex min-h-12 items-center justify-between gap-4 border-b border-slate-100 py-3 text-sm font-semibold normal-case tracking-normal transition hover:text-accent sm:text-base " + (pathname === link.href ? "text-accent" : "text-slate-950")}><span>{link.label}</span><ArrowUpRight size={18} className="shrink-0 text-slate-300"/></Link>
                   </motion.div>)}
                 </nav>
               </div>
