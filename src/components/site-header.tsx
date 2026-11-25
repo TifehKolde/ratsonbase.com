@@ -116,7 +116,7 @@ export function SiteHeader(_props: { forceSolid?: boolean } = {}) {
             <Image src="/logos/ratsonbase-logo.png" alt="Ratsonbase Construction Limited" width={220} height={64} priority sizes="(max-width: 640px) 175px, 210px" className="h-11 w-[175px] object-cover object-center sm:h-12 sm:w-[205px]" />
           )}
         </Link>
-        <nav className="hidden items-center gap-6 xl:gap-7 lg:flex" aria-label="Main navigation">
+        <nav className="hidden items-center gap-5 xl:gap-6 lg:flex" aria-label="Main navigation">
           {links.map((link) => <Link key={link.href} href={link.href} aria-current={pathname === link.href || pathname.startsWith(link.href + "/") ? "page" : undefined} className={"text-[12px] font-semibold uppercase tracking-[.07em] transition hover:text-accent " + (pathname === link.href ? "text-accent" : transparent ? "text-white/90" : "text-slate-950")}>{link.label}</Link>)}
         </nav>
         <button type="button" onClick={openQuoteModal} className="hidden items-center gap-1.5 rounded-[8px] bg-accent px-4 py-2.5 text-xs font-semibold text-white transition hover:bg-[#980281] lg:inline-flex">Request a quote <ArrowUpRight size={16}/></button>
@@ -136,7 +136,7 @@ export function SiteHeader(_props: { forceSolid?: boolean } = {}) {
               <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-6 pt-1 sm:px-6 sm:pb-8 sm:pt-2">
                 <nav className="grid" aria-label="Mobile navigation links">
                   {links.map((link,index) => <motion.div key={link.href} initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: .04 + index * .045 }}>
-                    <Link href={link.href} onClick={() => setOpen(false)} aria-current={pathname === link.href ? "page" : undefined} className={"flex min-h-14 items-center justify-between gap-4 border-b border-slate-100 py-4 text-lg font-semibold uppercase tracking-[.04em] transition hover:text-accent sm:text-xl " + (pathname === link.href ? "text-accent" : "text-slate-950")}><span>{link.label}</span><ArrowUpRight size={18} className="shrink-0 text-slate-300"/></Link>
+                    <Link href={link.href} onClick={() => setOpen(false)} aria-current={pathname === link.href ? "page" : undefined} className={"flex min-h-12 items-center justify-between gap-4 border-b border-slate-100 py-3 text-base font-semibold uppercase tracking-[.035em] transition hover:text-accent sm:text-lg " + (pathname === link.href ? "text-accent" : "text-slate-950")}><span>{link.label}</span><ArrowUpRight size={18} className="shrink-0 text-slate-300"/></Link>
                   </motion.div>)}
                 </nav>
               </div>
