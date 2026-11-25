@@ -1,0 +1,189 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ArrowLeft, ArrowUpRight, CalendarDays, Clock3, ChevronRight, Home } from "lucide-react";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { Reveal } from "@/components/reveal";
+import { BlogEngagement } from "@/components/blog-engagement";
+import { ShareArticleButton } from "@/components/share-article-button";
+import { BlogThemeShell } from "@/components/blog-theme-shell";
+import { getPublicPostBySlug, getPublicPosts, getPublicComments, type PublicPost, type PublicComment } from "@/lib/public-api";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  try {
+    const post = await getPublicPostBySlug(slug);
+    const shareImage = post.featured_image || "/opengraph-image";
+    return {
+      title: post.meta_title || post.title,
+      description: post.meta_description || post.excerpt || undefined,
+      alternates: { canonical: `https://www.ratsonbase.com/insights/${encodeURIComponent(slug)}` },
+      openGraph: {
+        title: post.meta_title || post.title,
+        description: post.meta_description || post.excerpt || undefined,
+        url: `https://www.ratsonbase.com/insights/${encodeURIComponent(slug)}`,
+        images: [{ url: shareImage, width: 1200, height: 630, alt: post.title }],
+        type: "article",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: post.meta_title || post.title,
+        description: post.meta_description || post.excerpt || undefined,
+        images: [shareImage],
+      },
+    };
+  } catch { return { title: "Article | Ratsonbase Construction Limited" }; }
+}
+
+function dateLabel(value?: string | null) {
+  if (!value) return "Recently published";
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? "Recently published" : new Intl.DateTimeFormat("en", { day: "numeric", month: "long", year: "numeric" }).format(date);
+}
+function readTime(content: string) {
+  const words = content.replace(/<[^>]*>/g, " ").trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 220));
+}
+function initials(name: string) {
+  return name.split(" ").filter(Boolean).map((part) => part[0]).slice(0, 2).join("").toUpperCase();
+}
+
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  let post: PublicPost;
+  try { post = await getPublicPostBySlug(slug); } catch { notFound(); }
+
+  let related: PublicPost[] = [];
+  let comments: PublicComment[] = [];
+  try { related = (await getPublicPosts()).posts.filter((item) => item.slug !== slug).slice(0, 3); } catch {}
+  try { comments = (await getPublicComments(slug)).comments; } catch {}
+
+  const author = post.author?.name || "Ratsonbase Editorial";
+  const published = dateLabel(post.published_at || post.created_at);
+
+  return (
+    <>
+      <SiteHeader forceSolid />
+      <BlogThemeShell>
+      <main className="ratsonbase-article-page">
+        <section className="article-editorial-hero">
+          <div className="article-editorial-inner">
+            <nav aria-label="Breadcrumb" className="article-breadcrumb">
+              <Link href="/" aria-label="Home"><Home size={13} /> Home</Link>
+              <ChevronRight size={13} />
+              <Link href="/insights">Insights</Link>
+              <ChevronRight size={13} />
+              <span aria-current="page">{post.title}</span>
+            </nav>
+            <Reveal>
+              <div className="article-editorial-heading">
+                <span className="article-category-pill">{post.category?.name || "Ratsonbase Insights"}</span>
+                <h1>{post.title}</h1>
+                {post.excerpt && <p className="article-editorial-excerpt">{post.excerpt}</p>}
+                <div className="article-editorial-meta">
+                  <span className="article-author-meta">
+                    {post.author?.profile_picture
+                      ? <img src={post.author.profile_picture} alt="" />
+                      : <span className="article-author-initials">{initials(author)}</span>}
+                    <span>{author}</span>
+                  </span>
+                  <span><CalendarDays size={15} />{published}</span>
+                  <span><Clock3 size={15} />{readTime(post.content_html)} min read</span>
+                </div>
+              </div>
+              {post.featured_image && (
+                <figure className="article-editorial-cover">
+                  <img src={post.featured_image} alt={post.title} />
+                </figure>
+              )}
+            </Reveal>
+          </div>
+        </section>
+
+        <article className="section-pad !pt-10 sm:!pt-14">
+          <div className="container-shell">
+            <div className="article-reading-layout mx-auto max-w-5xl px-3 sm:px-6 lg:px-8">
+              <div className="article-reading-column mx-auto min-w-0 max-w-3xl">
+                {post.tags && post.tags.length > 0 && (
+                  <Reveal delay={0.06}>
+                    <div className="article-content-tags mb-10 flex flex-wrap items-center justify-start gap-2">
+                      {post.tags.map((tag) => (
+                        <span key={tag.id} className="article-content-tag">{tag.name}</span>
+                      ))}
+                    </div>
+                  </Reveal>
+                )}
+                <div className="article-content" dangerouslySetInnerHTML={{ __html: post.content_html }} />
+
+                <Reveal delay={0.08}>
+                  <aside className="article-inline-cta mt-14 rounded-3xl p-7 text-white sm:p-9">
+                    <div className="max-w-2xl">
+                      <p className="text-[.65rem] font-extrabold uppercase tracking-[.18em] text-white/65">Build with confidence</p>
+                      <h2 className="mt-3 font-heading text-2xl font-bold leading-tight sm:text-3xl">Planning a project of your own?</h2>
+                      <p className="mt-3 max-w-xl text-sm leading-7 text-white/75">Speak with the Ratsonbase team about construction, engineering and property solutions shaped around your project goals.</p>
+                      <Link href="/contact" className="relative z-10 mt-6 inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold !text-[#01006e] transition hover:bg-[#fceafa]">Talk to our team <ArrowUpRight size={16} /></Link>
+                    </div>
+                  </aside>
+                </Reveal>
+
+                {post.author && (
+                  <Reveal delay={0.1}>
+                    <aside className="article-author-card mt-14 flex flex-col gap-5 rounded-3xl border border-brand/10 bg-white p-6 shadow-[0_14px_45px_rgba(1,0,110,.05)] sm:flex-row sm:items-center sm:p-8">
+                      {post.author.profile_picture
+                        ? <img src={post.author.profile_picture} alt={author} className="h-20 w-20 shrink-0 rounded-full object-cover" />
+                        : <span className="grid h-20 w-20 shrink-0 place-items-center rounded-full bg-brand text-2xl font-extrabold text-white">{initials(author)}</span>}
+                      <div><p className="text-[.65rem] font-extrabold uppercase tracking-[.16em] text-accent">About the author</p><h2 className="mt-2 font-heading text-xl font-bold text-brand">{author}</h2><p className="mt-2 max-w-2xl text-sm leading-7 text-slate-600">{post.author.bio || "Contributor to the Ratsonbase journal, sharing perspectives on construction, engineering and the built environment."}</p></div>
+                    </aside>
+                  </Reveal>
+                )}
+
+                <BlogEngagement slug={slug} initialComments={post.comments_count || 0} comments={comments} />
+
+                <Reveal delay={0.08}>
+                  <div className="article-bottom-share mt-12 border-t border-brand/10 pt-8">
+                    <div>
+                      <p className="text-sm font-bold text-brand">Enjoyed this article?</p>
+                      <p className="mt-1 text-sm text-slate-500">Share it with someone who may find it useful.</p>
+                    </div>
+                    <div className="mt-4"><ShareArticleButton title={post.title} slug={slug} /></div>
+                  </div>
+                </Reveal>
+
+                <div className="mt-10 flex flex-col gap-4 border-t border-brand/10 pt-7 sm:flex-row sm:items-center sm:justify-between">
+                  <Link href="/blogs" className="inline-flex items-center gap-2 text-sm font-bold text-brand transition hover:text-accent"><ArrowLeft size={16} /> Back to all insights</Link>
+                  <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-bold text-accent">Discuss a project with us <ArrowUpRight size={16} /></Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        {related.length > 0 && (
+          <section className="article-related-section section-pad">
+            <div className="container-shell">
+              <div className="mx-auto max-w-6xl">
+                <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+                  <div><p className="text-[.68rem] font-extrabold uppercase tracking-[.17em] text-accent">Explore more</p><h2 className="mt-3 font-heading text-3xl font-bold tracking-[-.05em] text-brand sm:text-4xl">Continue reading</h2></div>
+                  <Link href="/blogs" className="inline-flex items-center gap-2 text-sm font-bold text-brand transition hover:text-accent">Explore Insights <ArrowUpRight size={16} /></Link>
+                </div>
+                <div className="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                  {related.map((item, index) => (
+                    <Reveal key={item.id} delay={index * 0.06}>
+                      <Link href={"/insights/" + item.slug} className="article-related-card insight-card group block h-full">
+                        <div className="insight-card-image">{item.featured_image ? <img src={item.featured_image} alt={item.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" /> : <div className="insight-card-placeholder" />}</div>
+                        <div className="insight-card-copy"><div className="insight-card-meta"><span>{dateLabel(item.published_at || item.created_at)}</span><span aria-hidden="true">·</span><span className="insights-category-tag">{item.category?.name || "Insights"}</span></div><h3 className="mt-2 line-clamp-2">{item.title}</h3>{item.excerpt && <p className="line-clamp-2">{item.excerpt}</p>}<span className="insight-read-link">Read article <ArrowUpRight size={15} /></span></div>
+                      </Link>
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+      </main>
+      </BlogThemeShell>
+      <SiteFooter />
+    </>
+  );
+}
