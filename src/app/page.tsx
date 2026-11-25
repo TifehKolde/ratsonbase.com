@@ -61,7 +61,7 @@ export default async function HomePage() {
   let insights: PublicPost[] = [];
   try { services = await getPublicServices(); } catch { /* API fallback is shown below. */ }
   try { projects = await getPublicProjects(); } catch { /* API fallback is shown below. */ }
-  try { insights = (await getPublicPosts()).posts.slice(0, 3); } catch { /* Insights are optional when the API is unavailable. */ }
+  try { insights = (await getPublicPosts()).posts.slice(0, 4); } catch { /* Insights are optional when the API is unavailable. */ }
 
   const heroSlides = projects
     .filter((project) => project.featured_image)
@@ -164,7 +164,7 @@ export default async function HomePage() {
                 </div>
                 <Link href="/blogs" className="inline-flex shrink-0 items-center gap-2 text-sm font-bold text-brand transition hover:text-accent">Explore all insights <ArrowUpRight size={16}/></Link>
               </div>
-              <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              <div className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
                 {insights.map((post,index) => (
                   <Reveal key={post.id} delay={index * 0.07}>
                     <article className="group h-full overflow-hidden rounded-2xl border border-brand/[.08] bg-white transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(1,0,110,.10)]">
