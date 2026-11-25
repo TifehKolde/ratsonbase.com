@@ -151,7 +151,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </Reveal>
 
                 <div className="mt-10 flex flex-col gap-4 border-t border-brand/10 pt-7 sm:flex-row sm:items-center sm:justify-between">
-                  <Link href="/blogs" className="inline-flex items-center gap-2 text-sm font-bold text-brand transition hover:text-accent"><ArrowLeft size={16} /> Back to all insights</Link>
+                  <Link href="/insights" className="inline-flex items-center gap-2 text-sm font-bold text-brand transition hover:text-accent"><ArrowLeft size={16} /> Back to all insights</Link>
                   <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-bold text-accent">Discuss a project with us <ArrowUpRight size={16} /></Link>
                 </div>
               </div>
@@ -165,7 +165,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <div className="mx-auto max-w-6xl">
                 <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
                   <div><p className="text-[.68rem] font-extrabold uppercase tracking-[.17em] text-accent">Explore more</p><h2 className="mt-3 font-heading text-3xl font-bold tracking-[-.05em] text-brand sm:text-4xl">Continue reading</h2></div>
-                  <Link href="/blogs" className="inline-flex items-center gap-2 text-sm font-bold text-brand transition hover:text-accent">Explore Insights <ArrowUpRight size={16} /></Link>
+                  <Link href="/insights" className="inline-flex items-center gap-2 text-sm font-bold text-brand transition hover:text-accent">Explore Insights <ArrowUpRight size={16} /></Link>
                 </div>
                 <div className="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
                   {related.map((item, index) => (
