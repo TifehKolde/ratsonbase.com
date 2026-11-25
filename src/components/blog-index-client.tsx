@@ -120,12 +120,12 @@ export function BlogIndexClient({ posts }: { posts: PublicPost[] }) {
               <div className="insights-featured-slider">
                 <div className="insights-featured-slide" key="featured-track">
                   <div className="insights-featured-viewport">
-                    <div className="insights-featured-track" style={{ transform: `translateX(calc(-16.6667% - 0.1667rem - ${activeFeatured * 33.3333}% - ${activeFeatured * 0.3333}rem))` }}>
-                      {[featured[featured.length - 1], ...featured, featured[0]].map((post, index) => {
-                        const isCenter = index === activeFeatured + 1;
-                        const isSide = index === activeFeatured || index === activeFeatured + 2;
-                        return <div className={`insights-featured-track-item ${isCenter ? "is-center" : isSide ? "is-side" : "is-hidden"}`} key={`featured-${index}-${post.id}`}><FeaturedInsight post={post} /></div>;
-                      })}
+                    <div className="insights-featured-track" style={{ transform: `translateX(calc(-${activeFeatured * 50}% - ${activeFeatured * 0.5}rem))` }}>
+                      {featured.map(post => (
+                        <div className="insights-featured-track-item" key={post.id}>
+                          <FeaturedInsight post={post} />
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
