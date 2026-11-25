@@ -3055,3 +3055,94 @@ header > .container-shell > nav {
 @media (prefers-reduced-motion:reduce) {
   .insights-featured-track { transition:none; }
 }
+
+
+/* Definitive Insights hero carousel layout: two compact portrait cards in one row. */
+.insights-featured {
+  display:block !important;
+  width:100%;
+  max-width:540px;
+  min-width:0;
+  justify-self:end;
+}
+.insights-featured-slider,
+.insights-featured-slide,
+.insights-featured-viewport {
+  display:block;
+  width:100%;
+  min-width:0;
+}
+.insights-featured-viewport {
+  overflow:hidden;
+}
+.insights-featured-track {
+  display:flex !important;
+  flex-direction:row !important;
+  flex-wrap:nowrap !important;
+  align-items:stretch;
+  width:100% !important;
+  gap:1rem;
+  transition:transform .65s cubic-bezier(.22,.75,.25,1);
+}
+.insights-featured-track-item {
+  display:block;
+  flex:0 0 calc(50% - .5rem) !important;
+  width:calc(50% - .5rem);
+  min-width:0;
+}
+.insights-featured .insights-feature-card {
+  display:flex !important;
+  width:100%;
+  height:100%;
+  min-height:0 !important;
+  flex-direction:column !important;
+  overflow:hidden;
+}
+.insights-featured .insights-feature-image {
+  display:block;
+  width:100%;
+  height:178px !important;
+  min-height:178px !important;
+  max-height:178px;
+  aspect-ratio:auto !important;
+  flex:none;
+  overflow:hidden;
+}
+.insights-featured .insights-feature-image img {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.insights-featured .insights-feature-info {
+  display:block;
+  min-height:82px !important;
+  padding:.7rem .8rem .8rem !important;
+}
+.insights-featured .insights-feature-info h2 {
+  margin-top:.45rem;
+  font-size:.82rem !important;
+  line-height:1.3;
+  -webkit-line-clamp:2;
+}
+.insights-featured .insights-feature-meta { font-size:.57rem !important; }
+@media (max-width:1023px) and (min-width:768px) {
+  .insights-featured { max-width:500px; }
+  .insights-featured-track { gap:.75rem; }
+  .insights-featured-track-item {
+    flex-basis:calc(50% - .375rem) !important;
+    width:calc(50% - .375rem);
+  }
+  .insights-featured .insights-feature-image {
+    height:155px !important;
+    min-height:155px !important;
+    max-height:155px;
+  }
+}
+@media (max-width:767px) {
+  .insights-featured,
+  .insights-skeleton-featured { display:none !important; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .insights-featured-track { transition:none !important; }
+}
