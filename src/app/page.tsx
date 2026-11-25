@@ -162,20 +162,20 @@ export default async function HomePage() {
                   <h2 className="mt-3 max-w-[650px] font-heading text-4xl font-bold leading-tight tracking-[-.045em] text-brand sm:text-5xl">From our insights</h2>
                   <p className="mt-4 max-w-xl text-sm leading-7 text-slate-500 sm:text-base">Practical knowledge and fresh perspectives on construction, engineering and the built environment.</p>
                 </div>
-                <Link href="/blogs" className="inline-flex shrink-0 items-center gap-2 text-sm font-bold text-brand transition hover:text-accent">Explore all insights <ArrowUpRight size={16}/></Link>
+                <Link href="/insights" className="inline-flex shrink-0 items-center gap-2 text-sm font-bold text-brand transition hover:text-accent">Explore all insights <ArrowUpRight size={16}/></Link>
               </div>
               <div className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
                 {insights.map((post,index) => (
                   <Reveal key={post.id} delay={index * 0.07}>
                     <article className="group h-full overflow-hidden rounded-2xl border border-brand/[.08] bg-white transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(1,0,110,.10)]">
-                      <Link href={"/blogs/"+post.slug} className="block aspect-[16/10] overflow-hidden bg-brand-light">
+                      <Link href={"/insights/"+post.slug} className="block aspect-[16/10] overflow-hidden bg-brand-light">
                         {post.featured_image ? <img src={post.featured_image} alt={post.title} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105"/> : <div className="h-full w-full bg-brand"/>}
                       </Link>
                       <div className="p-6">
                         <p className="text-[.66rem] font-bold uppercase tracking-[.12em] text-accent">{post.category?.name || "Ratsonbase Insights"}</p>
-                        <Link href={"/blogs/"+post.slug}><h3 className="mt-3 line-clamp-2 font-heading text-xl font-bold leading-snug text-brand transition group-hover:text-accent">{post.title}</h3></Link>
+                        <Link href={"/insights/"+post.slug}><h3 className="mt-3 line-clamp-2 font-heading text-xl font-bold leading-snug text-brand transition group-hover:text-accent">{post.title}</h3></Link>
                         {post.excerpt && <p className="mt-3 line-clamp-3 text-sm leading-7 text-slate-500">{post.excerpt}</p>}
-                        <Link href={"/blogs/"+post.slug} className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand transition hover:text-accent">Read article <ArrowUpRight size={15}/></Link>
+                        <Link href={"/insights/"+post.slug} className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand transition hover:text-accent">Read article <ArrowUpRight size={15}/></Link>
                       </div>
                     </article>
                   </Reveal>
