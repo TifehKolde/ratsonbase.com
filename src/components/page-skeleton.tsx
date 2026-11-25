@@ -130,14 +130,23 @@ function BlogListingSkeleton() {
           </div>
           <div className="insights-featured insights-skeleton-featured">
             <div className="insights-featured-slider">
-              <div className="insights-feature-card">
+              <div className="insights-featured-grid">
+                <div className="insights-feature-card">
                 <div className="insights-feature-image"><Block className="h-full w-full rounded-none bg-white/10" /></div>
-                <div className="insights-feature-info space-y-4">
-                  <Block className="h-3 w-24 bg-white/15" />
-                  <Block className="h-5 w-full bg-white/15" />
-                  <Block className="h-5 w-4/5 bg-white/15" />
-                  <Block className="h-3 w-28 bg-white/15" />
+                <div className="insights-feature-info space-y-3">
+                  <Block className="h-3 w-20 bg-white/15" />
+                  <Block className="h-4 w-full bg-white/15" />
+                  <Block className="h-4 w-4/5 bg-white/15" />
                 </div>
+              </div>
+                <div className="insights-feature-card">
+                <div className="insights-feature-image"><Block className="h-full w-full rounded-none bg-white/10" /></div>
+                <div className="insights-feature-info space-y-3">
+                  <Block className="h-3 w-20 bg-white/15" />
+                  <Block className="h-4 w-full bg-white/15" />
+                  <Block className="h-4 w-4/5 bg-white/15" />
+                </div>
+              </div>
               </div>
               <div className="insights-slider-controls">
                 <div className="flex gap-2"><Block className="h-2 w-6 rounded-full bg-white/20" /><Block className="h-2 w-2 rounded-full bg-white/10" /><Block className="h-2 w-2 rounded-full bg-white/10" /></div>
