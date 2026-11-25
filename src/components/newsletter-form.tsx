@@ -9,7 +9,6 @@ const API_BASE_URL = (process.env.NEXT_PUBLIC_API_BASE_URL || "https://construct
 
 export function NewsletterForm() {
   const [email, setEmail] = useState("");
-  const [firstName, setFirstName] = useState("");
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
   const [website, setWebsite] = useState("");
@@ -27,13 +26,12 @@ export function NewsletterForm() {
       const response = await fetch(API_BASE_URL + "/api/v1/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ email, first_name: firstName || undefined, website, form_elapsed_ms: Date.now() - formStartedAt.current, turnstile_token: turnstileToken }),
+        body: JSON.stringify({ email, website, form_elapsed_ms: Date.now() - formStartedAt.current, turnstile_token: turnstileToken }),
       });
       const payload = await response.json();
       if (!response.ok || !payload.success) throw new Error(payload.error?.message || "We could not complete your subscription. Please try again.");
       setStatus(payload.data?.message || "You are subscribed. Thank you for joining us.");
       setEmail("");
-      setFirstName("");
     } catch (error) {
       setStatus(error instanceof Error ? error.message : "Something went wrong. Please try again.");
     } finally { setTurnstileResetKey(value => value + 1); setLoading(false); }
@@ -46,8 +44,7 @@ export function NewsletterForm() {
         <input id="newsletter-website" name="website" type="text" tabIndex={-1} autoComplete="off" value={website} onChange={event => setWebsite(event.target.value)} />
       </div>
       <div className="mb-4"><TurnstileField onTokenChange={setTurnstileToken} resetKey={turnstileResetKey} theme="dark" /></div>
-      <div className="grid gap-3 sm:grid-cols-[.7fr_1.3fr_auto]">
-        <input maxLength={80} value={firstName} onChange={e=>setFirstName(e.target.value)} aria-label="First name (optional)" placeholder="First name" className="min-h-12 min-w-0 rounded-full border border-white/15 bg-white/[.07] px-5 text-sm text-white outline-none placeholder:text-white/35 focus:border-[#e9a0df]"/>
+      <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
         <input type="email" required maxLength={254} value={email} onChange={e=>setEmail(e.target.value)} aria-label="Email address" placeholder="Your email address" className="min-h-12 min-w-0 rounded-full border border-white/15 bg-white/[.07] px-5 text-sm text-white outline-none placeholder:text-white/35 focus:border-[#e9a0df]"/>
         <button type="submit" disabled={loading || !turnstileToken} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-accent px-6 text-sm font-bold text-white transition hover:bg-[#980281] disabled:opacity-60">{loading?<LoaderCircle className="animate-spin" size={17}/>:<>Subscribe <ArrowRight size={16}/></>}</button>
       </div>
