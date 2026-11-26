@@ -79,7 +79,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         <PageHero
           title={project.title}
           description={project.location || "A closer look at a Ratsonbase project."}
-          breadcrumbs={[{ label: "Projects", href: "/projects" }, { label: project.title }]} backgroundImage={project.featured_image || "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=2200&q=88"}
+          breadcrumbs={[{ label: "Our Portfolio", href: "/projects" }, { label: project.title }]} backgroundImage={project.featured_image || "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=2200&q=88"}
         />
         <section className="section-pad !pb-0">
           <div className="container-shell">
